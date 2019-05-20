@@ -1,5 +1,6 @@
 package com.lcq.app.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,9 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @RestController
 @RequestMapping("/api")
+@Slf4j
 public class TestController {
     @GetMapping("/hello")
-    public String hello(){
+    public String hello() {
+        log.error("Hello!");
         return "Hello!";
     }
+
+//    git add .
+//    git commit -m"说明"
+//    git push -u origin master
 }
