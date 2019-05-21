@@ -16,7 +16,7 @@ import org.springframework.web.servlet.mvc.AbstractController;
  * @create: 2019-05-20 21:50
  **/
 @RestController
-@RequestMapping("/sys_user")
+@RequestMapping("/sys/user")
 @Slf4j
 public class SysUserController {
     @Autowired
