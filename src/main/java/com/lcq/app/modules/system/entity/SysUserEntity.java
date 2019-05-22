@@ -1,10 +1,10 @@
 package com.lcq.app.modules.system.entity;
 
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.Instant;
 
 /**
  * @program: app
@@ -17,8 +17,12 @@ import java.io.Serializable;
 public class SysUserEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @TableId
+    @TableId(type = IdType.UUID)
     private String id;
     private String user;
     private String password;
+    @TableField(fill = FieldFill.INSERT)
+    private Instant createDate;
+    @TableField(fill = FieldFill.UPDATE)
+    private Instant updateDate;
 }

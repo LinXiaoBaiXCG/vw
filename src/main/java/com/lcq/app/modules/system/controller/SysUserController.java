@@ -5,6 +5,7 @@ import com.lcq.app.modules.system.service.SysUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.AbstractController;
@@ -27,5 +28,14 @@ public class SysUserController {
         SysUserEntity sysUserEntity = sysUserService.getById(new Integer(1).toString());
         log.error("{}",sysUserEntity);
         return sysUserEntity;
+    }
+
+    @PostMapping("/create")
+    public String create(){
+        SysUserEntity sysUserEntity = new SysUserEntity();
+        sysUserEntity.setUser("22");
+        sysUserEntity.setPassword("222");
+        sysUserService.save(sysUserEntity);
+        return "ok";
     }
 }

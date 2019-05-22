@@ -19,6 +19,6 @@ mybatis-plus:
       logic-delete-value: -1
       logic-not-delete-value: 0
     banner: false
-# 配置slq打印日志
+# 配置SQL打印日志
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
