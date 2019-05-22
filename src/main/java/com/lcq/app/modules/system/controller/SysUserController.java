@@ -1,7 +1,9 @@
 package com.lcq.app.modules.system.controller;
 
+import com.lcq.app.modules.system.controller.vo.ResultVO;
 import com.lcq.app.modules.system.entity.SysUserEntity;
 import com.lcq.app.modules.system.service.SysUserService;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,13 +25,19 @@ public class SysUserController {
     @Autowired
     private SysUserService sysUserService;
 
+    @ApiOperation("获取用户信息")
     @GetMapping("/getOne")
-    public SysUserEntity getOne() {
+    public ResultVO getOne() {
+        ResultVO resultVO = new ResultVO();
         SysUserEntity sysUserEntity = sysUserService.getById(new Integer(1).toString());
+        resultVO.setCode("0");
+        resultVO.setMsg("获取成功");
+        resultVO.setData(sysUserEntity);
         log.error("{}",sysUserEntity);
-        return sysUserEntity;
+        return resultVO;
     }
 
+    @ApiOperation("新增用户")
     @PostMapping("/create")
     public String create(){
         SysUserEntity sysUserEntity = new SysUserEntity();
