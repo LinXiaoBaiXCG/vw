@@ -21,8 +21,8 @@ public class SysUserEntity implements Serializable {
     private String id;
     private String user;
     private String password;
-    @TableField(fill = FieldFill.INSERT)
+    @TableField(value = "create_date",fill = FieldFill.INSERT)
     private Instant createDate;
-    @TableField(fill = FieldFill.UPDATE)
+    @TableField(value = "update_date",fill = FieldFill.UPDATE)
     private Instant updateDate;
 }
