@@ -1,4 +1,3 @@
 搭建
 
-启动：
-Swagger:localhost:8080/swagger-ui.html
+启动：localhost:8080/swagger-ui.html
