@@ -9,17 +9,14 @@ import java.time.Instant;
 public class MyMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
-        Object createDate = this.getFieldValByName("createDate", metaObject);
-        if (null == createDate){
-            this.setFieldValByName("createDate",Instant.now(),metaObject);
+        Object createTime = this.getFieldValByName("createTime", metaObject);
+        if (null == createTime){
+            this.setFieldValByName("createTime",Instant.now(),metaObject);
         }
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
-        Object createDate = this.getFieldValByName("updateDate", metaObject);
-        if (null == createDate){
-            this.setFieldValByName("updateDate",Instant.now(),metaObject);
-        }
+        this.setFieldValByName("updateTime",Instant.now(),metaObject);
     }
 }

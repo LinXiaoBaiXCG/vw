@@ -41,9 +41,28 @@ public class SysUserController {
     @PostMapping("/create")
     public String create(){
         SysUserEntity sysUserEntity = new SysUserEntity();
-        sysUserEntity.setUser("22");
+        sysUserEntity.setUsername("22");
         sysUserEntity.setPassword("222");
+        sysUserEntity.setEmail("2222222@qq.com");
+        sysUserEntity.setPicture("aa");
+        sysUserEntity.setMobile("13413513600");
+        sysUserEntity.setWx_openid("222222");
+        sysUserEntity.setStatus(1);
         sysUserService.save(sysUserEntity);
         return "ok";
+    }
+
+    @ApiOperation("修改用户")
+    @PostMapping("/update")
+    public ResultVO update(){
+        ResultVO resultVO = new ResultVO();
+        SysUserEntity sysUserEntity = new SysUserEntity();
+        sysUserEntity.setId("ebaf54b537b901566c44b828d736a62b");
+        sysUserEntity.setPassword("45678910");
+        Boolean flag = sysUserService.updateById(sysUserEntity);
+        resultVO.setCode("0");
+        resultVO.setMsg("修改成功");
+        resultVO.setData(flag);
+        return resultVO;
     }
 }

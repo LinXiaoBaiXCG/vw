@@ -19,10 +19,24 @@ public class SysUserEntity implements Serializable {
 
     @TableId(type = IdType.UUID)
     private String id;
-    private String user;
+
+    private String username;
+
     private String password;
-    @TableField(value = "create_date",fill = FieldFill.INSERT)
-    private Instant createDate;
-    @TableField(value = "update_date",fill = FieldFill.UPDATE)
-    private Instant updateDate;
+
+    private String mobile;
+
+    private String email;
+
+    private String wx_openid;
+
+    private String picture;
+
+    private Integer status;
+
+    @TableField(value = "create_time",fill = FieldFill.INSERT)
+    private Instant createTime;
+
+    @TableField(value = "update_time",fill = FieldFill.UPDATE)
+    private Instant updateTime;
 }
