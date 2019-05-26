@@ -63,6 +63,7 @@ public class SysUserController {
         resultVO.setCode("0");
         resultVO.setMsg("修改成功");
         resultVO.setData(flag);
+        log.info("{}",resultVO);
         return resultVO;
     }
 }
