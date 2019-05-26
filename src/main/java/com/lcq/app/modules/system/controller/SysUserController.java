@@ -30,7 +30,7 @@ public class SysUserController {
     public ResultVO getOne() {
         ResultVO resultVO = new ResultVO();
         SysUserEntity sysUserEntity = sysUserService.getById(new Integer(1).toString());
-        resultVO.setCode("0");
+        resultVO.setCode(0);
         resultVO.setMsg("获取成功");
         resultVO.setData(sysUserEntity);
         log.error("{}",sysUserEntity);
@@ -60,7 +60,7 @@ public class SysUserController {
         sysUserEntity.setId("ebaf54b537b901566c44b828d736a62b");
         sysUserEntity.setPassword("45678910");
         Boolean flag = sysUserService.updateById(sysUserEntity);
-        resultVO.setCode("0");
+        resultVO.setCode(0);
         resultVO.setMsg("修改成功");
         resultVO.setData(flag);
         log.info("{}",resultVO);

@@ -14,9 +14,21 @@ import java.io.Serializable;
 public class ResultVO implements Serializable {
     private static final long serialVersionUID = -358419585618707814L;
     //错误码
-    private String code;
+    private int code;
     //提示信息
     private String msg;
     //返回内容
     private Object data;
+
+    public ResultVO() {
+    }
+
+    public ResultVO(String msg) {
+        this.msg = msg;
+    }
+
+    public ResultVO(int code, String msg) {
+        this.code = code;
+        this.msg = msg;
+    }
 }
