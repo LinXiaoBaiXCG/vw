@@ -1,17 +1,19 @@
 package com.lcq.app.modules.app.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lcq.app.common.exception.CustomException;
 import com.lcq.app.modules.app.controller.vo.VwAnswerSavaVO;
 import com.lcq.app.modules.app.entity.VwAnswer;
+import com.lcq.app.modules.app.entity.VwProblem;
 import com.lcq.app.modules.app.service.VwAnswerService;
 import com.lcq.app.modules.system.controller.vo.ResultVO;
+import com.lcq.app.utils.ValidatorUtils;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @program: app
@@ -32,12 +34,13 @@ public class VwAnswerController {
     @ApiOperation("新增回答")
     @PostMapping("sava")
     public ResultVO sava(@RequestBody VwAnswerSavaVO vwAnswerSavaVO) {
+        //VO校验
+        ValidatorUtils.validateEntity(vwAnswerSavaVO);
         ResultVO resultVO = new ResultVO();
         VwAnswer vwAnswer = new VwAnswer();
         BeanUtils.copyProperties(vwAnswerSavaVO, vwAnswer);
         vwAnswer.setIsDelete(1);
         vwAnswer.setIsRecommend(2);
-        log.info("{}",vwAnswer);
         Boolean flag = vwAnswerService.save(vwAnswer);
         if (flag){
             resultVO.setCode(0);
@@ -46,4 +49,25 @@ public class VwAnswerController {
             throw new CustomException("添加回答失败");
         return resultVO;
     }
+
+    @ApiOperation("首页--获取推荐回答列表")
+    @GetMapping("recommend/page")
+    public ResultVO recommendPage(@RequestParam int current, @RequestParam int size){
+        ResultVO resultVO = new ResultVO();
+        Page<VwAnswer> page = new Page<>(current, size);
+        QueryWrapper<VwAnswer> queryWrapper = new QueryWrapper<>();
+        queryWrapper.orderByDesc("create_time");
+        queryWrapper.eq("is_recommend", 1);
+        try{
+            IPage<VwAnswer> iPage = vwAnswerService.page(page,queryWrapper);
+            resultVO.setCode(0);
+            resultVO.setMsg("获取推荐回答列表成功");
+            resultVO.setData(iPage);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new CustomException("获取推荐回答列表失败");
+        }
+        return resultVO;
+    }
+
 }

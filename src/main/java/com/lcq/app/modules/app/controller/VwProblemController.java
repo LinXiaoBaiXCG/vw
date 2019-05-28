@@ -60,7 +60,7 @@ public class VwProblemController {
         queryWrapper.orderByDesc("create_time");
         queryWrapper.eq("user_id", userId);
         try {
-            IPage<VwProblem> IPage = vwProblemService.getBaseMapper().selectPage(page, queryWrapper);
+            IPage<VwProblem> IPage = vwProblemService.page(page, queryWrapper);
             resultVO.setCode(0);
             resultVO.setMsg("查询成功");
             resultVO.setData(IPage);
