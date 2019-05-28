@@ -54,12 +54,21 @@ public class VwProblemController {
 
     @ApiOperation("我的提问列表")
     @GetMapping("problemList")
-    public IPage problemList(@RequestParam int current,@RequestParam int size) {
-
-        Page<VwProblem> page = new Page<>(current,size);
-        QueryWrapper<VwProblem> queryWrapper =  new QueryWrapper<>();
-        queryWrapper.orderByDesc("id");
-        queryWrapper.eq("user_id","1");
-        return vwProblemService.getBaseMapper().selectPage(page,queryWrapper);
+    public ResultVO problemList(@RequestParam String userId, @RequestParam int current, @RequestParam int size) {
+        ResultVO resultVO = new ResultVO();
+        Page<VwProblem> page = new Page<>(current, size);
+        QueryWrapper<VwProblem> queryWrapper = new QueryWrapper<>();
+        queryWrapper.orderByDesc("create_time");
+        queryWrapper.eq("user_id", userId);
+        try {
+            IPage<VwProblem> IPage = vwProblemService.getBaseMapper().selectPage(page, queryWrapper);
+            resultVO.setCode(0);
+            resultVO.setMsg("查询成功");
+            resultVO.setData(IPage);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new CustomException("查询失败");
+        }
+        return resultVO;
     }
 }
