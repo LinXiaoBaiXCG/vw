@@ -1,17 +1,17 @@
 package com.lcq.app.modules.app.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.lcq.app.exception.CustomException;
-import com.lcq.app.modules.app.controller.vo.VwProblemVO;
-import com.lcq.app.modules.app.entity.VwProblem;
-import com.lcq.app.modules.app.service.VwProblemService;
+import com.lcq.app.common.exception.CustomException;
+import com.lcq.app.modules.app.controller.vo.VwAnswerSavaVO;
+import com.lcq.app.modules.app.entity.VwAnswer;
+import com.lcq.app.modules.app.service.VwAnswerService;
 import com.lcq.app.modules.system.controller.vo.ResultVO;
-import com.lcq.app.utils.ValidatorUtils;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.BeanUtils;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @program: app
@@ -23,6 +23,27 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/app/vw/answer")
 @Slf4j
 public class VwAnswerController {
+    private final VwAnswerService vwAnswerService;
 
+    public VwAnswerController(VwAnswerService vwAnswerService) {
+        this.vwAnswerService = vwAnswerService;
+    }
 
+    @ApiOperation("新增回答")
+    @PostMapping("sava")
+    public ResultVO sava(@RequestBody VwAnswerSavaVO vwAnswerSavaVO) {
+        ResultVO resultVO = new ResultVO();
+        VwAnswer vwAnswer = new VwAnswer();
+        BeanUtils.copyProperties(vwAnswerSavaVO, vwAnswer);
+        vwAnswer.setIsDelete(1);
+        vwAnswer.setIsRecommend(2);
+        log.info("{}",vwAnswer);
+        Boolean flag = vwAnswerService.save(vwAnswer);
+        if (flag){
+            resultVO.setCode(0);
+            resultVO.setMsg("添加回答成功");
+        }else
+            throw new CustomException("添加回答失败");
+        return resultVO;
+    }
 }

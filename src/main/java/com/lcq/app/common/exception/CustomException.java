@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package com.lcq.app.exception;
+package com.lcq.app.common.exception;
 
 /**
  * 自定义异常

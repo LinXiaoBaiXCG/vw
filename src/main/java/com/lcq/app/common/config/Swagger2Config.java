@@ -1,4 +1,4 @@
-package com.lcq.app.config;
+package com.lcq.app.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

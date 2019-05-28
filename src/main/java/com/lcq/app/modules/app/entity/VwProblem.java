@@ -8,7 +8,7 @@ import java.time.Instant;
 
 /**
  * @program: app
- * @description: 问题POJO
+ * @description: VwProblem
  * @author: LCQ
  * @create: 2019-05-20 22:53
  **/

@@ -8,7 +8,7 @@
 
 package com.lcq.app.utils;
 
-import com.lcq.app.exception.CustomException;
+import com.lcq.app.common.exception.CustomException;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;

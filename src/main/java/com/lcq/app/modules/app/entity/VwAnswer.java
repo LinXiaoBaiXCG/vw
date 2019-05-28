@@ -8,7 +8,7 @@ import java.time.Instant;
 
 /**
  * @program: app
- * @description: 问题POJO
+ * @description: VwAnswer
  * @author: LCQ
  * @create: 2019-05-20 22:53
  **/
@@ -20,9 +20,9 @@ public class VwAnswer implements Serializable {
     @TableId(type = IdType.UUID)
     private String id;
 
-    private String answerId;
+    private String problemId;
 
-    private String answerTitle;
+    private String problemTitle;
 
     private String userId;
 

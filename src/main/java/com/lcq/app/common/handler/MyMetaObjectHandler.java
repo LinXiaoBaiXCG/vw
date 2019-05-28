@@ -1,4 +1,4 @@
-package com.lcq.app.handler;
+package com.lcq.app.common.handler;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import org.apache.ibatis.reflection.MetaObject;
