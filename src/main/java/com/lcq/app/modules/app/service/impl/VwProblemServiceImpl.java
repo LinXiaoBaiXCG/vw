@@ -23,7 +23,7 @@ public class VwProblemServiceImpl extends ServiceImpl<VwProblemRepository, VwPro
     }
 
     @Override
-    public IPage<VwProblem> getAll(Page page, String userId) {
-        return vwProblemRepository.getAll(page,userId);
+    public IPage<VwProblem> getListByTitle(Page page, String title) {
+        return vwProblemRepository.getListByTitle(page,title);
     }
 }

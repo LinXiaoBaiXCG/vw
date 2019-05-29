@@ -16,5 +16,8 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface VwProblemRepository extends BaseMapper<VwProblem> {
 
-    IPage<VwProblem> getAll(Page page, @Param("userId")String userId);
+    /*
+     *根据标题查询问题
+     */
+    IPage<VwProblem> getListByTitle(Page page,@Param("title")String title);
 }

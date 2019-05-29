@@ -12,5 +12,5 @@ import com.lcq.app.modules.app.entity.VwProblem;
  * @create: 2019-05-20 23:26
  **/
 public interface VwProblemService extends IService<VwProblem> {
-    IPage<VwProblem> getAll(Page page, String userId);
+    IPage<VwProblem> getListByTitle(Page page, String title);
 }

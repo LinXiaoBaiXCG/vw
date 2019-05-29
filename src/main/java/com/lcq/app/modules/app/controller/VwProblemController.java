@@ -11,6 +11,7 @@ import com.lcq.app.modules.system.controller.vo.ResultVO;
 import com.lcq.app.utils.ValidatorUtils;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -68,6 +69,24 @@ public class VwProblemController {
             e.printStackTrace();
             throw new CustomException("查询失败");
         }
+        return resultVO;
+    }
+
+    @ApiOperation("首页--问题搜索")
+    @GetMapping("search")
+    public ResultVO search(@RequestParam @Validated String title, @RequestParam(defaultValue = "0",required = false) int current, @RequestParam(defaultValue = "10",required = false) int size){
+        ResultVO resultVO = new ResultVO();
+        Page<VwProblem> page = new Page<>(current, size);
+        try {
+           IPage<VwProblem> vwProblemIPage = vwProblemService.getListByTitle(page,title);
+           resultVO.setCode(0);
+           resultVO.setMsg("搜索成功");
+           resultVO.setData(vwProblemIPage);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new CustomException("搜索出现错误");
+        }
+
         return resultVO;
     }
 }
