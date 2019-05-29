@@ -52,7 +52,7 @@ public class VwProblemController {
     }
 
     @ApiOperation("我的提问列表")
-    @GetMapping("problemList")
+    @GetMapping("problem/page")
     public ResultVO problemList(@RequestParam String userId, @RequestParam int current, @RequestParam int size) {
         ResultVO resultVO = new ResultVO();
         Page<VwProblem> page = new Page<>(current, size);

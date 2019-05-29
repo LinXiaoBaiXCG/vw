@@ -15,7 +15,7 @@ import java.time.Instant;
 @Data
 @TableName("vw_agree")
 public class VwAgree implements Serializable {
-    private static final long serialVersionUID = 2L;
+    private static final long serialVersionUID = -1136044041830353510L;
 
     @TableId(type = IdType.UUID)
     private String id;
