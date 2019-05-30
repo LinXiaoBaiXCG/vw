@@ -23,7 +23,7 @@
         <include refid="table"/>
         where
         o.status = 1
-        and o.title like concat(concat('%',#{username}),'%')
+        and o.title like concat(concat('%',#{title,jdbcType=VARCHAR} ),'%')
         order by
         o.create_time desc
     </select>
