@@ -1,5 +1,7 @@
 package com.lcq.app.modules.app.controller;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lcq.app.common.exception.CustomException;
@@ -36,14 +38,23 @@ public class VwFollowController {
     public ResultVO sava(@RequestBody VwFollowVO vwFollowVO){
         ValidatorUtils.validateEntity(vwFollowVO);
         ResultVO resultVO = new ResultVO();
+        QueryWrapper<VwFollow> vwFollowWrapper = new QueryWrapper<>();
+        vwFollowWrapper.eq("user_id",vwFollowVO.getUserId());
+        vwFollowWrapper.eq("concerned_id",vwFollowVO.getConcernedId());
+        VwFollow result = vwFollowService.getOne(vwFollowWrapper);
+        if (result == null){
         VwFollow vwFollow = new VwFollow();
         BeanUtils.copyProperties(vwFollowVO,vwFollow);
         Boolean flag = vwFollowService.save(vwFollow);
         if (flag){
             resultVO.setCode(0);
             resultVO.setMsg("添加关注成功");
-        }else
+        }else{
             throw new CustomException("添加关注失败");
+        }
+        }else {
+            throw new CustomException("已关注该用户，无需重复关注");
+        }
         return resultVO;
     }
 

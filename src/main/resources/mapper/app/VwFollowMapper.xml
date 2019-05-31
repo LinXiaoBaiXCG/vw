@@ -16,7 +16,7 @@
     <select id="getPageByUserId" resultType="com.lcq.app.modules.app.entity.VwFollow">
         select
         <include refid="column"/>,
-        u.name as concernedName
+        u.username as concernedName
         from
         <include refid="table"/>
         left join vw_user u on u.id = o.concerned_id

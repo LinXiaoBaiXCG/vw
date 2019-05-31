@@ -19,4 +19,5 @@ public interface VwFollowService extends IService<VwFollow> {
      *获取我的关注列表
      */
     IPage<VwFollow> getPageByUserId(Page page, String userId);
+
 }
