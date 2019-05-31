@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcq.app.modules.app.repository.VwFollowRepository">
+    <sql id="table">
+        vw_follow o
+    </sql>
+
+    <sql id="column">
+        o.id as id,
+        o.user_id as userId,
+        o.concerned_id as concernedId,
+        o.create_time as createTime,
+        o.update_time as updateTime
+    </sql>
+
+    <select id="getPageByUserId" resultType="com.lcq.app.modules.app.entity.VwFollow">
+        select
+        <include refid="column"/>,
+        u.name as concernedName
+        from
+        <include refid="table"/>
+        left join vw_user u on u.id = o.concerned_id
+        where
+        o.user_id = #{userId}
+        order by
+        o.create_time desc
+    </select>
+</mapper>
+

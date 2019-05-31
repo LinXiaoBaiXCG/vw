@@ -1,11 +1,10 @@
 package com.lcq.app.modules.app.service.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.lcq.app.modules.app.entity.VwAgree;
 import com.lcq.app.modules.app.entity.VwFollow;
-import com.lcq.app.modules.app.repository.VwAgreeRepository;
 import com.lcq.app.modules.app.repository.VwFollowRepository;
-import com.lcq.app.modules.app.service.VwAgreeService;
 import com.lcq.app.modules.app.service.VwFollowService;
 import org.springframework.stereotype.Service;
 
@@ -18,4 +17,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class VwFollowServiceImpl extends ServiceImpl<VwFollowRepository, VwFollow> implements VwFollowService {
 
+    private final VwFollowRepository vwFollowRepository;
+
+    public VwFollowServiceImpl(VwFollowRepository vwFollowRepository) {
+        this.vwFollowRepository = vwFollowRepository;
+    }
+
+    @Override
+    public IPage<VwFollow> getPageByUserId(Page page, String userId) {
+        return vwFollowRepository.getPageByUserId(page,userId);
+    }
 }
