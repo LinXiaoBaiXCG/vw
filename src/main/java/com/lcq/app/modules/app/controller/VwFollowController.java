@@ -49,11 +49,17 @@ public class VwFollowController {
         if (flag){
             resultVO.setCode(0);
             resultVO.setMsg("添加关注成功");
-        }else{
+        }else {
             throw new CustomException("添加关注失败");
         }
         }else {
-            throw new CustomException("已关注该用户，无需重复关注");
+            Boolean flag = vwFollowService.remove(vwFollowWrapper);
+            if (flag){
+                resultVO.setCode(0);
+                resultVO.setMsg("取消关注成功");
+            }else {
+                throw new CustomException("取消关注失败");
+            }
         }
         return resultVO;
     }
