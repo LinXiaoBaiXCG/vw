@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lcq.app.common.exception.CustomException;
 import com.lcq.app.modules.app.controller.vo.VwFollowVO;
+import com.lcq.app.modules.app.entity.VwAnswer;
 import com.lcq.app.modules.app.entity.VwFollow;
 import com.lcq.app.modules.app.service.VwFollowService;
 import com.lcq.app.modules.system.controller.vo.ResultVO;
@@ -78,6 +79,23 @@ public class VwFollowController {
         e.printStackTrace();
         throw new CustomException("获取我的关注列表失败");
     }
+        return resultVO;
+    }
+
+    @ApiOperation("首页--关注的人原创文章列表")
+    @GetMapping("answer/page")
+    public ResultVO answerPage(@RequestParam String userId, @RequestParam int current, @RequestParam int size){
+        ResultVO resultVO = new ResultVO();
+        Page<VwFollow> page = new Page<>(current,size);
+        try {
+            IPage<VwAnswer> answerIPage = vwFollowService.answerPage(page,userId);
+            resultVO.setCode(0);
+            resultVO.setMsg("获取我关注的人原创文章列表成功");
+            resultVO.setData(answerIPage);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new CustomException("获取我关注的人原创文章列表失败");
+        }
         return resultVO;
     }
 }

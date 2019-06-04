@@ -4,10 +4,13 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lcq.app.modules.app.entity.VwAgree;
+import com.lcq.app.modules.app.entity.VwAnswer;
 import com.lcq.app.modules.app.entity.VwFollow;
 import com.lcq.app.modules.app.entity.VwProblem;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @program: app
@@ -22,4 +25,6 @@ public interface VwFollowRepository extends BaseMapper<VwFollow> {
      *获取我的关注列表
      */
     IPage<VwFollow> getPageByUserId(Page page, @Param("userId")String userId);
+
+    IPage<VwAnswer> answerPage(Page page, @Param("userId")String userId, @Param("concernedIds") List<String> concernedId);
 }

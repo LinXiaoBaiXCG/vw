@@ -73,4 +73,19 @@ public class VwAnswerController {
         return resultVO;
     }
 
+    @ApiOperation("获取回答详细内容")
+    @GetMapping("details/{id}")
+    public ResultVO details(@PathVariable String id){
+        ResultVO resultVO = new ResultVO();
+        try {
+            VwAnswer vwAnswer = vwAnswerService.getById(id);
+            resultVO.setCode(0);
+            resultVO.setMsg("获取回答详细内容成功");
+            resultVO.setData(vwAnswer);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new CustomException("获取回答详细内容失败");
+        }
+        return resultVO;
+    }
 }

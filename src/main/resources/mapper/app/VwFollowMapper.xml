@@ -25,5 +25,26 @@
         order by
         o.create_time desc
     </select>
+
+    <select id="answerPage" resultType="com.lcq.app.modules.app.entity.VwAnswer">
+        select
+        a.id as id,
+        a.problem_id as problemId,
+        a.problem_title as problemTitle,
+        a.user_id as userId,
+        a.content as content,
+        a.create_time as createTime
+        from
+        vw_follow o
+        left join vw_answer a on a.user_id =o.concerned_id
+        where
+        a.is_delete = 1
+        and o.concerned_id in
+        <foreach collection="concernedIds" item="concernedId" separator="," open="(" close=")" index="index">
+        #{concernedId}
+        </foreach>
+        order by
+        a.create_time desc
+    </select>
 </mapper>
 
