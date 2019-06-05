@@ -11,6 +11,7 @@ import com.lcq.app.modules.app.entity.VwProblem;
 import com.lcq.app.modules.app.service.VwAnswerService;
 import com.lcq.app.modules.system.controller.vo.ResultVO;
 import com.lcq.app.utils.ValidatorUtils;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -26,6 +27,7 @@ import java.util.List;
  **/
 @RestController
 @RequestMapping("/app/vw/answer")
+@Api(description = "回答操作相关接口")
 @Slf4j
 public class VwAnswerController {
     private final VwAnswerService vwAnswerService;

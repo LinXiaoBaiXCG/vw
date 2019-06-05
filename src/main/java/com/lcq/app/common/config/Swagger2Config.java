@@ -39,11 +39,11 @@ public class Swagger2Config {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 //页面标题
-                .title("使用 Swagger2 构建RESTful API")
+                .title("使用 Swagger2 构建 Vw RESTful API")
                 //创建人
-                .contact("林创琼")
+                .contact("LCQ")
                 //版本号
-                .version("1.0")
+                .version("2.0")
                 //描述
                 .description("请编写RESTful规范的API")
                 .build();

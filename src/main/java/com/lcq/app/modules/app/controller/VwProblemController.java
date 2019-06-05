@@ -9,6 +9,7 @@ import com.lcq.app.modules.app.entity.VwProblem;
 import com.lcq.app.modules.app.service.VwProblemService;
 import com.lcq.app.modules.system.controller.vo.ResultVO;
 import com.lcq.app.utils.ValidatorUtils;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
  **/
 @RestController
 @RequestMapping("/app/vw/problem")
+@Api(description = "问题操作相关接口")
 @Slf4j
 public class VwProblemController {
 

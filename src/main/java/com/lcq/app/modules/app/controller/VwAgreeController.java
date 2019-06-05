@@ -11,6 +11,7 @@ import com.lcq.app.modules.app.service.VwAgreeService;
 import com.lcq.app.modules.app.service.VwAnswerService;
 import com.lcq.app.modules.system.controller.vo.ResultVO;
 import com.lcq.app.utils.ValidatorUtils;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.*;
  **/
 @RestController
 @RequestMapping("/app/vw/agree")
+@Api(description = "点赞操作相关接口")
 @Slf4j
 public class VwAgreeController {
     private final VwAgreeService vwAgreeService;

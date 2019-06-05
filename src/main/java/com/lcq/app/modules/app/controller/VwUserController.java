@@ -4,6 +4,7 @@ import com.lcq.app.modules.app.service.VwUserService;
 import com.lcq.app.modules.system.controller.vo.ResultVO;
 import com.lcq.app.modules.system.entity.SysUserEntity;
 import com.lcq.app.modules.system.service.SysUserService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @RestController
 @RequestMapping("/vw/user")
+@Api(description = "用户相关接口")
 @Slf4j
-public class VwUserController {
+public class VwUserController{
     @Autowired
     private VwUserService vwUserService;
 
