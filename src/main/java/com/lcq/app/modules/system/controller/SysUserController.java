@@ -1,16 +1,19 @@
 package com.lcq.app.modules.system.controller;
 
+import com.lcq.app.common.exception.CustomException;
 import com.lcq.app.modules.system.controller.vo.ResultVO;
 import com.lcq.app.modules.system.entity.SysUserEntity;
 import com.lcq.app.modules.system.service.SysUserService;
+import com.lcq.app.utils.JwtUtil;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.AbstractController;
+
+import java.io.IOException;
+import java.util.Map;
 
 /**
  * @program: app
@@ -41,13 +44,15 @@ public class SysUserController {
     @PostMapping("/create")
     public String create(){
         SysUserEntity sysUserEntity = new SysUserEntity();
-        sysUserEntity.setUsername("22");
-        sysUserEntity.setPassword("222");
+        sysUserEntity.setUsername("admin");
         sysUserEntity.setEmail("2222222@qq.com");
         sysUserEntity.setPicture("aa");
         sysUserEntity.setMobile("13413513600");
         sysUserEntity.setWx_openid("222222");
         sysUserEntity.setStatus(1);
+        sysUserEntity.setPassword(new Sha256Hash("123456").toHex());
+//        String salt = RandomStringUtils.randomAlphanumeric(20);
+        sysUserEntity.setPassword(new Sha256Hash("123456", "123456").toHex());
         sysUserService.save(sysUserEntity);
         return "ok";
     }
@@ -64,6 +69,36 @@ public class SysUserController {
         resultVO.setMsg("修改成功");
         resultVO.setData(flag);
         log.info("{}",resultVO);
+        return resultVO;
+    }
+
+    /**
+     * 登录
+     */
+    @ApiOperation("用户登录")
+    @PostMapping("login")
+    public ResultVO login(@RequestParam String username,@RequestParam String password) {
+        ResultVO resultVO = new ResultVO();
+        //用户信息
+        SysUserEntity user = sysUserService.findByUserName(username);
+
+        //账号不存在、密码错误
+        if(user == null || !user.getPassword().equals(new Sha256Hash(password, "123456").toHex())) {
+            resultVO.setCode(500);
+            resultVO.setMsg("账号或密码不正确");
+        }
+
+        //账号锁定
+        if(user.getStatus() == 2){
+            resultVO.setCode(500);
+            resultVO.setMsg("账号已被锁定,请联系管理员");
+        }
+
+        //生成token
+        String token = JwtUtil.sign(username,password);
+        resultVO.setCode(0);
+        resultVO.setMsg("登录成功");
+        resultVO.setData(token);
         return resultVO;
     }
 }

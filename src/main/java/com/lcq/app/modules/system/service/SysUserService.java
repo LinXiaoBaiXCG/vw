@@ -11,4 +11,6 @@ import org.springframework.stereotype.Service;
  * @create: 2019-05-20 23:26
  **/
 public interface SysUserService extends IService<SysUserEntity> {
+
+    SysUserEntity findByUserName(String username);
 }
