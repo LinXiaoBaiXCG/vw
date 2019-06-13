@@ -45,24 +45,24 @@ public class OAuth2Realm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken auth) throws AuthenticationException {
         String token = (String) auth.getCredentials();
-        if (token == null) {
-            throw new AuthenticationException("token不能为空");
-        }
         // 解密获得username，用于和数据库进行对比
         String username = JwtUtil.getUsername(token);
         if (username == null) {
-            throw new IncorrectCredentialsException("token无效");
+            throw new AuthenticationException("token无效，请重新登录");
         }
 
         SysUserEntity userBean = sysUserService.findByUserName(username);
         if (userBean == null) {
-            throw new AuthenticationException("用户不存在!");
+            throw new UnknownAccountException("用户"+username+"不存在!");
         }
 
         if (!JwtUtil.verify(token, username, userBean.getPassword())) {
             throw new AuthenticationException("用户名或密码错误");
         }
 
-        return new SimpleAuthenticationInfo(username, token, getName());
+        if (userBean.getStatus() == 2){
+            throw new LockedAccountException("账号已被锁定,请联系管理员");
+        }
+        return new SimpleAuthenticationInfo(username, token, "my_realm");
     }
 }

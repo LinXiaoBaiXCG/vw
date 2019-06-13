@@ -1,5 +1,6 @@
 package com.lcq.app.modules.system.controller;
 
+import com.auth0.jwt.algorithms.Algorithm;
 import com.lcq.app.common.exception.CustomException;
 import com.lcq.app.modules.system.controller.vo.ResultVO;
 import com.lcq.app.modules.system.entity.SysUserEntity;
@@ -8,6 +9,7 @@ import com.lcq.app.utils.JwtUtil;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.crypto.hash.Sha256Hash;
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.AbstractController;
@@ -32,7 +34,7 @@ public class SysUserController {
     @GetMapping("/getOne")
     public ResultVO getOne() {
         ResultVO resultVO = new ResultVO();
-        SysUserEntity sysUserEntity = sysUserService.getById("694e8809cd22e5b35c0cf0f346a48216");
+        SysUserEntity sysUserEntity = sysUserService.getById("6746d0aba65abc3be49f2b79a2517376");
         resultVO.setCode(0);
         resultVO.setMsg("获取成功");
         resultVO.setData(sysUserEntity);
@@ -44,14 +46,14 @@ public class SysUserController {
     @PostMapping("/create")
     public String create(){
         SysUserEntity sysUserEntity = new SysUserEntity();
-        sysUserEntity.setUsername("adminadmin");
+        sysUserEntity.setUsername("admin123456");
         sysUserEntity.setEmail("2222222@qq.com");
         sysUserEntity.setPicture("aa");
         sysUserEntity.setMobile("13413513600");
         sysUserEntity.setWx_openid("222222");
         sysUserEntity.setStatus(1);
-//        String salt = RandomStringUtils.randomAlphanumeric(20);
-        sysUserEntity.setPassword(new Sha256Hash("123456", "123456").toHex());
+//        Object object = new SimpleHash("MD5","123456","123456",1024);
+        sysUserEntity.setPassword("123456");
         sysUserService.save(sysUserEntity);
         return "ok";
     }
@@ -82,7 +84,7 @@ public class SysUserController {
         SysUserEntity user = sysUserService.findByUserName(username);
 
         //账号不存在、密码错误
-        if(user == null || !user.getPassword().equals(new Sha256Hash(password, "123456").toHex())) {
+        if(user == null) {
             resultVO.setCode(500);
             resultVO.setMsg("账号或密码不正确");
         }
