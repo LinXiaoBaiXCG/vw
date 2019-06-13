@@ -56,15 +56,15 @@ public class CustomExceptionHandler {
 		return new ResultVO("没有权限，请联系管理员授权");
 	}
 
-//	@ExceptionHandler(AuthenticationException.class)
-//	public ResultVO handleAuthenticationException(AuthenticationException e){
-//		log.error(e.getMessage(), e);
-//		return new ResultVO(401,"认证失败，请重试");
-//	}
+	@ExceptionHandler(AuthenticationException.class)
+	public ResultVO handleAuthenticationException(AuthenticationException e){
+		log.error(e.getMessage(), e);
+		return new ResultVO(401,e.getMessage());
+	}
 
-//	@ExceptionHandler(Exception.class)
-//	public ResultVO handleException(Exception e){
-//		log.error(e.getMessage(), e);
-//		return new ResultVO(500,"未知异常，请联系管理员");
-//	}
+	@ExceptionHandler(Exception.class)
+	public ResultVO handleException(Exception e){
+		log.error(e.getMessage(), e);
+		return new ResultVO(500,"未知异常，请联系管理员");
+	}
 }

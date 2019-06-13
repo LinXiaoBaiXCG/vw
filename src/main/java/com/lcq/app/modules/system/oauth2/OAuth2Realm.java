@@ -4,10 +4,7 @@ import com.lcq.app.modules.system.entity.SysUserEntity;
 import com.lcq.app.modules.system.oauth2.JwtToken;
 import com.lcq.app.modules.system.service.SysUserService;
 import com.lcq.app.utils.JwtUtil;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -54,7 +51,7 @@ public class OAuth2Realm extends AuthorizingRealm {
         // 解密获得username，用于和数据库进行对比
         String username = JwtUtil.getUsername(token);
         if (username == null) {
-            throw new AuthenticationException("token无效");
+            throw new IncorrectCredentialsException("token无效");
         }
 
         SysUserEntity userBean = sysUserService.findByUserName(username);
@@ -62,10 +59,10 @@ public class OAuth2Realm extends AuthorizingRealm {
             throw new AuthenticationException("用户不存在!");
         }
 
-//        if (!JwtUtil.verify(token, username, userBean.getPassword())) {
-//            throw new AuthenticationException("用户名或密码错误");
-//        }
+        if (!JwtUtil.verify(token, username, userBean.getPassword())) {
+            throw new AuthenticationException("用户名或密码错误");
+        }
 
-        return new SimpleAuthenticationInfo(token, token, getName());
+        return new SimpleAuthenticationInfo(username, token, getName());
     }
 }
