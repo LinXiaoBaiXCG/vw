@@ -32,7 +32,7 @@ public class SysUserController {
     @GetMapping("/getOne")
     public ResultVO getOne() {
         ResultVO resultVO = new ResultVO();
-        SysUserEntity sysUserEntity = sysUserService.getById(new Integer(1).toString());
+        SysUserEntity sysUserEntity = sysUserService.getById("694e8809cd22e5b35c0cf0f346a48216");
         resultVO.setCode(0);
         resultVO.setMsg("获取成功");
         resultVO.setData(sysUserEntity);
@@ -44,13 +44,12 @@ public class SysUserController {
     @PostMapping("/create")
     public String create(){
         SysUserEntity sysUserEntity = new SysUserEntity();
-        sysUserEntity.setUsername("admin");
+        sysUserEntity.setUsername("adminadmin");
         sysUserEntity.setEmail("2222222@qq.com");
         sysUserEntity.setPicture("aa");
         sysUserEntity.setMobile("13413513600");
         sysUserEntity.setWx_openid("222222");
         sysUserEntity.setStatus(1);
-        sysUserEntity.setPassword(new Sha256Hash("123456").toHex());
 //        String salt = RandomStringUtils.randomAlphanumeric(20);
         sysUserEntity.setPassword(new Sha256Hash("123456", "123456").toHex());
         sysUserService.save(sysUserEntity);
