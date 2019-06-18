@@ -78,7 +78,7 @@ public class SysUserController {
      */
     @ApiOperation("用户登录")
     @PostMapping("login")
-    public ResultVO login(@RequestParam String username,@RequestParam String password) {
+    public ResultVO login(String username,String password) {
         ResultVO resultVO = new ResultVO();
         //用户信息
         SysUserEntity user = sysUserService.findByUserName(username);
@@ -87,12 +87,14 @@ public class SysUserController {
         if(user == null) {
             resultVO.setCode(500);
             resultVO.setMsg("账号或密码不正确");
+            return resultVO;
         }
 
         //账号锁定
         if(user.getStatus() == 2){
             resultVO.setCode(500);
             resultVO.setMsg("账号已被锁定,请联系管理员");
+            return resultVO;
         }
 
         //生成token

@@ -64,6 +64,7 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
         httpServletResponse.setHeader("Access-Control-Allow-Headers", httpServletRequest.getHeader("Access-Control-Request-Headers"));
         // 跨域时会首先发送一个option请求，这里我们给option请求直接返回正常状态
         if (httpServletRequest.getMethod().equals(RequestMethod.OPTIONS.name())) {
+            log.error(HttpStatus.OK.toString());
             httpServletResponse.setStatus(HttpStatus.OK.value());
             return false;
         }
