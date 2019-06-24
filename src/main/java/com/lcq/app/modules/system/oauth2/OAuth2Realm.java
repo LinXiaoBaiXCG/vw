@@ -1,7 +1,6 @@
 package com.lcq.app.modules.system.oauth2;
 
-import com.lcq.app.modules.system.entity.SysUserEntity;
-import com.lcq.app.modules.system.oauth2.JwtToken;
+import com.lcq.app.modules.system.entity.SysUserVO;
 import com.lcq.app.modules.system.service.SysUserService;
 import com.lcq.app.utils.JwtUtil;
 import org.apache.shiro.authc.*;
@@ -34,7 +33,7 @@ public class OAuth2Realm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         String username = JwtUtil.getUsername(principals.toString());
-        SysUserEntity user = sysUserService.findByUserName(username);
+        SysUserVO user = sysUserService.findByUserName(username);
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
         return simpleAuthorizationInfo;
     }
@@ -51,7 +50,7 @@ public class OAuth2Realm extends AuthorizingRealm {
             throw new AuthenticationException("token无效，请重新登录");
         }
 
-        SysUserEntity userBean = sysUserService.findByUserName(username);
+        SysUserVO userBean = sysUserService.findByUserName(username);
         if (userBean == null) {
             throw new UnknownAccountException("用户"+username+"不存在!");
         }

@@ -2,7 +2,6 @@ package com.lcq.app.modules.app.repository;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.lcq.app.modules.app.entity.VwUser;
-import com.lcq.app.modules.system.entity.SysUserEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

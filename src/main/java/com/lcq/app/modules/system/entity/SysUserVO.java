@@ -14,7 +14,7 @@ import java.time.Instant;
  **/
 @Data
 @TableName("sys_user")
-public class SysUserEntity implements Serializable {
+public class SysUserVO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @TableId(type = IdType.UUID)

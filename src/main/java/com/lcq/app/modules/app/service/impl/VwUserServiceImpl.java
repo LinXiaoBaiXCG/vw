@@ -4,9 +4,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lcq.app.modules.app.entity.VwUser;
 import com.lcq.app.modules.app.repository.VwUserRepository;
 import com.lcq.app.modules.app.service.VwUserService;
-import com.lcq.app.modules.system.entity.SysUserEntity;
-import com.lcq.app.modules.system.repository.SysUserRepository;
-import com.lcq.app.modules.system.service.SysUserService;
 import org.springframework.stereotype.Service;
 
 /**

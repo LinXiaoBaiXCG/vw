@@ -3,7 +3,7 @@ package com.lcq.app.modules.system.controller;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.lcq.app.common.exception.CustomException;
 import com.lcq.app.modules.system.controller.vo.ResultVO;
-import com.lcq.app.modules.system.entity.SysUserEntity;
+import com.lcq.app.modules.system.entity.SysUserVO;
 import com.lcq.app.modules.system.service.SysUserService;
 import com.lcq.app.utils.JwtUtil;
 import io.swagger.annotations.ApiOperation;
@@ -34,7 +34,7 @@ public class SysUserController {
     @GetMapping("/getOne")
     public ResultVO getOne() {
         ResultVO resultVO = new ResultVO();
-        SysUserEntity sysUserEntity = sysUserService.getById("6746d0aba65abc3be49f2b79a2517376");
+        SysUserVO sysUserEntity = sysUserService.getById("6746d0aba65abc3be49f2b79a2517376");
         resultVO.setCode(0);
         resultVO.setMsg("获取成功");
         resultVO.setData(sysUserEntity);
@@ -45,7 +45,7 @@ public class SysUserController {
     @ApiOperation("新增用户")
     @PostMapping("/create")
     public String create(){
-        SysUserEntity sysUserEntity = new SysUserEntity();
+        SysUserVO sysUserEntity = new SysUserVO();
         sysUserEntity.setUsername("admin123456");
         sysUserEntity.setEmail("2222222@qq.com");
         sysUserEntity.setPicture("aa");
@@ -62,7 +62,7 @@ public class SysUserController {
     @PostMapping("/update")
     public ResultVO update(){
         ResultVO resultVO = new ResultVO();
-        SysUserEntity sysUserEntity = new SysUserEntity();
+        SysUserVO sysUserEntity = new SysUserVO();
         sysUserEntity.setId("ebaf54b537b901566c44b828d736a62b");
         sysUserEntity.setPassword("45678910");
         Boolean flag = sysUserService.updateById(sysUserEntity);
@@ -81,7 +81,7 @@ public class SysUserController {
     public ResultVO login(String username,String password) {
         ResultVO resultVO = new ResultVO();
         //用户信息
-        SysUserEntity user = sysUserService.findByUserName(username);
+        SysUserVO user = sysUserService.findByUserName(username);
 
         //账号不存在、密码错误
         if(user == null) {
