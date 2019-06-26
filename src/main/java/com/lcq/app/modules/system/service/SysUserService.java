@@ -1,7 +1,7 @@
 package com.lcq.app.modules.system.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.lcq.app.modules.system.entity.SysUserVO;
+import com.lcq.app.modules.system.entity.SysUserDO;
 
 /**
  * @program: app
@@ -9,7 +9,7 @@ import com.lcq.app.modules.system.entity.SysUserVO;
  * @author: LCQ
  * @create: 2019-05-20 23:26
  **/
-public interface SysUserService extends IService<SysUserVO> {
+public interface SysUserService extends IService<SysUserDO> {
 
-    SysUserVO findByUserName(String username);
+    SysUserDO findByUserName(String username);
 }
