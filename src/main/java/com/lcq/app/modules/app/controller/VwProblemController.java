@@ -8,7 +8,7 @@ import com.lcq.app.modules.app.controller.vo.VwProblemVO;
 import com.lcq.app.modules.app.entity.VwProblem;
 import com.lcq.app.modules.app.service.VwProblemService;
 import com.lcq.app.modules.system.controller.vo.ResultVO;
-import com.lcq.app.utils.ValidatorUtils;
+import com.lcq.app.common.util.ValidatorUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;

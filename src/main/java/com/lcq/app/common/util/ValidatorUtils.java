@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package com.lcq.app.utils;
+package com.lcq.app.common.util;
 
 import com.lcq.app.common.exception.CustomException;
 

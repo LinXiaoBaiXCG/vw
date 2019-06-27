@@ -1,4 +1,4 @@
-package com.lcq.app.utils;
+package com.lcq.app.common.util;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
@@ -8,7 +8,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 import java.util.Date;
 
-public class JwtUtil {
+public class JwtUtils {
 
     //设置过期时间
     private static final long EXPIRE_TIME = 5 * 60 * 1000;

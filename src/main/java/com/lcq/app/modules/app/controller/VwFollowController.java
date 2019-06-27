@@ -1,6 +1,5 @@
 package com.lcq.app.modules.app.controller;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -10,13 +9,11 @@ import com.lcq.app.modules.app.entity.VwAnswer;
 import com.lcq.app.modules.app.entity.VwFollow;
 import com.lcq.app.modules.app.service.VwFollowService;
 import com.lcq.app.modules.system.controller.vo.ResultVO;
-import com.lcq.app.utils.ValidatorUtils;
+import com.lcq.app.common.util.ValidatorUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
-import org.springframework.validation.ValidationUtils;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**

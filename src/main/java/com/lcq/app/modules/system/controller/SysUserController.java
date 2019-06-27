@@ -1,11 +1,15 @@
 package com.lcq.app.modules.system.controller;
 
+import com.lcq.app.common.util.UUIDUtils;
 import com.lcq.app.modules.system.controller.vo.ResultVO;
 import com.lcq.app.modules.system.entity.SysUserDO;
 import com.lcq.app.modules.system.service.SysUserService;
-import com.lcq.app.utils.JwtUtil;
+import com.lcq.app.common.util.JwtUtils;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.crypto.SecureRandomNumberGenerator;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,14 +42,19 @@ public class SysUserController {
     @PostMapping("/create")
     public String create(){
         SysUserDO sysUserEntity = new SysUserDO();
-        sysUserEntity.setUsername("admin123456");
+        sysUserEntity.setUuid(UUIDUtils.getUUID());
+        sysUserEntity.setUsername("admin");
         sysUserEntity.setEmail("2222222@qq.com");
         sysUserEntity.setPicture("aa");
         sysUserEntity.setMobile("13413513600");
         sysUserEntity.setWx_openid("222222");
         sysUserEntity.setStatus(1);
-//        Object object = new SimpleHash("MD5","123456","123456",1024);
-        sysUserEntity.setPassword("123456");
+        //生成盐（部分，需要存入数据库中）
+        String hex = new SecureRandomNumberGenerator().nextBytes().toHex();
+        sysUserEntity.setHex(hex);
+        //将原始密码加盐（上面生成的盐），并且用md5算法加密三次，将最后结果存入数据库中
+        String hashPassword = new Md5Hash("123456",hex,3).toString();
+        sysUserEntity.setPassword(hashPassword);
         sysUserService.save(sysUserEntity);
         return "ok";
     }
@@ -74,9 +83,8 @@ public class SysUserController {
         ResultVO resultVO = new ResultVO();
         //用户信息
         SysUserDO user = sysUserService.findByUserName(username);
-
         //账号不存在、密码错误
-        if(user == null) {
+        if(user == null  || !user.getPassword().equals(new Md5Hash(password,user.getHex(),3).toString())) {
             resultVO.setCode(500);
             resultVO.setMsg("账号或密码不正确");
             return resultVO;
@@ -90,7 +98,7 @@ public class SysUserController {
         }
 
         //生成token
-        String token = JwtUtil.sign(username,password);
+        String token = JwtUtils.sign(username,password);
         resultVO.setCode(0);
         resultVO.setMsg("登录成功");
         resultVO.setData(token);

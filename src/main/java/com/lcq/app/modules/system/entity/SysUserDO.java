@@ -17,12 +17,16 @@ import java.time.Instant;
 public class SysUserDO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @TableId(type = IdType.UUID)
-    private String id;
+    @TableId(type = IdType.AUTO)
+    private Long id;
+
+    private String uuid;
 
     private String username;
 
     private String password;
+
+    private String hex;
 
     private String mobile;
 

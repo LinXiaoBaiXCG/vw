@@ -2,14 +2,18 @@ package com.lcq.app.modules.system.oauth2;
 
 import com.lcq.app.modules.system.entity.SysUserDO;
 import com.lcq.app.modules.system.service.SysUserService;
-import com.lcq.app.utils.JwtUtil;
+import com.lcq.app.common.util.JwtUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Component
@@ -32,9 +36,18 @@ public class OAuth2Realm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        String username = JwtUtil.getUsername(principals.toString());
-        SysUserDO user = sysUserService.findByUserName(username);
+        String username = JwtUtils.getUsername(principals.toString());
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
+        //获取角色
+        Set<String> roles = new HashSet<String>();
+
+
+        //获取权限（根据角色查询权限表）
+        Set<String> permissions = new HashSet<String>();
+
+
+        simpleAuthorizationInfo.setRoles(roles);
+        simpleAuthorizationInfo.setStringPermissions(permissions);
         return simpleAuthorizationInfo;
     }
 
@@ -45,23 +58,20 @@ public class OAuth2Realm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken auth) throws AuthenticationException {
         String token = (String) auth.getCredentials();
         // 解密获得username，用于和数据库进行对比
-        String username = JwtUtil.getUsername(token);
-        if (username == null) {
+        String username = JwtUtils.getUsername(token);
+        if (username == null){
             throw new AuthenticationException("token无效，请重新登录");
         }
-
-        SysUserDO userBean = sysUserService.findByUserName(username);
-        if (userBean == null) {
+        SysUserDO sysUser = sysUserService.findByUserName(username);
+        if (sysUser == null){
             throw new UnknownAccountException("用户"+username+"不存在!");
         }
 
-        if (!JwtUtil.verify(token, username, userBean.getPassword())) {
-            throw new AuthenticationException("用户名或密码错误");
-        }
-
-        if (userBean.getStatus() == 2){
+        if (sysUser.getStatus() == 2){
             throw new LockedAccountException("账号已被锁定,请联系管理员");
         }
-        return new SimpleAuthenticationInfo(username, token, "my_realm");
+        SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(sysUser.getUsername(),sysUser.getPassword(),getName());
+        simpleAuthenticationInfo.setCredentialsSalt(ByteSource.Util.bytes(sysUser.getHex()));
+        return simpleAuthenticationInfo;
     }
 }
