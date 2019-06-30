@@ -64,7 +64,7 @@ public class SysUserController {
     public ResultVO update(){
         ResultVO resultVO = new ResultVO();
         SysUserDO sysUserEntity = new SysUserDO();
-        sysUserEntity.setId("ebaf54b537b901566c44b828d736a62b");
+        sysUserEntity.setId(1L);
         sysUserEntity.setPassword("45678910");
         Boolean flag = sysUserService.updateById(sysUserEntity);
         resultVO.setCode(0);
