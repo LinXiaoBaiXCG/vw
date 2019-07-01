@@ -64,6 +64,7 @@ public class VwProblemController {
         queryWrapper.eq("user_id", userId);
         try {
             IPage<VwProblem> IPage = vwProblemService.page(page, queryWrapper);
+            log.info("用户{}获取提问列表成功",userId);
             resultVO.setCode(0);
             resultVO.setMsg("查询成功");
             resultVO.setData(IPage);
