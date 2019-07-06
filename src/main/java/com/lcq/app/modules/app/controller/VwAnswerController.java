@@ -46,8 +46,9 @@ public class VwAnswerController {
         if (flag) {
             resultVO.setCode(0);
             resultVO.setMsg("添加回答成功");
-        } else
+        } else{
             throw new CustomException("添加回答失败");
+        }
         return resultVO;
     }
 
@@ -65,7 +66,7 @@ public class VwAnswerController {
             resultVO.setMsg("获取推荐回答列表成功");
             resultVO.setData(iPage);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("获取推荐回答列表失败",e);
             throw new CustomException("获取推荐回答列表失败");
         }
         return resultVO;
@@ -81,7 +82,7 @@ public class VwAnswerController {
             resultVO.setMsg("获取回答详细内容成功");
             resultVO.setData(vwAnswer);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("获取回答详细内容失败",e);
             throw new CustomException("获取回答详细内容失败");
         }
         return resultVO;
