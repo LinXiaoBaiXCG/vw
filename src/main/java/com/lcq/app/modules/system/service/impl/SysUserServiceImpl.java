@@ -21,6 +21,11 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserRepository, SysUserDO
         this.sysUserRepository = sysUserRepository;
     }
 
+    /**
+     * 通过用户名获取用户信息
+     * @param username
+     * @return
+     */
     @Override
     public SysUserDO findByUserName(String username) {
         QueryWrapper<SysUserDO> queryWrapper = new QueryWrapper<>();

@@ -11,5 +11,10 @@ import com.lcq.app.modules.system.entity.SysUserDO;
  **/
 public interface SysUserService extends IService<SysUserDO> {
 
+    /**
+     * 通过用户名获取用户信息
+     * @param username
+     * @return
+     */
     SysUserDO findByUserName(String username);
 }
