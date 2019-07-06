@@ -28,24 +28,25 @@ import org.springframework.web.bind.annotation.*;
 public class VwAgreeController {
     private final VwAgreeService vwAgreeService;
 
-    public VwAgreeController( VwAgreeService vwAgreeService) {
+    public VwAgreeController(VwAgreeService vwAgreeService) {
         this.vwAgreeService = vwAgreeService;
     }
 
     @ApiOperation("点赞回答")
     @PostMapping("agreeAnswer")
-    public ResultVO agreeAnswer(@RequestBody VwAgreeVO vwAgreeVO){
+    public ResultVO agreeAnswer(@RequestBody VwAgreeVO vwAgreeVO) {
         //VO校验
         ValidatorUtils.validateEntity(vwAgreeVO);
         ResultVO resultVO = new ResultVO();
         VwAgree vwAgree = new VwAgree();
-        BeanUtils.copyProperties(vwAgreeVO,vwAgree);
+        BeanUtils.copyProperties(vwAgreeVO, vwAgree);
         Boolean flag = vwAgreeService.save(vwAgree);
-        if (flag){
+        if (flag) {
             resultVO.setCode(0);
             resultVO.setMsg("点赞成功");
-        }else
+        } else {
             throw new CustomException("点赞失败，请重试");
+        }
         return resultVO;
     }
 
@@ -62,8 +63,8 @@ public class VwAgreeController {
             resultVO.setCode(0);
             resultVO.setMsg("查询成功");
             resultVO.setData(IPage);
-        }catch (Exception e){
-            e.printStackTrace();
+        } catch (Exception e) {
+            log.error("查询用户ID：{}的点赞列表失败：",userId, e);
             throw new CustomException("查询失败");
         }
         return resultVO;

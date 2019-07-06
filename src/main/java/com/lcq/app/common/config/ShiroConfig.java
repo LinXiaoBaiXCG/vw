@@ -42,6 +42,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/v2/**", "anon");
         filterChainDefinitionMap.put("/sys/user/create", "anon");
         filterChainDefinitionMap.put("/sys/user/login", "anon");
+        filterChainDefinitionMap.put("/app/**", "anon");
         //<!-- 过滤链定义，从上向下顺序执行，一般将/**放在最为下边
         // 所有的请求通过我们自己的JWT filter
         filterChainDefinitionMap.put("/**", "jwt");
