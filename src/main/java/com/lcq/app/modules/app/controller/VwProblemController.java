@@ -69,7 +69,7 @@ public class VwProblemController {
             resultVO.setMsg("查询成功");
             resultVO.setData(IPage);
         }catch (Exception e){
-            e.printStackTrace();
+            log.error("用户ID为{}的获取提问列表失败",userId,e);
             throw new CustomException("查询失败");
         }
         return resultVO;
@@ -86,7 +86,7 @@ public class VwProblemController {
            resultVO.setMsg("搜索成功");
            resultVO.setData(vwProblemIPage);
         }catch (Exception e){
-            e.printStackTrace();
+            log.error("搜索问题失败",e);
             throw new CustomException("搜索出现错误");
         }
 

@@ -75,7 +75,7 @@ public class VwFollowController {
         resultVO.setMsg("获取我的关注列表成功");
         resultVO.setData(vwFollowIPage);
         }catch (Exception e){
-        e.printStackTrace();
+        log.error("用户ID为{}的获取关注列表失败",userId,e);
         throw new CustomException("获取我的关注列表失败");
     }
         return resultVO;
@@ -92,7 +92,7 @@ public class VwFollowController {
             resultVO.setMsg("获取我关注的人原创文章列表成功");
             resultVO.setData(answerIPage);
         }catch (Exception e){
-            e.printStackTrace();
+            log.error("用户ID为{}的获取原创文章列表失败",userId,e);
             throw new CustomException("获取我关注的人原创文章列表失败");
         }
         return resultVO;
