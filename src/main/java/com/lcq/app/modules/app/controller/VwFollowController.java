@@ -41,6 +41,7 @@ public class VwFollowController {
         QueryWrapper<VwFollow> vwFollowWrapper = new QueryWrapper<>();
         vwFollowWrapper.eq("user_id",vwFollowVO.getUserId());
         vwFollowWrapper.eq("concerned_id",vwFollowVO.getConcernedId());
+        try{
         VwFollow result = vwFollowService.getOne(vwFollowWrapper);
         if (result == null){
         VwFollow vwFollow = new VwFollow();
@@ -60,6 +61,10 @@ public class VwFollowController {
             }else {
                 throw new CustomException("取消关注失败");
             }
+        }
+        }catch (Exception e){
+            log.error("添加关注有误",e);
+            throw new CustomException("添加关注有误");
         }
         return resultVO;
     }
