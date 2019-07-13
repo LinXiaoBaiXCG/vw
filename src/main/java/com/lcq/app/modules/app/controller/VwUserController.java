@@ -34,7 +34,8 @@ public class VwUserController{
     @PostMapping("login")
     public ResultVO login(String username, String password) {
         ResultVO resultVO = new ResultVO();
-
+        resultVO.setCode(0);
+        resultVO.setMsg("登录成功");
         return resultVO;
     }
 }
