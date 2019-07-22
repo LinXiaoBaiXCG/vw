@@ -25,7 +25,7 @@ public class VwUserController{
     private VwUserService vwUserService;
 
     /**
-     * 用户登录
+     * APP用户登录
      * @param username
      * @param password
      * @return
