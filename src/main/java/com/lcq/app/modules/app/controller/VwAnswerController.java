@@ -33,7 +33,7 @@ public class VwAnswerController {
     }
 
     @ApiOperation("新增回答")
-    @PostMapping("sava")
+    @PostMapping("/sava")
     public ResultVO sava(@RequestBody VwAnswerSavaVO vwAnswerSavaVO) {
         //VO校验
         ValidatorUtils.validateEntity(vwAnswerSavaVO);
@@ -53,7 +53,7 @@ public class VwAnswerController {
     }
 
     @ApiOperation("首页--获取推荐回答列表")
-    @GetMapping("recommend/page")
+    @GetMapping("/recommend/page")
     public ResultVO recommendPage(@RequestParam int current, @RequestParam int size) {
         ResultVO resultVO = new ResultVO();
         Page<VwAnswer> page = new Page<>(current, size);
@@ -73,7 +73,7 @@ public class VwAnswerController {
     }
 
     @ApiOperation("获取回答详细内容")
-    @GetMapping("details/{id}")
+    @GetMapping("/details/{id}")
     public ResultVO details(@PathVariable String id){
         ResultVO resultVO = new ResultVO();
         try {
