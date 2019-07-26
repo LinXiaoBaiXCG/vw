@@ -34,7 +34,7 @@ public class VwFollowController {
     }
 
     @ApiOperation("添加关注")
-    @PostMapping("sava")
+    @PostMapping("/sava")
     public ResultVO sava(@RequestBody VwFollowVO vwFollowVO){
         ValidatorUtils.validateEntity(vwFollowVO);
         ResultVO resultVO = new ResultVO();
@@ -70,7 +70,7 @@ public class VwFollowController {
     }
 
     @ApiOperation("我的关注列表")
-    @GetMapping("page")
+    @GetMapping("/page")
     public ResultVO page(@RequestParam String userId, @RequestParam int current, @RequestParam int size){
         ResultVO resultVO = new ResultVO();
         Page<VwFollow> page = new Page<>(current,size);
@@ -87,7 +87,7 @@ public class VwFollowController {
     }
 
     @ApiOperation("首页--关注的人原创文章列表")
-    @GetMapping("answer/page")
+    @GetMapping("/answer/page")
     public ResultVO answerPage(@RequestParam String userId, @RequestParam int current, @RequestParam int size){
         ResultVO resultVO = new ResultVO();
         Page<VwFollow> page = new Page<>(current,size);
