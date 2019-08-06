@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
  **/
 @RestController
 @RequestMapping("/app/vw/follow")
-@Api(description = "关注操作相关接口")
+@Api(tags = "关注操作相关接口")
 @Slf4j
 public class VwFollowController {
     private final VwFollowService vwFollowService;
