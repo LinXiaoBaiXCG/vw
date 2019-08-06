@@ -45,7 +45,7 @@ public class Swagger2Config {
                 //版本号
                 .version("2.0")
                 //描述
-                .description("请编写RESTful规范的API")
+                .description("请编写RESTful规范的API,暂时很不规范")
                 .build();
     }
 }
