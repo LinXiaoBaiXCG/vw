@@ -1,8 +1,7 @@
 package com.lcq.app.modules.system.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.lcq.app.modules.system.entity.SysUserEntity;
-import org.springframework.stereotype.Service;
+import com.lcq.app.modules.system.entity.SysUserDO;
 
 /**
  * @program: app
@@ -10,5 +9,12 @@ import org.springframework.stereotype.Service;
  * @author: LCQ
  * @create: 2019-05-20 23:26
  **/
-public interface SysUserService extends IService<SysUserEntity> {
+public interface SysUserService extends IService<SysUserDO> {
+
+    /**
+     * 通过用户名获取用户信息
+     * @param username
+     * @return
+     */
+    SysUserDO findByUserName(String username);
 }

@@ -1,4 +1,4 @@
-package com.lcq.app.config;
+package com.lcq.app.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,13 +39,13 @@ public class Swagger2Config {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 //页面标题
-                .title("使用 Swagger2 构建RESTful API")
+                .title("使用 Swagger2 构建 Vw RESTful API")
                 //创建人
                 .contact("LCQ")
                 //版本号
-                .version("1.0")
+                .version("2.0")
                 //描述
-                .description("请编写RESTful规范的API")
+                .description("请编写RESTful规范的API,暂时很不规范")
                 .build();
     }
 }

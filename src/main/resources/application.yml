@@ -18,6 +18,8 @@ mybatis-plus:
       column-underline: true
       logic-delete-value: -1
       logic-not-delete-value: 0
+      #自定义填充策略接口实现
+      global-config.meta-object-handler: com.lcq.app.common.handler.MyMetaObjectHandler
     banner: false
 # 配置SQL打印日志
   configuration:
