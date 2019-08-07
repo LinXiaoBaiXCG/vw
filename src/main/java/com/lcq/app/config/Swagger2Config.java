@@ -41,7 +41,7 @@ public class Swagger2Config {
                 //页面标题
                 .title("使用 Swagger2 构建RESTful API")
                 //创建人
-                .contact("林创琼")
+                .contact("LCQ")
                 //版本号
                 .version("1.0")
                 //描述
