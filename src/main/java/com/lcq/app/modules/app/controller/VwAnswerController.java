@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
  **/
 @RestController
 @RequestMapping("/app/vw/answer")
-@Api(description = "回答操作相关接口")
+@Api(tags = "回答操作相关接口")
 @Slf4j
 public class VwAnswerController {
     private final VwAnswerService vwAnswerService;

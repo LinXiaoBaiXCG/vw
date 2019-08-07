@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
  **/
 @RestController
 @RequestMapping("/app/vw/agree")
-@Api(description = "点赞操作相关接口")
+@Api(tags = "点赞操作相关接口")
 @Slf4j
 public class VwAgreeController {
     private final VwAgreeService vwAgreeService;
