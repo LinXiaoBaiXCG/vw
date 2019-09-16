@@ -1,10 +1,9 @@
-package io.lcq.app.modules.system.controller;
+package io.github.linxiaobaixcg.modules.system.controller;
 
-import io.lcq.app.common.util.JwtUtils;
-import io.lcq.app.common.util.UUIDUtils;
-import io.lcq.app.modules.system.controller.vo.ResultVO;
-import io.lcq.app.modules.system.entity.SysUserDO;
-import io.lcq.app.modules.system.service.SysUserService;
+import io.github.linxiaobaixcg.common.util.JwtUtils;
+import io.github.linxiaobaixcg.modules.system.controller.vo.ResultVO;
+import io.github.linxiaobaixcg.modules.system.entity.SysUserDO;
+import io.github.linxiaobaixcg.modules.system.service.SysUserService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;

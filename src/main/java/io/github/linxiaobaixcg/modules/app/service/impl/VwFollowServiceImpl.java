@@ -1,14 +1,14 @@
-package io.lcq.app.modules.app.service.impl;
+package io.github.linxiaobaixcg.modules.app.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import io.lcq.app.modules.app.entity.VwAnswer;
-import io.lcq.app.modules.app.entity.VwFollow;
-import io.lcq.app.modules.app.repository.VwFollowRepository;
-import io.lcq.app.modules.app.service.VwFollowService;
-import io.lcq.app.modules.system.controller.vo.ResultVO;
+import io.github.linxiaobaixcg.modules.app.entity.VwAnswer;
+import io.github.linxiaobaixcg.modules.app.entity.VwFollow;
+import io.github.linxiaobaixcg.modules.app.service.VwFollowService;
+import io.github.linxiaobaixcg.modules.system.controller.vo.ResultVO;
+import io.github.linxiaobaixcg.modules.app.repository.VwFollowRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

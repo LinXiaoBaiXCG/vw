@@ -1,7 +1,7 @@
-package io.lcq.app.modules.app.service;
+package io.github.linxiaobaixcg.modules.app.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import io.lcq.app.modules.app.entity.VwAgree;
+import io.github.linxiaobaixcg.modules.app.entity.VwAgree;
 
 /**
  * @program: app

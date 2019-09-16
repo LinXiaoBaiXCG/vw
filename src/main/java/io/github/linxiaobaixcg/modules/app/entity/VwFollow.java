@@ -1,4 +1,4 @@
-package io.lcq.app.modules.app.entity;
+package io.github.linxiaobaixcg.modules.app.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;

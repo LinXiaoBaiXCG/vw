@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lcq.app.modules.app.repository.VwProblemRepository">
+<mapper namespace="io.github.linxiaobaixcg.modules.app.repository.VwProblemRepository">
 
     <sql id="table">
         vw_problem o
@@ -16,7 +16,7 @@
         o.update_time as updateTime
     </sql>
 
-    <select id="getListByTitle" resultType="com.lcq.app.modules.app.entity.VwProblem">
+    <select id="getListByTitle" resultType="io.github.linxiaobaixcg.modules.app.entity.VwProblem">
         select
         <include refid="column"/>
         from

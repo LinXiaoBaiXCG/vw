@@ -1,10 +1,10 @@
-package io.lcq.app.modules.app.repository;
+package io.github.linxiaobaixcg.modules.app.repository;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import io.lcq.app.modules.app.entity.VwAnswer;
-import io.lcq.app.modules.app.entity.VwFollow;
+import io.github.linxiaobaixcg.modules.app.entity.VwAnswer;
+import io.github.linxiaobaixcg.modules.app.entity.VwFollow;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -16,7 +16,6 @@ import java.util.List;
  * @author: LCQ
  * @create: 2019-05-20 23:14
  **/
-@Mapper
 public interface VwFollowRepository extends BaseMapper<VwFollow> {
 
     /*

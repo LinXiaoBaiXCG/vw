@@ -1,6 +1,6 @@
-package io.lcq.app.modules.system.filter;
+package io.github.linxiaobaixcg.modules.system.filter;
 
-import io.lcq.app.modules.system.oauth2.JwtToken;
+import io.github.linxiaobaixcg.modules.system.oauth2.JwtToken;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;

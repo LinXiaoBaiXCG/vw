@@ -1,4 +1,4 @@
-package com.vica.exception.handler;
+package io.github.linxiaobaixcg.common.exception.handler;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

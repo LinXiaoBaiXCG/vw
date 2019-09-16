@@ -5,5 +5,5 @@ package io.github.linxiaobaixcg.modules.app.service;
  * @date 2019/9/16
  * @Description
  */
-public class LoginService {
+public class VwLoginService {
 }

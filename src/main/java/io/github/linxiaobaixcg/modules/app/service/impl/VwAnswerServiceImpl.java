@@ -1,9 +1,9 @@
-package io.lcq.app.modules.app.service.impl;
+package io.github.linxiaobaixcg.modules.app.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import io.lcq.app.modules.app.entity.VwAnswer;
-import io.lcq.app.modules.app.repository.VwAnswerRepository;
-import io.lcq.app.modules.app.service.VwAnswerService;
+import io.github.linxiaobaixcg.modules.app.entity.VwAnswer;
+import io.github.linxiaobaixcg.modules.app.repository.VwAnswerRepository;
+import io.github.linxiaobaixcg.modules.app.service.VwAnswerService;
 import org.springframework.stereotype.Service;
 
 /**

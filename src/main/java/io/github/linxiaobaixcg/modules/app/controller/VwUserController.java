@@ -1,8 +1,8 @@
-package io.lcq.app.modules.app.controller;
+package io.github.linxiaobaixcg.modules.app.controller;
 
-import io.lcq.app.modules.app.entity.VwUser;
-import io.lcq.app.modules.app.service.VwUserService;
-import io.lcq.app.modules.system.controller.vo.ResultVO;
+import io.github.linxiaobaixcg.modules.app.entity.VwUser;
+import io.github.linxiaobaixcg.modules.app.service.VwUserService;
+import io.github.linxiaobaixcg.modules.system.controller.vo.ResultVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;

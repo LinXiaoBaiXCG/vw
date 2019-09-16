@@ -1,7 +1,7 @@
-package io.lcq.app.modules.system.service;
+package io.github.linxiaobaixcg.modules.system.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import io.lcq.app.modules.system.entity.SysUserDO;
+import io.github.linxiaobaixcg.modules.system.entity.SysUserDO;
 
 /**
  * @program: app

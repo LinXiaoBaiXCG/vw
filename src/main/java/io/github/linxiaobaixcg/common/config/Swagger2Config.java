@@ -1,4 +1,4 @@
-package io.lcq.app.common.config;
+package io.github.linxiaobaixcg.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,12 +26,13 @@ public class Swagger2Config {
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())//调用apiInfo方法,创建一个ApiInfo实例,里面是展示在文档页面信息内容
+                //调用apiInfo方法,创建一个ApiInfo实例,里面是展示在文档页面信息内容
+                .apiInfo(apiInfo())
                 .select()
                 //控制暴露出去的路径下的实例
                 //如果某个接口不想暴露,可以使用以下注解
                 //@ApiIgnore 这样,该接口就不会暴露在 swagger2 的页面下
-                .apis(RequestHandlerSelectors.basePackage("com.lcq.app"))
+                .apis(RequestHandlerSelectors.basePackage("io.github.linxiaobaixcg"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -45,7 +46,7 @@ public class Swagger2Config {
                 //版本号
                 .version("2.0")
                 //描述
-                .description("请编写RESTful规范的API,暂时很不规范")
+                .description("请编写RESTful规范的API")
                 .build();
     }
 }

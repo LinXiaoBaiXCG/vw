@@ -6,9 +6,9 @@
  * 版权所有，侵权必究！
  */
 
-package io.lcq.app.common.util;
+package io.github.linxiaobaixcg.common.util;
 
-import io.lcq.app.common.exception.CustomException;
+import io.github.linxiaobaixcg.common.exception.CustomException;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;

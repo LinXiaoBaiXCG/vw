@@ -1,7 +1,7 @@
-package io.lcq.app.modules.app.service;
+package io.github.linxiaobaixcg.modules.app.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import io.lcq.app.modules.app.entity.VwUser;
+import io.github.linxiaobaixcg.modules.app.entity.VwUser;
 
 /**
  * @program: app
@@ -9,5 +9,12 @@ import io.lcq.app.modules.app.entity.VwUser;
  * @author: LCQ
  * @create: 2019-05-20 23:26
  **/
-public interface VwUserService extends IService<VwUser> {
+public interface VwUserService {
+
+    /**
+     * 用户注册
+     * @param resources
+     * @return
+     */
+    void register(VwUser resources);
 }

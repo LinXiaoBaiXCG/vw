@@ -1,4 +1,4 @@
-package io.lcq.app.modules.system.oauth2;
+package io.github.linxiaobaixcg.modules.system.oauth2;
 
 import org.apache.shiro.authc.AuthenticationToken;
 

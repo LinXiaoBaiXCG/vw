@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package io.lcq.app.common.exception;
+package io.github.linxiaobaixcg.common.exception;
 
 /**
  * 自定义异常

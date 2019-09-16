@@ -1,7 +1,7 @@
-package io.lcq.app.modules.system.repository;
+package io.github.linxiaobaixcg.modules.system.repository;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import io.lcq.app.modules.system.entity.SysUserDO;
+import io.github.linxiaobaixcg.modules.system.entity.SysUserDO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

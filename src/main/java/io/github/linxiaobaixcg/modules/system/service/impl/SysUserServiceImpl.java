@@ -1,10 +1,10 @@
-package io.lcq.app.modules.system.service.impl;
+package io.github.linxiaobaixcg.modules.system.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import io.lcq.app.modules.system.entity.SysUserDO;
-import io.lcq.app.modules.system.repository.SysUserRepository;
-import io.lcq.app.modules.system.service.SysUserService;
+import io.github.linxiaobaixcg.modules.system.entity.SysUserDO;
+import io.github.linxiaobaixcg.modules.system.repository.SysUserRepository;
+import io.github.linxiaobaixcg.modules.system.service.SysUserService;
 import org.springframework.stereotype.Service;
 
 /**

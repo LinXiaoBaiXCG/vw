@@ -1,8 +1,8 @@
-package io.lcq.app.modules.system.oauth2;
+package io.github.linxiaobaixcg.modules.system.oauth2;
 
-import io.lcq.app.modules.system.entity.SysUserDO;
-import io.lcq.app.modules.system.service.SysUserService;
-import io.lcq.app.common.util.JwtUtils;
+import io.github.linxiaobaixcg.common.util.JwtUtils;
+import io.github.linxiaobaixcg.modules.system.entity.SysUserDO;
+import io.github.linxiaobaixcg.modules.system.service.SysUserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;

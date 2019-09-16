@@ -1,7 +1,7 @@
-package io.lcq.app.common.config;
+package io.github.linxiaobaixcg.common.config;
 
-import io.lcq.app.modules.system.filter.JwtFilter;
-import io.lcq.app.modules.system.oauth2.OAuth2Realm;
+import io.github.linxiaobaixcg.modules.system.filter.JwtFilter;
+import io.github.linxiaobaixcg.modules.system.oauth2.OAuth2Realm;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;

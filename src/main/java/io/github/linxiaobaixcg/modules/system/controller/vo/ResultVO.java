@@ -1,4 +1,4 @@
-package io.lcq.app.modules.system.controller.vo;
+package io.github.linxiaobaixcg.modules.system.controller.vo;
 
 import lombok.Data;
 

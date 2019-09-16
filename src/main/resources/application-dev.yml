@@ -4,7 +4,7 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     username: root
     password: root
-    url: jdbc:mysql://127.0.0.1:3306/app?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://127.0.0.1:3306/vw?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
     hikari:
       #最大连接数
       maximum-pool-size: 20
@@ -19,3 +19,11 @@ spring:
       idle-timeout: 60000
       #池中连接最长生命周期
       max-lifetime: 60000
+  redis:
+    #数据库索引
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:
+    #连接超时时间
+    timeout: 5000

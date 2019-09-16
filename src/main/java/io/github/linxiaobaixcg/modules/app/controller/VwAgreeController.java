@@ -1,14 +1,14 @@
-package io.lcq.app.modules.app.controller;
+package io.github.linxiaobaixcg.modules.app.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import io.lcq.app.common.exception.CustomException;
-import io.lcq.app.modules.app.controller.vo.VwAgreeVO;
-import io.lcq.app.modules.app.entity.VwAgree;
-import io.lcq.app.modules.app.service.VwAgreeService;
-import io.lcq.app.modules.system.controller.vo.ResultVO;
-import io.lcq.app.common.util.ValidatorUtils;
+import io.github.linxiaobaixcg.common.exception.CustomException;
+import io.github.linxiaobaixcg.common.util.ValidatorUtils;
+import io.github.linxiaobaixcg.modules.app.entity.VwAgree;
+import io.github.linxiaobaixcg.modules.app.service.VwAgreeService;
+import io.github.linxiaobaixcg.modules.system.controller.vo.ResultVO;
+import io.github.linxiaobaixcg.modules.app.controller.vo.VwAgreeVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;

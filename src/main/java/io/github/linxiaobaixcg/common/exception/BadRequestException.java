@@ -1,4 +1,4 @@
-package com.vica.exception;
+package io.github.linxiaobaixcg.common.exception;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
@@ -19,7 +19,7 @@ public class BadRequestException extends RuntimeException{
         super(msg);
     }
 
-    public BadRequestException(HttpStatus status,String msg){
+    public BadRequestException(HttpStatus status, String msg){
         super(msg);
         this.status = status.value();
     }

@@ -1,4 +1,4 @@
-package io.lcq.app.common.util;
+package io.github.linxiaobaixcg.common.util;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
