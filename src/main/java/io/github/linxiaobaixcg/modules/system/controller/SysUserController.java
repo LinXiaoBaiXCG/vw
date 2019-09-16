@@ -39,26 +39,6 @@ public class SysUserController {
         return resultVO;
     }
 
-    @ApiOperation("新增用户")
-    @PostMapping("/create")
-    public String create(){
-        SysUserDO sysUserEntity = new SysUserDO();
-        sysUserEntity.setUuid(UUIDUtils.getUUID());
-        sysUserEntity.setUsername("admin");
-        sysUserEntity.setEmail("2222222@qq.com");
-        sysUserEntity.setPicture("aa");
-        sysUserEntity.setMobile("13413513600");
-        sysUserEntity.setWx_openid("222222");
-        sysUserEntity.setStatus(1);
-        //生成盐（部分，需要存入数据库中）
-        String hex = new SecureRandomNumberGenerator().nextBytes().toHex();
-        sysUserEntity.setHex(hex);
-        //将原始密码加盐（上面生成的盐），并且用md5算法加密三次，将最后结果存入数据库中
-        String hashPassword = new Md5Hash("123456",hex,3).toString();
-        sysUserEntity.setPassword(hashPassword);
-        sysUserService.save(sysUserEntity);
-        return "ok";
-    }
 
     @ApiOperation("修改用户")
     @PostMapping("/update")

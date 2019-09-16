@@ -29,6 +29,11 @@ mybatis-plus:
       #自定义填充策略接口实现
       global-config.meta-object-handler: MyMetaObjectHandler
     banner: false
+
 # 配置SQL打印日志
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#登录图形验证码有效时间/秒
+loginCode:
+  expiration: 120
