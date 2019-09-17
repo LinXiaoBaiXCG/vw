@@ -49,10 +49,10 @@ public class VwUserServiceImplTest {
     @Test
     public void register() {
         UserRegisterVo userRegisterVo = new UserRegisterVo();
-        userRegisterVo.setUuid("3db2ea6366954b908050ceadf39061ac");
-        userRegisterVo.setCode("68YA");
-        userRegisterVo.setPhone("18300000000");
-        userRegisterVo.setUsername("test");
+        userRegisterVo.setUuid("321798c70d774fc08b6803c50eeb200f");
+        userRegisterVo.setCode("we2d");
+        userRegisterVo.setPhone("18300000001");
+        userRegisterVo.setUsername("test1");
         userRegisterVo.setPassword("a123456");
         userRegisterVo.setCheckPassword("a123456");
         vwUserService.register(userRegisterVo);

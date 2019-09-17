@@ -37,3 +37,9 @@ mybatis-plus:
 #登录图形验证码有效时间/秒
 loginCode:
   expiration: 120
+
+#微信登录
+wx:
+  appid: 123
+  appsecret: 456
+  redirect-uri: 789

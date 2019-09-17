@@ -2,6 +2,7 @@ package io.github.linxiaobaixcg.modules.app.controller;
 
 import cn.hutool.core.codec.Base64;
 import cn.hutool.core.util.IdUtil;
+import cn.hutool.http.HttpUtil;
 import io.github.linxiaobaixcg.common.util.RedisUtils;
 import io.github.linxiaobaixcg.common.util.VerifyCodeUtils;
 import io.github.linxiaobaixcg.modules.app.entity.VwUser;
@@ -14,11 +15,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -31,7 +31,7 @@ import java.util.Map;
  * @author: LCQ
  * @create: 2019-05-20 21:50
  **/
-@RestController
+@Controller
 @RequestMapping("/api")
 @Api(tags = "用户登录")
 @Slf4j
@@ -45,6 +45,15 @@ public class VwLoginController {
     @Value("${loginCode.expiration}")
     private Long expiration;
 
+    @Value("${wx.appid}")
+    private String appId;
+
+    @Value("${wx.appsecret}")
+    private String appsecret;
+
+    @Value("${wx.redirect-uri}")
+    private String redirectUri;
+
     /**
      * APP用户登录
      *
@@ -53,7 +62,7 @@ public class VwLoginController {
      * @return
      */
     @ApiOperation("用户登录")
-    @PostMapping("login")
+    @PostMapping("/login")
     public ResultVO login(String username, String password) {
         ResultVO resultVO = new ResultVO();
         resultVO.setCode(0);
@@ -64,13 +73,14 @@ public class VwLoginController {
 
     @ApiOperation("获取验证码")
     @GetMapping("/verificationCode")
+    @ResponseBody
     public ResponseEntity getCode(HttpServletResponse response) throws IOException {
         Map<String, Object> result = new HashMap<>();
         //生成随机字串
         String verifyCode = VerifyCodeUtils.generateVerifyCode(4);
         String uuid = IdUtil.simpleUUID();
         result.put("uuid", uuid);
-        redisUtils.set(uuid, verifyCode,expiration);
+        redisUtils.set(uuid, verifyCode, expiration);
         // 生成图片
         int w = 111, h = 36;
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -86,4 +96,27 @@ public class VwLoginController {
         }
         return ResponseEntity.ok(result);
     }
+
+    @ApiOperation("微信登录")
+    @GetMapping("/wxLogin")
+    public void wxLogin(HttpServletResponse response) throws IOException {
+        String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + this.appId + "&redirect_uri=" + this.redirectUri + "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+        response.sendRedirect(url);
+    }
+
+    @RequestMapping("/callBack")
+    public void callBack(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        //获取code
+        String code = request.getParameter("code");
+        //获取accessToken、openid
+        String accessTokenUrl = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + this.appId + "&secret=SECRET&code=" + code + "&grant_type=authorization_code";
+        String result = HttpUtil.get(accessTokenUrl);
+        String accessToken = "";
+        String openid = "";
+        //获取用户信息
+        String userInfo = HttpUtil.get("https://api.weixin.qq.com/sns/userinfo?access_token=" + accessToken + "&openid=" + openid + "&lang=zh_CN");
+        response.sendRedirect("/");
+    }
+
+
 }

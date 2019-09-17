@@ -12,6 +12,7 @@ import io.github.linxiaobaixcg.modules.app.controller.vo.UserRegisterVo;
 import io.github.linxiaobaixcg.modules.app.entity.VwUser;
 import io.github.linxiaobaixcg.modules.app.service.VwUserService;
 import io.github.linxiaobaixcg.modules.app.repository.VwUserRepository;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,7 +42,7 @@ public class VwUserServiceImpl implements VwUserService {
             throw new BadRequestException("验证码已过期！");
         }
         //验证验证码是否正确
-        if (!userRegisterVo.getCode().equals(redisUtils.get(userRegisterVo.getUuid()))) {
+        if (StringUtils.isBlank(userRegisterVo.getCode()) || !redisUtils.get(userRegisterVo.getUuid()).toString().equalsIgnoreCase(userRegisterVo.getCode())) {
             throw new BadRequestException("验证码错误！");
         }
         //验证手机号是否存在
