@@ -40,6 +40,6 @@ loginCode:
 
 #微信登录
 wx:
-  appid: 123
-  appsecret: 456
-  redirect-uri: 789
+  appid: wx2e75ec758d5ca8ab
+  appsecret: a35b37288b40d47845b4c866188b8ab7
+  redirect-uri: http://www.baidu.com

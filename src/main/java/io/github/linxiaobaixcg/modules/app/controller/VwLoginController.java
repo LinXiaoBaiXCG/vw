@@ -3,6 +3,9 @@ package io.github.linxiaobaixcg.modules.app.controller;
 import cn.hutool.core.codec.Base64;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.http.HttpUtil;
+import cn.hutool.json.JSONObject;
+import cn.hutool.json.JSONUtil;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.linxiaobaixcg.common.util.RedisUtils;
 import io.github.linxiaobaixcg.common.util.VerifyCodeUtils;
 import io.github.linxiaobaixcg.modules.app.entity.VwUser;
@@ -13,15 +16,18 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -100,7 +106,8 @@ public class VwLoginController {
     @ApiOperation("微信登录")
     @GetMapping("/wxLogin")
     public void wxLogin(HttpServletResponse response) throws IOException {
-        String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + this.appId + "&redirect_uri=" + this.redirectUri + "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+        String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + this.appId + "&redirect_uri=" + URLEncoder.encode(this.redirectUri, "UTF-8")
+                + "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
         response.sendRedirect(url);
     }
 
@@ -111,8 +118,9 @@ public class VwLoginController {
         //获取accessToken、openid
         String accessTokenUrl = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + this.appId + "&secret=SECRET&code=" + code + "&grant_type=authorization_code";
         String result = HttpUtil.get(accessTokenUrl);
-        String accessToken = "";
-        String openid = "";
+        JSONObject jsonObject = JSONUtil.parseObj(result);
+        String accessToken = jsonObject.getStr("access_token");
+        String openid = jsonObject.getStr("openid");
         //获取用户信息
         String userInfo = HttpUtil.get("https://api.weixin.qq.com/sns/userinfo?access_token=" + accessToken + "&openid=" + openid + "&lang=zh_CN");
         response.sendRedirect("/");
