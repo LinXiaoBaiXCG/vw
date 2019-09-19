@@ -8,7 +8,9 @@ import cn.hutool.json.JSONUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.linxiaobaixcg.common.util.RedisUtils;
 import io.github.linxiaobaixcg.common.util.VerifyCodeUtils;
+import io.github.linxiaobaixcg.modules.app.controller.vo.LoginVo;
 import io.github.linxiaobaixcg.modules.app.entity.VwUser;
+import io.github.linxiaobaixcg.modules.app.service.VwLoginService;
 import io.github.linxiaobaixcg.modules.app.service.VwUserService;
 import io.github.linxiaobaixcg.modules.system.controller.vo.ResultVO;
 import io.swagger.annotations.Api;
@@ -18,10 +20,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -46,6 +46,9 @@ public class VwLoginController {
     private VwUserService vwUserService;
 
     @Autowired
+    private VwLoginService vwLoginService;
+
+    @Autowired
     private RedisUtils redisUtils;
 
     @Value("${loginCode.expiration}")
@@ -60,21 +63,11 @@ public class VwLoginController {
     @Value("${wx.redirect-uri}")
     private String redirectUri;
 
-    /**
-     * APP用户登录
-     *
-     * @param username
-     * @param password
-     * @return
-     */
     @ApiOperation("用户登录")
     @PostMapping("/login")
-    public ResultVO login(String username, String password) {
-        ResultVO resultVO = new ResultVO();
-        resultVO.setCode(0);
-        resultVO.setMsg("登录成功");
-        VwUser vwUser = new VwUser();
-        return resultVO;
+    @ResponseBody
+    public ResponseEntity login(@RequestBody @Validated LoginVo loginVo) {
+        return ResponseEntity.ok(vwLoginService.login(loginVo));
     }
 
     @ApiOperation("获取验证码")
@@ -105,10 +98,13 @@ public class VwLoginController {
 
     @ApiOperation("微信登录")
     @GetMapping("/wxLogin")
-    public void wxLogin(HttpServletResponse response) throws IOException {
-        String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + this.appId + "&redirect_uri=" + URLEncoder.encode(this.redirectUri, "UTF-8")
-                + "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
-        response.sendRedirect(url);
+    @ResponseBody
+    public String wxLogin(HttpServletResponse response) throws IOException {
+        String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="
+                + this.appId + "&redirect_uri="
+                + URLEncoder.encode(this.redirectUri, "UTF-8")
+                + "&response_type=code&scope=snsapi_userinfo&state=STATE&connect_redirect=1#wechat_redirect";
+        return url;
     }
 
     @RequestMapping("/callBack")

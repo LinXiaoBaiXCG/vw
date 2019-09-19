@@ -55,11 +55,11 @@ public class VwUserServiceImpl implements VwUserService {
         QueryWrapper checkUsername = new QueryWrapper();
         checkUsername.eq("username", userRegisterVo.getUsername());
         if (vwUserRepository.selectOne(checkUsername) != null) {
-            throw new BadRequestException("用户名已存在！");
+            throw new BadRequestException("用户名已存在，请重新输入！");
         }
         //验证两次密码是否一致
         if (!userRegisterVo.getCheckPassword().equals(userRegisterVo.getPassword())) {
-            throw new BadRequestException("密码不一致");
+            throw new BadRequestException("密码不一致!");
         }
         //执行注册
         VwUser vwUser = new VwUser();

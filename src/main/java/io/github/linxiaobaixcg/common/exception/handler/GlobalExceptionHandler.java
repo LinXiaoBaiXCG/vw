@@ -106,7 +106,7 @@ public class GlobalExceptionHandler {
         String[] str = e.getBindingResult().getAllErrors().get(0).getCodes()[1].split("\\.");
         StringBuffer msg = new StringBuffer(str[1] + ":");
         msg.append(e.getBindingResult().getAllErrors().get(0).getDefaultMessage());
-        ApiError apiError = new ApiError(BAD_REQUEST.value(), msg.toString());
+        ApiError apiError = new ApiError(BAD_REQUEST.value(), e.getBindingResult().getAllErrors().get(0).getDefaultMessage());
         return buildResponseEntity(apiError);
     }
 
