@@ -3,10 +3,10 @@ package io.github.linxiaobaixcg.modules.app.entity;
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.time.Instant;
-import java.time.LocalDateTime;
 
 /**
  * @program: app
@@ -15,8 +15,8 @@ import java.time.LocalDateTime;
  * @create: 2019-05-20 22:53
  **/
 @Data
-@TableName("vw_user")
-public class VwUser implements Serializable {
+@TableName("vw_topic")
+public class VwTopic implements Serializable {
 
     @TableId(type = IdType.AUTO)
     private Long id;
@@ -24,23 +24,17 @@ public class VwUser implements Serializable {
     @TableField(value = "uuid",fill = FieldFill.INSERT)
     private String uuid;
 
-    private String username;
+    @NotNull(message = "创建人ID不能为空")
+    private Long userId;
 
-    private String password;
+    @NotBlank(message = "话题名不能为空")
+    private String name;
 
-    /**
-     * 密码最后更新时间
-     */
-    private Timestamp lastPasswordResetTime;
-
-    private String phone;
-
-    private String wx_openid;
-
-    private String avatar;
+    @NotBlank(message = "描述不能为空")
+    private String introduction;
 
     /**
-     * 状态0启用1禁用
+     * 状态：1、审核中2、审核成功3、审核失败
      */
     private Integer status;
 
