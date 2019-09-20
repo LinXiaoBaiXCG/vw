@@ -34,5 +34,5 @@ public interface VwAnswerService {
      * @param id
      * @return
      */
-    VwAnswer findOne(Long id);
+    VwAnswerDTO findOne(Long id);
 }

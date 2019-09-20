@@ -33,7 +33,7 @@ public class VwAnswerServiceImpl implements VwAnswerService {
     }
 
     @Override
-    public VwAnswer findOne(Long id) {
-        return vwAnswerRepository.selectById(id);
+    public VwAnswerDTO findOne(Long id) {
+        return vwAnswerRepository.findOne(id);
     }
 }

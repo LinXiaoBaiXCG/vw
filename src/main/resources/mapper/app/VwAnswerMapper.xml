@@ -3,7 +3,7 @@
 <mapper namespace="io.github.linxiaobaixcg.modules.app.repository.VwAnswerRepository">
 
 
-<select id="getPage" resultType="io.github.linxiaobaixcg.modules.app.service.dto.VwAnswerDTO">
+    <select id="getPage" resultType="io.github.linxiaobaixcg.modules.app.service.dto.VwAnswerDTO">
     select
     a.id as id,
     a.problem_title as problemTitle,
@@ -13,8 +13,23 @@
     from
     vw_answer a
     left join vw_user u on a.user_id = u.id
+    where
+    a.is_deleted = 0
     order by
     a.create_time desc
 </select>
+    <select id="findOne" resultType="io.github.linxiaobaixcg.modules.app.service.dto.VwAnswerDTO">
+    select
+    a.id as id,
+    a.problem_title as problemTitle,
+    a.content as content,
+    u.username as username,
+    u.avatar as avatar
+    from
+    vw_answer a
+    left join vw_user u on a.user_id = u.id
+    where
+    a.id =#{id}
+    </select>
 </mapper>
 
