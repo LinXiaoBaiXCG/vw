@@ -1,7 +1,7 @@
 package io.github.linxiaobaixcg.modules.app.service.impl;
 
 import io.github.linxiaobaixcg.common.util.RedisUtils;
-import io.github.linxiaobaixcg.modules.app.controller.vo.UserRegisterVo;
+import io.github.linxiaobaixcg.modules.app.entity.vo.UserRegisterVo;
 import io.github.linxiaobaixcg.modules.app.entity.VwUser;
 import io.github.linxiaobaixcg.modules.app.repository.VwUserRepository;
 import io.github.linxiaobaixcg.modules.app.service.VwUserService;
@@ -11,8 +11,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.swing.*;
 
 import java.sql.Timestamp;
 

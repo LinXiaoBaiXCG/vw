@@ -9,7 +9,7 @@ import io.github.linxiaobaixcg.modules.app.entity.VwAnswer;
 import io.github.linxiaobaixcg.modules.app.entity.VwFollow;
 import io.github.linxiaobaixcg.modules.app.service.VwFollowService;
 import io.github.linxiaobaixcg.modules.system.controller.vo.ResultVO;
-import io.github.linxiaobaixcg.modules.app.controller.vo.VwFollowVO;
+import io.github.linxiaobaixcg.modules.app.entity.vo.VwFollowVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;

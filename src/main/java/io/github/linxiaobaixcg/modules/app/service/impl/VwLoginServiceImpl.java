@@ -1,11 +1,10 @@
 package io.github.linxiaobaixcg.modules.app.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.sun.xml.internal.bind.v2.runtime.output.Encoded;
 import io.github.linxiaobaixcg.common.exception.BadRequestException;
 import io.github.linxiaobaixcg.common.util.EncryptUtils;
 import io.github.linxiaobaixcg.common.util.JwtUtils;
-import io.github.linxiaobaixcg.modules.app.controller.vo.LoginVo;
+import io.github.linxiaobaixcg.modules.app.entity.vo.LoginVo;
 import io.github.linxiaobaixcg.modules.app.entity.VwUser;
 import io.github.linxiaobaixcg.modules.app.repository.VwUserRepository;
 import io.github.linxiaobaixcg.modules.app.service.VwLoginService;

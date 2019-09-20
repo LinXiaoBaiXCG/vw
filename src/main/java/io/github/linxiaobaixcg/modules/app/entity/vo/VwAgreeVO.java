@@ -1,11 +1,9 @@
-package io.github.linxiaobaixcg.modules.app.controller.vo;
+package io.github.linxiaobaixcg.modules.app.entity.vo;
 
-import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.time.Instant;
 
 /**
  * @program: app

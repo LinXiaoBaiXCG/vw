@@ -1,8 +1,13 @@
 package io.github.linxiaobaixcg.modules.app.repository;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.github.linxiaobaixcg.modules.app.entity.VwAnswer;
+import io.github.linxiaobaixcg.modules.app.service.dto.VwAnswerDTO;
+import io.github.linxiaobaixcg.modules.app.service.dto.VwAnswerQueryCriteria;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @program: app
@@ -12,4 +17,11 @@ import org.apache.ibatis.annotations.Mapper;
  **/
 public interface VwAnswerRepository extends BaseMapper<VwAnswer> {
 
+    /**
+     * 获取回答分页
+     * @param page
+     * @param queryCriteria
+     * @return
+     */
+    IPage<VwAnswerDTO> getPage(Page page, @Param("queryCriteria") VwAnswerQueryCriteria queryCriteria);
 }

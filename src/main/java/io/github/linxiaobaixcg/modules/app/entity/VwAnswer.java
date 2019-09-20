@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.Instant;
 
 /**
@@ -15,26 +16,29 @@ import java.time.Instant;
 @Data
 @TableName("vw_answer")
 public class VwAnswer implements Serializable {
-    private static final long serialVersionUID = -77304080771515365L;
 
-    @TableId(type = IdType.UUID)
-    private String id;
+    @TableId(type = IdType.AUTO)
+    private Long id;
 
-    private String problemId;
+    @TableField(value = "uuid",fill = FieldFill.INSERT)
+    private String uuid;
+
+    private Long userId;
+
+    private Long problemId;
 
     private String problemTitle;
 
-    private String userId;
-
     private String content;
 
-    private Integer isRecommend;
-
-    private Integer isDelete;
+    /**
+     * 是否删除 0否1是
+     */
+    private Integer isDeleted;
 
     @TableField(value = "create_time",fill = FieldFill.INSERT)
-    private Instant createTime;
+    private Timestamp createTime;
 
-    @TableField(value = "update_time",fill = FieldFill.UPDATE)
-    private Instant updateTime;
+    @TableField(value = "update_time",fill = FieldFill.INSERT_UPDATE)
+    private Timestamp updateTime;
 }

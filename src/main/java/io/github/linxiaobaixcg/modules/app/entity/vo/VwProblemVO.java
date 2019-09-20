@@ -1,4 +1,4 @@
-package io.github.linxiaobaixcg.modules.app.controller.vo;
+package io.github.linxiaobaixcg.modules.app.entity.vo;
 
 import io.swagger.annotations.ApiModel;
 import lombok.Data;

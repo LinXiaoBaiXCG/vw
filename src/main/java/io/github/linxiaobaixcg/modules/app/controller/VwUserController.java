@@ -1,22 +1,15 @@
 package io.github.linxiaobaixcg.modules.app.controller;
 
-import io.github.linxiaobaixcg.modules.app.controller.vo.UserRegisterVo;
-import io.github.linxiaobaixcg.modules.app.entity.VwUser;
+import io.github.linxiaobaixcg.modules.app.entity.vo.UserRegisterVo;
 import io.github.linxiaobaixcg.modules.app.service.VwUserService;
-import io.github.linxiaobaixcg.modules.system.controller.vo.ResultVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 /**
  * @program: app

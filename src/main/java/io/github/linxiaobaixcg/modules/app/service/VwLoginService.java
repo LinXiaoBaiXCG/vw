@@ -1,6 +1,6 @@
 package io.github.linxiaobaixcg.modules.app.service;
 
-import io.github.linxiaobaixcg.modules.app.controller.vo.LoginVo;
+import io.github.linxiaobaixcg.modules.app.entity.vo.LoginVo;
 
 /**
  * @author linchuangqiong

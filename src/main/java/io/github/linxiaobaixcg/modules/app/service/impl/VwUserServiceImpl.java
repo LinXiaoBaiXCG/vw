@@ -1,14 +1,10 @@
 package io.github.linxiaobaixcg.modules.app.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.google.common.base.Optional;
 import io.github.linxiaobaixcg.common.exception.BadRequestException;
-import io.github.linxiaobaixcg.common.exception.EntityExistException;
 import io.github.linxiaobaixcg.common.util.EncryptUtils;
 import io.github.linxiaobaixcg.common.util.RedisUtils;
-import io.github.linxiaobaixcg.common.util.ValidationUtils;
-import io.github.linxiaobaixcg.modules.app.controller.vo.UserRegisterVo;
+import io.github.linxiaobaixcg.modules.app.entity.vo.UserRegisterVo;
 import io.github.linxiaobaixcg.modules.app.entity.VwUser;
 import io.github.linxiaobaixcg.modules.app.service.VwUserService;
 import io.github.linxiaobaixcg.modules.app.repository.VwUserRepository;

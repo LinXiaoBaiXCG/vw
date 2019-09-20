@@ -8,7 +8,7 @@ import io.github.linxiaobaixcg.common.util.ValidatorUtils;
 import io.github.linxiaobaixcg.modules.app.entity.VwAgree;
 import io.github.linxiaobaixcg.modules.app.service.VwAgreeService;
 import io.github.linxiaobaixcg.modules.system.controller.vo.ResultVO;
-import io.github.linxiaobaixcg.modules.app.controller.vo.VwAgreeVO;
+import io.github.linxiaobaixcg.modules.app.entity.vo.VwAgreeVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;

@@ -1,8 +1,6 @@
 package io.github.linxiaobaixcg.modules.app.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
-import io.github.linxiaobaixcg.modules.app.controller.vo.UserRegisterVo;
-import io.github.linxiaobaixcg.modules.app.entity.VwUser;
+import io.github.linxiaobaixcg.modules.app.entity.vo.UserRegisterVo;
 
 /**
  * @program: app
