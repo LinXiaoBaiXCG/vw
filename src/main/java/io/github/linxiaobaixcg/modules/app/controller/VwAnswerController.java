@@ -51,4 +51,11 @@ public class VwAnswerController {
     public ResponseEntity details(@PathVariable Long id) {
         return new ResponseEntity(vwAnswerService.findOne(id), HttpStatus.OK);
     }
+
+    @ApiOperation("同意回答")
+    @GetMapping("/agree")
+    public ResponseEntity agree(@RequestParam String uuid, @RequestParam Integer type, @RequestParam Long userId) {
+        vwAnswerService.agree(uuid, type, userId);
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }

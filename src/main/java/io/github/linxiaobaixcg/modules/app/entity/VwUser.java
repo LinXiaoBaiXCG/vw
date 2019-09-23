@@ -40,6 +40,11 @@ public class VwUser implements Serializable {
     private String avatar;
 
     /**
+     * 用户简介
+     */
+    private String introduction;
+
+    /**
      * 状态0启用1禁用
      */
     private Integer status;

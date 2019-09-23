@@ -16,6 +16,7 @@ public interface VwAnswerService {
 
     /**
      * 首页列表
+     *
      * @param page
      * @param queryCriteria
      * @return
@@ -24,6 +25,7 @@ public interface VwAnswerService {
 
     /**
      * 添加回答
+     *
      * @param vwAnswer
      * @return
      */
@@ -31,8 +33,16 @@ public interface VwAnswerService {
 
     /**
      * 获取回答详情
+     *
      * @param id
      * @return
      */
     VwAnswerDTO findOne(Long id);
+
+    /**
+     * 赞同回答
+     * @param uuid
+     * @param type
+     */
+    void agree(String uuid, Integer type, Long userId);
 }

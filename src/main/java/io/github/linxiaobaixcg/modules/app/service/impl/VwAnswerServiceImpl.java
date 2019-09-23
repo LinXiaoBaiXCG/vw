@@ -1,12 +1,15 @@
 package io.github.linxiaobaixcg.modules.app.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.github.linxiaobaixcg.common.util.RedisUtils;
 import io.github.linxiaobaixcg.modules.app.entity.VwAnswer;
 import io.github.linxiaobaixcg.modules.app.repository.VwAnswerRepository;
 import io.github.linxiaobaixcg.modules.app.service.VwAnswerService;
 import io.github.linxiaobaixcg.modules.app.service.dto.VwAnswerDTO;
 import io.github.linxiaobaixcg.modules.app.service.dto.VwAnswerQueryCriteria;
+import io.lettuce.core.cluster.RedisAdvancedClusterAsyncCommandsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +25,9 @@ public class VwAnswerServiceImpl implements VwAnswerService {
     @Autowired
     private VwAnswerRepository vwAnswerRepository;
 
+    @Autowired
+    private RedisUtils redisUtils;
+
     @Override
     public IPage<VwAnswerDTO> getPage(Page page, VwAnswerQueryCriteria queryCriteria) {
         return vwAnswerRepository.getPage(page, queryCriteria);
@@ -34,6 +40,38 @@ public class VwAnswerServiceImpl implements VwAnswerService {
 
     @Override
     public VwAnswerDTO findOne(Long id) {
-        return vwAnswerRepository.findOne(id);
+        VwAnswerDTO vwAnswerDTO = vwAnswerRepository.findOne(id);
+        //查询问题回答数
+        QueryWrapper<VwAnswer> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("problem_id", vwAnswerDTO.getProblemId());
+        queryWrapper.eq("is_deleted", 0);
+        vwAnswerDTO.setProblemCount(vwAnswerRepository.selectCount(queryWrapper));
+        //查询该用户是否点赞
+        Object answerUuid = redisUtils.get("userAgree" + 1);
+        if (vwAnswerDTO.getUuid().equals(answerUuid)) {
+            vwAnswerDTO.setIsAgree(1);
+        } else {
+            vwAnswerDTO.setIsAgree(0);
+        }
+        //获取回答点赞数
+        Object agreeCount = redisUtils.get("agree" + vwAnswerDTO.getUuid());
+        if (null == agreeCount) {
+            vwAnswerDTO.setAgreeCount(0L);
+        } else {
+            vwAnswerDTO.setAgreeCount(new Long(agreeCount.toString()));
+        }
+        return vwAnswerDTO;
+    }
+
+    @Override
+    public void agree(String uuid, Integer type, Long userId) {
+        if (type != null && type == 1) {
+            redisUtils.set("userAgree" + userId, uuid);
+            redisUtils.incr("agree" + uuid, 1);
+        }
+        if (type != null && type == 2) {
+            redisUtils.del("userAgree" + userId, uuid);
+            redisUtils.decr("agree" + uuid, 1);
+        }
     }
 }

@@ -18,6 +18,16 @@ public class VwAnswerDTO implements Serializable {
     private Long id;
 
     /**
+     * 回答uuid
+     */
+    private String uuid;
+
+    /**
+     * 问题id
+     */
+    private Long problemId;
+
+    /**
      * 标题
      */
     private String problemTitle;
@@ -36,4 +46,24 @@ public class VwAnswerDTO implements Serializable {
      * 回答人头像
      */
     private String avatar;
+
+    /**
+     * 回答数
+     */
+    private Integer problemCount;
+
+    /**
+     * 用户简介
+     */
+    private String introduction;
+
+    /**
+     * 赞同数
+     */
+    private Long agreeCount;
+
+    /**
+     * 用户是否点赞 0:未点赞  1:已点赞
+     */
+    private Integer isAgree;
 }
