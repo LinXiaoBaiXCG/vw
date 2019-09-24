@@ -9,6 +9,7 @@ import io.github.linxiaobaixcg.modules.app.repository.VwAnswerRepository;
 import io.github.linxiaobaixcg.modules.app.service.VwAnswerService;
 import io.github.linxiaobaixcg.modules.app.service.dto.VwAnswerDTO;
 import io.github.linxiaobaixcg.modules.app.service.dto.VwAnswerQueryCriteria;
+import io.github.linxiaobaixcg.modules.app.service.dto.VwUserAgreeDTO;
 import io.lettuce.core.cluster.RedisAdvancedClusterAsyncCommandsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,7 +40,7 @@ public class VwAnswerServiceImpl implements VwAnswerService {
     }
 
     @Override
-    public VwAnswerDTO findOne(Long id) {
+    public VwAnswerDTO findOne(Long id, String userUuid) {
         VwAnswerDTO vwAnswerDTO = vwAnswerRepository.findOne(id);
         //查询问题回答数
         QueryWrapper<VwAnswer> queryWrapper = new QueryWrapper<>();
@@ -47,11 +48,11 @@ public class VwAnswerServiceImpl implements VwAnswerService {
         queryWrapper.eq("is_deleted", 0);
         vwAnswerDTO.setProblemCount(vwAnswerRepository.selectCount(queryWrapper));
         //查询该用户是否点赞
-        Object answerUuid = redisUtils.get("userAgree" + 1);
+        Object answerUuid = redisUtils.get("userAgree" + userUuid);
         if (vwAnswerDTO.getUuid().equals(answerUuid)) {
-            vwAnswerDTO.setIsAgree(1);
+            vwAnswerDTO.setUserIsAgree(true);
         } else {
-            vwAnswerDTO.setIsAgree(0);
+            vwAnswerDTO.setUserIsAgree(false);
         }
         //获取回答点赞数
         Object agreeCount = redisUtils.get("agree" + vwAnswerDTO.getUuid());
@@ -64,14 +65,18 @@ public class VwAnswerServiceImpl implements VwAnswerService {
     }
 
     @Override
-    public void agree(String uuid, Integer type, Long userId) {
-        if (type != null && type == 1) {
-            redisUtils.set("userAgree" + userId, uuid);
+    public VwUserAgreeDTO agree(String uuid, Boolean userIsAgree, String userUuid) {
+        VwUserAgreeDTO vwUserAgreeDTO = new VwUserAgreeDTO();
+        if (userIsAgree) {
+            redisUtils.set("userAgree" + userUuid, uuid);
             redisUtils.incr("agree" + uuid, 1);
+            vwUserAgreeDTO.setUserIsAgree(true);
         }
-        if (type != null && type == 2) {
-            redisUtils.del("userAgree" + userId, uuid);
+        if (!userIsAgree) {
+            redisUtils.del("userAgree" + userUuid, uuid);
             redisUtils.decr("agree" + uuid, 1);
+            vwUserAgreeDTO.setUserIsAgree(false);
         }
+        return vwUserAgreeDTO;
     }
 }

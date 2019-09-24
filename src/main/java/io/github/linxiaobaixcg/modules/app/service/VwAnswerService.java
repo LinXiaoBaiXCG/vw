@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.github.linxiaobaixcg.modules.app.entity.VwAnswer;
 import io.github.linxiaobaixcg.modules.app.service.dto.VwAnswerDTO;
 import io.github.linxiaobaixcg.modules.app.service.dto.VwAnswerQueryCriteria;
+import io.github.linxiaobaixcg.modules.app.service.dto.VwUserAgreeDTO;
 
 /**
  * @program: app
@@ -35,14 +36,17 @@ public interface VwAnswerService {
      * 获取回答详情
      *
      * @param id
+     * @param userUuid
      * @return
      */
-    VwAnswerDTO findOne(Long id);
+    VwAnswerDTO findOne(Long id, String userUuid);
 
     /**
      * 赞同回答
      * @param uuid
-     * @param type
+     * @param userIsAgree
+     * @param userUuid
+     * @return VwUserAgreeDTO
      */
-    void agree(String uuid, Integer type, Long userId);
+    VwUserAgreeDTO agree(String uuid, Boolean userIsAgree, String userUuid);
 }

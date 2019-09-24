@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.github.linxiaobaixcg.common.exception.BadRequestException;
 import io.github.linxiaobaixcg.common.util.EncryptUtils;
 import io.github.linxiaobaixcg.common.util.JwtUtils;
+import io.github.linxiaobaixcg.modules.app.oauth2.AuthenticationInfo;
 import io.github.linxiaobaixcg.modules.app.entity.vo.LoginVo;
 import io.github.linxiaobaixcg.modules.app.entity.VwUser;
 import io.github.linxiaobaixcg.modules.app.repository.VwUserRepository;
@@ -23,7 +24,7 @@ public class VwLoginServiceImpl implements VwLoginService {
     private VwUserRepository vwUserRepository;
 
     @Override
-    public String login(LoginVo loginVo) {
+    public AuthenticationInfo login(LoginVo loginVo) {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("phone", loginVo.getPhone());
         VwUser vwUser = vwUserRepository.selectOne(queryWrapper);
@@ -36,7 +37,7 @@ public class VwLoginServiceImpl implements VwLoginService {
         if (!vwUser.getPassword().equals(EncryptUtils.encryptPassword(loginVo.getPassword()))) {
             throw new BadRequestException("密码错误，请重新输入");
         }
-        //生成token并返回
-        return JwtUtils.sign(vwUser.getUsername(),vwUser.getPassword());
+        //返回token和用户信息
+        return new AuthenticationInfo(JwtUtils.sign(vwUser.getUsername(),vwUser.getPassword()),vwUser);
     }
 }

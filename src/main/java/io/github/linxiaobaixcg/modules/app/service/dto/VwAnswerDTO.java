@@ -65,5 +65,5 @@ public class VwAnswerDTO implements Serializable {
     /**
      * 用户是否点赞 0:未点赞  1:已点赞
      */
-    private Integer isAgree;
+    private Boolean userIsAgree;
 }

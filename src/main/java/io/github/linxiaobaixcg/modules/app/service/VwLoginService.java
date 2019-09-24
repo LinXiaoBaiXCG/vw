@@ -1,5 +1,6 @@
 package io.github.linxiaobaixcg.modules.app.service;
 
+import io.github.linxiaobaixcg.modules.app.oauth2.AuthenticationInfo;
 import io.github.linxiaobaixcg.modules.app.entity.vo.LoginVo;
 
 /**
@@ -14,5 +15,5 @@ public interface VwLoginService {
      * @param loginVo
      * @return
      */
-    String login(LoginVo loginVo);
+    AuthenticationInfo login(LoginVo loginVo);
 }
