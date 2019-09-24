@@ -1,19 +1,13 @@
 package io.github.linxiaobaixcg.modules.app.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import io.github.linxiaobaixcg.common.exception.CustomException;
-import io.github.linxiaobaixcg.common.util.ValidatorUtils;
+import io.github.linxiaobaixcg.modules.app.oauth2.annotation.Login;
 import io.github.linxiaobaixcg.modules.app.service.dto.VwAnswerQueryCriteria;
-import io.github.linxiaobaixcg.modules.system.controller.vo.ResultVO;
-import io.github.linxiaobaixcg.modules.app.entity.vo.VwAnswerSavaVO;
 import io.github.linxiaobaixcg.modules.app.entity.VwAnswer;
 import io.github.linxiaobaixcg.modules.app.service.VwAnswerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,6 +34,7 @@ public class VwAnswerController {
         return new ResponseEntity(vwAnswerService.insert(vwAnswer), HttpStatus.CREATED);
     }
 
+    @Login
     @ApiOperation("首页--获取回答列表")
     @GetMapping("/recommend/page")
     public ResponseEntity recommendPage(Page page, VwAnswerQueryCriteria queryCriteria) {

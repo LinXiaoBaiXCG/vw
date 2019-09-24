@@ -43,3 +43,11 @@ wx:
   appid: wx2e75ec758d5ca8ab
   appsecret: a35b37288b40d47845b4c866188b8ab7
   redirect-uri: http://www.baidu.com
+
+app:
+  jwt:
+    # 加密秘钥
+    secret: f4e2e52034348f86b67cde581c0f9eb5
+    # token有效时长，7天，单位秒
+    expire: 604800
+    header: Authorization

@@ -15,5 +15,5 @@ public interface VwLoginService {
      * @param loginVo
      * @return
      */
-    AuthenticationInfo login(LoginVo loginVo);
+    String login(LoginVo loginVo);
 }

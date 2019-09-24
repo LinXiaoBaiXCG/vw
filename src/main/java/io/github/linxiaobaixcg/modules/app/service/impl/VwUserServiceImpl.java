@@ -2,7 +2,7 @@ package io.github.linxiaobaixcg.modules.app.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.github.linxiaobaixcg.common.exception.BadRequestException;
-import io.github.linxiaobaixcg.common.util.EncryptUtils;
+import io.github.linxiaobaixcg.modules.app.oauth2.utils.EncryptUtil;
 import io.github.linxiaobaixcg.common.util.RedisUtils;
 import io.github.linxiaobaixcg.modules.app.entity.vo.UserRegisterVo;
 import io.github.linxiaobaixcg.modules.app.entity.VwUser;
@@ -61,7 +61,7 @@ public class VwUserServiceImpl implements VwUserService {
         VwUser vwUser = new VwUser();
         vwUser.setUsername(userRegisterVo.getUsername());
         vwUser.setPhone(userRegisterVo.getPhone());
-        vwUser.setPassword(EncryptUtils.encryptPassword(userRegisterVo.getPassword()));
+        vwUser.setPassword(EncryptUtil.encryptPassword(userRegisterVo.getPassword()));
         vwUser.setAvatar("https://i.loli.net/2019/04/04/5ca5b971e1548.jpeg");
         vwUser.setStatus(0);
         vwUser.setLastPasswordResetTime(new Timestamp(System.currentTimeMillis()));

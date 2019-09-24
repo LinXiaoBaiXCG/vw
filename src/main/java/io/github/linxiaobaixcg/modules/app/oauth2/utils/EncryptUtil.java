@@ -1,4 +1,4 @@
-package io.github.linxiaobaixcg.common.util;
+package io.github.linxiaobaixcg.modules.app.oauth2.utils;
 
 import org.springframework.util.DigestUtils;
 
@@ -13,7 +13,7 @@ import javax.crypto.spec.IvParameterSpec;
  * @author linchuangqiong
  * @date 2018-11-23
  */
-public class EncryptUtils {
+public class EncryptUtil {
 
     private static String strKey = "Passw0rd", strParam = "Passw0rd";
 

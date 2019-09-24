@@ -1,10 +1,13 @@
 package io.github.linxiaobaixcg.common.config;
 
+import io.github.linxiaobaixcg.modules.app.oauth2.interceptor.AuthorizationInterceptor;
+import io.github.linxiaobaixcg.modules.app.oauth2.resolver.LoginUserHandlerMethodArgumentResolver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.servlet.config.annotation.*;
+
+import java.util.List;
 
 /**
  * WebMvcConfigurer
@@ -15,6 +18,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @EnableWebMvc
 public class ConfigurerAdapter implements WebMvcConfigurer {
+
+    @Autowired
+    private AuthorizationInterceptor authorizationInterceptor;
+    @Autowired
+    private LoginUserHandlerMethodArgumentResolver loginUserHandlerMethodArgumentResolver;
 
     /**
      * 对跨域支持
@@ -53,4 +61,14 @@ public class ConfigurerAdapter implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**").addResourceLocations("classpath:/META-INF/resources/").setCachePeriod(0);
     }
+
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(authorizationInterceptor).addPathPatterns("/api/**");
+//    }
+//
+//    @Override
+//    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
+//        argumentResolvers.add(loginUserHandlerMethodArgumentResolver);
+//    }
 }
