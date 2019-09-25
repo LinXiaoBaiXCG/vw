@@ -17,4 +17,9 @@ public class VwAnswerQueryCriteria {
      */
     @NotNull(message = "类型不能为空！")
     private Integer type;
+
+    /**
+     * 问题ID
+     */
+    private Long problemId;
 }

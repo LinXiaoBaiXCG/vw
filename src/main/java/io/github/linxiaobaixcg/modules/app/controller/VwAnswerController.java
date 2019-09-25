@@ -34,7 +34,6 @@ public class VwAnswerController {
         return new ResponseEntity(vwAnswerService.insert(vwAnswer), HttpStatus.CREATED);
     }
 
-    @Login
     @ApiOperation("首页--获取回答列表")
     @GetMapping("/recommend/page")
     public ResponseEntity recommendPage(Page page, VwAnswerQueryCriteria queryCriteria) {
@@ -52,4 +51,5 @@ public class VwAnswerController {
     public ResponseEntity agree(@RequestParam String uuid, @RequestParam Boolean userIsAgree, @RequestParam String userUuid) {
         return new ResponseEntity(vwAnswerService.agree(uuid, userIsAgree, userUuid), HttpStatus.OK);
     }
+
 }

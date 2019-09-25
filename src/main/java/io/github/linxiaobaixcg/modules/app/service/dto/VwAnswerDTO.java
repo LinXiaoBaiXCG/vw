@@ -1,5 +1,6 @@
 package io.github.linxiaobaixcg.modules.app.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -10,6 +11,7 @@ import java.io.Serializable;
  * @Description
  */
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class VwAnswerDTO implements Serializable {
 
     /**
