@@ -15,6 +15,9 @@
     left join vw_user u on a.user_id = u.id
     where
     a.is_deleted = 0
+    <if test="criteria.problemId != null and criteria.problemId != ''">
+        and a.problemId = #{criteria.problemId}
+    </if>
     order by
     a.create_time desc
 </select>

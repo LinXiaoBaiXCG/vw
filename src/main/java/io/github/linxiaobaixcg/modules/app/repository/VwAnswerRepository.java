@@ -23,7 +23,7 @@ public interface VwAnswerRepository extends BaseMapper<VwAnswer> {
      * @param queryCriteria
      * @return
      */
-    IPage<VwAnswerDTO> getPage(Page page, @Param("queryCriteria") VwAnswerQueryCriteria queryCriteria);
+    IPage<VwAnswerDTO> getPage(Page page, @Param("criteria") VwAnswerQueryCriteria queryCriteria);
 
     /**
      * 获取回答详细
