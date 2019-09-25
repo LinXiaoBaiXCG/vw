@@ -100,9 +100,10 @@ public class VwUserServiceImpl implements VwUserService {
         problemQueryWrapper.eq("user_id",id);
         problemQueryWrapper.eq("is_deleted",0);
         vwUserDTO.setProblemCount(vwProblemRepository.selectCount(problemQueryWrapper));
-        //查询关注的人数
+        //TODO 查询关注的人数
 
-        //查询关注的问题数
+        //TODO 查询关注的问题数
+
         return vwUserDTO;
     }
 }
