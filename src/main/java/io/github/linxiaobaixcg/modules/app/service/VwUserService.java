@@ -1,6 +1,7 @@
 package io.github.linxiaobaixcg.modules.app.service;
 
 import io.github.linxiaobaixcg.modules.app.entity.vo.UserRegisterVo;
+import io.github.linxiaobaixcg.modules.app.service.dto.VwUserDTO;
 
 /**
  * @program: app
@@ -16,4 +17,11 @@ public interface VwUserService {
      * @return
      */
     void register(UserRegisterVo userRegisterVo);
+
+    /**
+     * 获取用户信息
+     * @param id
+     * @return
+     */
+    VwUserDTO findUserInfo(Long id);
 }

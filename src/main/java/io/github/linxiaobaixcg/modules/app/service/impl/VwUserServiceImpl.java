@@ -2,12 +2,18 @@ package io.github.linxiaobaixcg.modules.app.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.github.linxiaobaixcg.common.exception.BadRequestException;
+import io.github.linxiaobaixcg.modules.app.entity.VwAnswer;
+import io.github.linxiaobaixcg.modules.app.entity.VwProblem;
 import io.github.linxiaobaixcg.modules.app.oauth2.utils.EncryptUtil;
 import io.github.linxiaobaixcg.common.util.RedisUtils;
 import io.github.linxiaobaixcg.modules.app.entity.vo.UserRegisterVo;
 import io.github.linxiaobaixcg.modules.app.entity.VwUser;
+import io.github.linxiaobaixcg.modules.app.repository.VwAnswerRepository;
+import io.github.linxiaobaixcg.modules.app.repository.VwProblemRepository;
 import io.github.linxiaobaixcg.modules.app.service.VwUserService;
 import io.github.linxiaobaixcg.modules.app.repository.VwUserRepository;
+import io.github.linxiaobaixcg.modules.app.service.dto.VwUserDTO;
+import io.github.linxiaobaixcg.modules.app.service.mapper.VwUserMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +34,16 @@ public class VwUserServiceImpl implements VwUserService {
     private VwUserRepository vwUserRepository;
 
     @Autowired
+    private VwUserMapper vwUserMapper;
+
+    @Autowired
     private RedisUtils redisUtils;
+
+    @Autowired
+    private VwAnswerRepository vwAnswerRepository;
+
+    @Autowired
+    private VwProblemRepository vwProblemRepository;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -66,5 +81,28 @@ public class VwUserServiceImpl implements VwUserService {
         vwUser.setStatus(0);
         vwUser.setLastPasswordResetTime(new Timestamp(System.currentTimeMillis()));
         vwUserRepository.insert(vwUser);
+    }
+
+    @Override
+    public VwUserDTO findUserInfo(Long id) {
+        //查询用户信息
+        QueryWrapper<VwUser> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("id",id);
+        VwUser vwUser = vwUserRepository.selectOne(queryWrapper);
+        VwUserDTO vwUserDTO =  vwUserMapper.toDto(vwUser);
+        //查询回答数
+        QueryWrapper<VwAnswer> answerQueryWrapper = new QueryWrapper<>();
+        answerQueryWrapper.eq("user_id",id);
+        answerQueryWrapper.eq("is_deleted",0);
+        vwUserDTO.setAnswerCount(vwAnswerRepository.selectCount(answerQueryWrapper));
+        //查询提问数
+        QueryWrapper<VwProblem> problemQueryWrapper = new QueryWrapper<>();
+        problemQueryWrapper.eq("user_id",id);
+        problemQueryWrapper.eq("is_deleted",0);
+        vwUserDTO.setProblemCount(vwProblemRepository.selectCount(problemQueryWrapper));
+        //查询关注的人数
+
+        //查询关注的问题数
+        return vwUserDTO;
     }
 }

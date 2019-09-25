@@ -5,6 +5,7 @@ import io.github.linxiaobaixcg.modules.app.entity.vo.UserRegisterVo;
 import io.github.linxiaobaixcg.modules.app.entity.VwUser;
 import io.github.linxiaobaixcg.modules.app.repository.VwUserRepository;
 import io.github.linxiaobaixcg.modules.app.service.VwUserService;
+import io.github.linxiaobaixcg.modules.app.service.dto.VwUserDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -54,5 +55,11 @@ public class VwUserServiceImplTest {
         userRegisterVo.setPassword("a123456");
         userRegisterVo.setCheckPassword("a123456");
         vwUserService.register(userRegisterVo);
+    }
+
+    @Test
+    public void userInfo(){
+        VwUserDTO vwUserDTO =  vwUserService.findUser(1L);
+        log.info("{}",vwUserDTO);
     }
 }
