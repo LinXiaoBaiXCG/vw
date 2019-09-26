@@ -59,7 +59,7 @@ public class VwUserServiceImplTest {
 
     @Test
     public void userInfo(){
-        VwUserDTO vwUserDTO =  vwUserService.findUser(1L);
+        VwUserDTO vwUserDTO =  vwUserService.findUserInfo(1L);
         log.info("{}",vwUserDTO);
     }
 }

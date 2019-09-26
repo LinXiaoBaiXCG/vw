@@ -1,6 +1,7 @@
 package io.github.linxiaobaixcg.modules.app.controller;
 
 import io.github.linxiaobaixcg.modules.app.entity.vo.UserRegisterVo;
+import io.github.linxiaobaixcg.modules.app.oauth2.annotation.Login;
 import io.github.linxiaobaixcg.modules.app.service.VwUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -38,5 +39,12 @@ public class VwUserController {
     public ResponseEntity register(@RequestBody @Validated UserRegisterVo userRegisterVo) {
         vwUserService.register(userRegisterVo);
         return new ResponseEntity(HttpStatus.CREATED);
+    }
+
+    @Login
+    @GetMapping("/getUserInfo")
+    @ApiOperation("获取用户信息")
+    public ResponseEntity getUserInfo(@RequestAttribute("userId") Long userId){
+        return ResponseEntity.ok(vwUserService.findUserInfo(userId));
     }
 }

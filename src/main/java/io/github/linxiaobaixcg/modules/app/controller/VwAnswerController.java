@@ -1,7 +1,9 @@
 package io.github.linxiaobaixcg.modules.app.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.github.linxiaobaixcg.modules.app.entity.VwUser;
 import io.github.linxiaobaixcg.modules.app.oauth2.annotation.Login;
+import io.github.linxiaobaixcg.modules.app.oauth2.annotation.LoginUser;
 import io.github.linxiaobaixcg.modules.app.service.dto.VwAnswerQueryCriteria;
 import io.github.linxiaobaixcg.modules.app.entity.VwAnswer;
 import io.github.linxiaobaixcg.modules.app.service.VwAnswerService;
@@ -28,9 +30,11 @@ public class VwAnswerController {
     @Autowired
     private VwAnswerService vwAnswerService;
 
+    @Login
     @ApiOperation("新增回答")
     @PostMapping("/insert")
-    public ResponseEntity insert(@RequestBody VwAnswer vwAnswer) {
+    public ResponseEntity insert(@RequestBody VwAnswer vwAnswer, @RequestAttribute("userId") Long userId) {
+        vwAnswer.setUserId(userId);
         return new ResponseEntity(vwAnswerService.insert(vwAnswer), HttpStatus.CREATED);
     }
 
@@ -40,10 +44,11 @@ public class VwAnswerController {
         return new ResponseEntity(vwAnswerService.getPage(page, queryCriteria), HttpStatus.OK);
     }
 
+    @Login
     @ApiOperation("获取回答详细")
-    @GetMapping("/details")
-    public ResponseEntity details(@RequestParam Long id, @RequestParam String userUuid) {
-        return new ResponseEntity(vwAnswerService.findOne(id, userUuid), HttpStatus.OK);
+    @GetMapping("/details/{id}")
+    public ResponseEntity details(@PathVariable Long id, @LoginUser VwUser user) {
+        return new ResponseEntity(vwAnswerService.findOne(id, user.getUuid()), HttpStatus.OK);
     }
 
     @ApiOperation("同意回答")

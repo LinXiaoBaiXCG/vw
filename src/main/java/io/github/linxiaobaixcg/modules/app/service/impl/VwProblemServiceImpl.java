@@ -1,5 +1,6 @@
 package io.github.linxiaobaixcg.modules.app.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.github.linxiaobaixcg.modules.app.entity.VwProblem;
@@ -21,8 +22,11 @@ public class VwProblemServiceImpl implements VwProblemService {
     private VwProblemRepository vwProblemRepository;
 
     @Override
-    public IPage<VwProblem> getListByTitle(Page page, String title) {
-        return vwProblemRepository.getListByTitle(page,title);
+    public IPage<VwProblem> getUserProblem(Page page, Long userId) {
+        QueryWrapper<VwProblem> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("user_id", userId);
+        queryWrapper.eq("is_deleted", 0);
+        return vwProblemRepository.selectPage(page,queryWrapper);
     }
 
     @Override

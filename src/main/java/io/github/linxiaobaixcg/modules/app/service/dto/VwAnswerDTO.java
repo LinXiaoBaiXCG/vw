@@ -35,6 +35,11 @@ public class VwAnswerDTO implements Serializable {
     private String problemTitle;
 
     /**
+     * 问题描述
+     */
+    private String problemDetails;
+
+    /**
      * 回答内容
      */
     private String content;

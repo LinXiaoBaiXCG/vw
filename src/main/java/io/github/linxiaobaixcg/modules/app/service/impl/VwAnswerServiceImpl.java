@@ -11,6 +11,7 @@ import io.github.linxiaobaixcg.modules.app.service.dto.VwAnswerDTO;
 import io.github.linxiaobaixcg.modules.app.service.dto.VwAnswerQueryCriteria;
 import io.github.linxiaobaixcg.modules.app.service.dto.VwUserAgreeDTO;
 import io.lettuce.core.cluster.RedisAdvancedClusterAsyncCommandsImpl;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,11 +49,15 @@ public class VwAnswerServiceImpl implements VwAnswerService {
         queryWrapper.eq("is_deleted", 0);
         vwAnswerDTO.setProblemCount(vwAnswerRepository.selectCount(queryWrapper));
         //查询该用户是否点赞
-        Object answerUuid = redisUtils.get("userAgree" + userUuid);
-        if (vwAnswerDTO.getUuid().equals(answerUuid)) {
-            vwAnswerDTO.setUserIsAgree(true);
-        } else {
+        if (StringUtils.isBlank(userUuid)){
             vwAnswerDTO.setUserIsAgree(false);
+        }else {
+            Object answerUuid = redisUtils.get("userAgree" + userUuid);
+            if (vwAnswerDTO.getUuid().equals(answerUuid)) {
+                vwAnswerDTO.setUserIsAgree(true);
+            } else {
+                vwAnswerDTO.setUserIsAgree(false);
+            }
         }
         //获取回答点赞数
         Object agreeCount = redisUtils.get("agree" + vwAnswerDTO.getUuid());

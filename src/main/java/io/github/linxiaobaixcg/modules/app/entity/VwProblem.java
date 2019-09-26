@@ -25,7 +25,6 @@ public class VwProblem implements Serializable {
     @TableField(value = "uuid",fill = FieldFill.INSERT)
     private String uuid;
 
-    @NotNull(message = "提问人ID不能为空")
     private Long userId;
 
     @NotBlank(message = "标题不能为空")

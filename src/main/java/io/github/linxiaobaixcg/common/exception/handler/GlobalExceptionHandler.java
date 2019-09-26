@@ -1,6 +1,7 @@
 package io.github.linxiaobaixcg.common.exception.handler;
 
 import io.github.linxiaobaixcg.common.exception.BadRequestException;
+import io.github.linxiaobaixcg.common.exception.CustomException;
 import io.github.linxiaobaixcg.common.exception.EntityExistException;
 import io.github.linxiaobaixcg.common.exception.EntityNotFoundException;
 import io.github.linxiaobaixcg.common.util.ThrowableUtil;
@@ -118,5 +119,19 @@ public class GlobalExceptionHandler {
      */
     private ResponseEntity<ApiError> buildResponseEntity(ApiError apiError) {
         return new ResponseEntity(apiError, HttpStatus.valueOf(apiError.getStatus()));
+    }
+
+    /**
+     * 处理自定义异常 CustomException
+     *
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(value = CustomException.class)
+    public ResponseEntity<ApiError> customException(CustomException e) {
+        // 打印堆栈信息
+        log.error(ThrowableUtil.getStackTrace(e));
+        ApiError apiError = new ApiError(e.getCode(), e.getMessage());
+        return buildResponseEntity(apiError);
     }
 }

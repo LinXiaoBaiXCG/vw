@@ -52,6 +52,11 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
             throw new CustomException(jwtUtils.getHeader() + "不能为空", HttpStatus.UNAUTHORIZED.value());
         }
 
+        //是否带上前缀
+        if (token.startsWith("Bearer ")){
+            token = token.substring(7);
+        }
+
         Claims claims = jwtUtils.getClaimByToken(token);
         if(claims == null || jwtUtils.isTokenExpired(claims.getExpiration())){
             throw new CustomException(jwtUtils.getHeader() + "失效，请重新登录", HttpStatus.UNAUTHORIZED.value());

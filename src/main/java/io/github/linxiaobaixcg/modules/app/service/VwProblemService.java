@@ -12,7 +12,13 @@ import io.github.linxiaobaixcg.modules.app.entity.VwProblem;
  * @create: 2019-05-20 23:26
  **/
 public interface VwProblemService {
-    IPage<VwProblem> getListByTitle(Page page, String title);
+    /**
+     * 获取用户提问
+     * @param page
+     * @param userId
+     * @return
+     */
+    IPage<VwProblem> getUserProblem(Page page, Long userId);
 
     /**
      * 添加问题
