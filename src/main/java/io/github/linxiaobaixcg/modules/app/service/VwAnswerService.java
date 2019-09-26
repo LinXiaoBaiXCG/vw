@@ -43,9 +43,9 @@ public interface VwAnswerService {
 
     /**
      * 赞同回答
-     * @param uuid
-     * @param userIsAgree
-     * @param userUuid
+     * @param uuid 回答uuid
+     * @param userIsAgree 用户是否点赞
+     * @param userUuid 用户uuid
      * @return VwUserAgreeDTO
      */
     VwUserAgreeDTO agree(String uuid, Boolean userIsAgree, String userUuid);

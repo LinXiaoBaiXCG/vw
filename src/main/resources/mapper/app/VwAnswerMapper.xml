@@ -6,6 +6,7 @@
     <select id="getPage" resultType="io.github.linxiaobaixcg.modules.app.service.dto.VwAnswerDTO">
     select
     a.id as id,
+    a.problem_id as problemId,
     a.problem_title as problemTitle,
     a.content as content,
     u.username as username,
@@ -18,7 +19,7 @@
     where
     a.is_deleted = 0
     <if test="criteria.problemId != null and criteria.problemId != ''">
-        and a.problemId = #{criteria.problemId}
+        and a.problem_id = #{criteria.problemId}
     </if>
     order by
     a.create_time desc

@@ -16,4 +16,9 @@ public class VwUserAgreeDTO implements Serializable {
      * 用户是否点赞
      */
     private Boolean userIsAgree;
+
+    /**
+     * 赞同数
+     */
+    private Long agreeCount;
 }

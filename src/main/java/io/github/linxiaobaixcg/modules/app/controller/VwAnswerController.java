@@ -51,10 +51,11 @@ public class VwAnswerController {
         return new ResponseEntity(vwAnswerService.findOne(id, user.getUuid()), HttpStatus.OK);
     }
 
+    @Login
     @ApiOperation("同意回答")
     @GetMapping("/agree")
-    public ResponseEntity agree(@RequestParam String uuid, @RequestParam Boolean userIsAgree, @RequestParam String userUuid) {
-        return new ResponseEntity(vwAnswerService.agree(uuid, userIsAgree, userUuid), HttpStatus.OK);
+    public ResponseEntity agree(@RequestParam String uuid, @RequestParam Boolean userIsAgree, @LoginUser VwUser user) {
+        return new ResponseEntity(vwAnswerService.agree(uuid, userIsAgree, user.getUuid()), HttpStatus.OK);
     }
 
 }
