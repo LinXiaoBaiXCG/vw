@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 /**
  * @author linchuangqiong
@@ -73,4 +74,9 @@ public class VwAnswerDTO implements Serializable {
      * 用户是否点赞 0:未点赞  1:已点赞
      */
     private Boolean userIsAgree;
+
+    /**
+     * 修改时间
+     */
+    private Timestamp updateTime;
 }

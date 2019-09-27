@@ -33,7 +33,8 @@
     a.content as content,
     u.username as username,
     u.avatar as avatar,
-    u.introduction as introduction
+    u.introduction as introduction,
+    a.update_time as updateTime
     from
     vw_answer a
     left join vw_user u on a.user_id = u.id
