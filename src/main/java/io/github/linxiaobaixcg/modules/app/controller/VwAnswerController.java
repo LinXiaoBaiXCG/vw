@@ -58,4 +58,10 @@ public class VwAnswerController {
         return new ResponseEntity(vwAnswerService.agree(uuid, userIsAgree, user.getUuid()), HttpStatus.OK);
     }
 
+    @Login
+    @ApiOperation("获取我的回答列表")
+    @GetMapping("/getMyAnswer")
+    public ResponseEntity getMyAnswer(Page page, @RequestAttribute("userId")Long userId) {
+        return new ResponseEntity(vwAnswerService.getMyAnswer(page, userId), HttpStatus.OK);
+    }
 }

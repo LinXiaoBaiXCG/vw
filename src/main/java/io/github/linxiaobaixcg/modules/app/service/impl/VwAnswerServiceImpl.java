@@ -88,4 +88,9 @@ public class VwAnswerServiceImpl implements VwAnswerService {
         }
         return vwUserAgreeDTO;
     }
+
+    @Override
+    public IPage<VwAnswerDTO> getMyAnswer(Page page, Long userId) {
+        return vwAnswerRepository.findMyAnswer(page,userId);
+    }
 }

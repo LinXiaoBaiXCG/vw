@@ -31,4 +31,12 @@ public interface VwAnswerRepository extends BaseMapper<VwAnswer> {
      * @return
      */
     VwAnswerDTO findOne(@Param("id") Long id);
+
+    /**
+     *  查询我的回答列表
+     * @param page
+     * @param userId
+     * @return
+     */
+    IPage<VwAnswerDTO> findMyAnswer(Page page, @Param("userId") Long userId);
 }

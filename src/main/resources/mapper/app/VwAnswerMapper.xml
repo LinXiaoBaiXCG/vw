@@ -24,6 +24,7 @@
     order by
     a.create_time desc
     </select>
+
     <select id="findOne" resultType="io.github.linxiaobaixcg.modules.app.service.dto.VwAnswerDTO">
     select
     a.id as id,
@@ -40,6 +41,27 @@
     left join vw_user u on a.user_id = u.id
     where
     a.id =#{id}
+    </select>
+    <select id="findMyAnswer" resultType="io.github.linxiaobaixcg.modules.app.service.dto.VwAnswerDTO">
+        select
+        a.id as id,
+        a.problem_id as problemId,
+        a.problem_title as problemTitle,
+        a.content as content,
+        u.username as username,
+        u.avatar as avatar,
+        p.details as problemDetails
+        from
+        vw_answer a
+        left join vw_user u on a.user_id = u.id
+        left join vw_problem p on a.problem_id = p.id
+        where
+        a.is_deleted = 0
+        <if test="userId != null and userId != ''">
+            and a.user_id = #{userId}
+        </if>
+        order by
+        a.create_time desc
     </select>
 </mapper>
 

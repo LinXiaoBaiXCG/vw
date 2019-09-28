@@ -49,4 +49,13 @@ public interface VwAnswerService {
      * @return VwUserAgreeDTO
      */
     VwUserAgreeDTO agree(String uuid, Boolean userIsAgree, String userUuid);
+
+    /**
+     * 我的回答列表
+     *
+     * @param page
+     * @param userId
+     * @return
+     */
+    IPage<VwAnswerDTO> getMyAnswer(Page page, Long userId);
 }
