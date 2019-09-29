@@ -26,4 +26,12 @@ public interface VwProblemService {
      * @return
      */
     int addProblem(VwProblem vwProblem);
+
+    /**
+     * 通过标题获取问题列表
+     * @param page
+     * @param title
+     * @return
+     */
+    IPage<VwProblem> getByTitle(Page page, String title);
 }

@@ -33,4 +33,12 @@ public class VwProblemServiceImpl implements VwProblemService {
     public int addProblem(VwProblem vwProblem) {
         return vwProblemRepository.insert(vwProblem);
     }
+
+    @Override
+    public IPage<VwProblem> getByTitle(Page page, String title) {
+        QueryWrapper<VwProblem> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like("title", title);
+        queryWrapper.eq("is_deleted", 0);
+        return vwProblemRepository.selectPage(page,queryWrapper);
+    }
 }

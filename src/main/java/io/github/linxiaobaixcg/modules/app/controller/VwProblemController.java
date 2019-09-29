@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.github.linxiaobaixcg.modules.app.entity.VwProblem;
 import io.github.linxiaobaixcg.modules.app.oauth2.annotation.Login;
 import io.github.linxiaobaixcg.modules.app.service.VwProblemService;
+import io.github.linxiaobaixcg.modules.system.controller.vo.ResultVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -43,21 +44,9 @@ public class VwProblemController {
         return new ResponseEntity(vwProblemService.getUserProblem(page, userId), HttpStatus.OK);
     }
 
-//    @ApiOperation("首页--问题搜索")
-//    @GetMapping("search")
-//    public ResultVO search(@RequestParam @Validated String title, @RequestParam(defaultValue = "0",required = false) int current, @RequestParam(defaultValue = "10",required = false) int size){
-//        ResultVO resultVO = new ResultVO();
-//        Page<VwProblem> page = new Page<>(current, size);
-//        try {
-//           IPage<VwProblem> vwProblemIPage = vwProblemService.getListByTitle(page,title);
-//           resultVO.setCode(0);
-//           resultVO.setMsg("搜索成功");
-//           resultVO.setData(vwProblemIPage);
-//        }catch (Exception e){
-//            log.error("搜索问题失败",e);
-//            throw new CustomException("搜索出现错误");
-//        }
-//
-//        return resultVO;
-//    }
+    @ApiOperation("问题搜索")
+    @GetMapping("/search")
+    public ResponseEntity search(Page page, String title){
+        return new ResponseEntity(vwProblemService.getByTitle(page, title), HttpStatus.OK);
+    }
 }
