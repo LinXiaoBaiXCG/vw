@@ -71,7 +71,7 @@ public class VwAnswerServiceImpl implements VwAnswerService {
     @Override
     public VwUserAgreeDTO agree(String uuid, Boolean userIsAgree, String userUuid) {
         VwUserAgreeDTO vwUserAgreeDTO = new VwUserAgreeDTO();
-        if (userIsAgree) {
+        if (null != userIsAgree && userIsAgree) {
             //设置用户点赞标识
             redisUtils.set(uuid + userUuid, uuid);
             //记录用户数
@@ -79,8 +79,7 @@ public class VwAnswerServiceImpl implements VwAnswerService {
             //返回该回答赞同数和用户是否点赞
             vwUserAgreeDTO.setAgreeCount(agreeCount);
             vwUserAgreeDTO.setUserIsAgree(true);
-        }
-        if (!userIsAgree) {
+        } else {
             redisUtils.del(uuid + userUuid, uuid);
             Long agreeCount = redisUtils.decr(RedisConstant.AGREE_ANSWER + uuid, 1);
             vwUserAgreeDTO.setAgreeCount(agreeCount);
@@ -91,6 +90,6 @@ public class VwAnswerServiceImpl implements VwAnswerService {
 
     @Override
     public IPage<VwAnswerDTO> getMyAnswer(Page page, Long userId) {
-        return vwAnswerRepository.findMyAnswer(page,userId);
+        return vwAnswerRepository.findMyAnswer(page, userId);
     }
 }
