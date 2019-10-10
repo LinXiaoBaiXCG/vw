@@ -14,6 +14,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -27,46 +28,14 @@ import org.springframework.web.bind.annotation.*;
 @Api(tags = "关注操作相关接口")
 @Slf4j
 public class VwFollowController {
-    private final VwFollowService vwFollowService;
 
-    public VwFollowController(VwFollowService vwFollowService) {
-        this.vwFollowService = vwFollowService;
-    }
+    @Autowired
+    VwFollowService vwFollowService;
 
     @ApiOperation("添加关注")
     @PostMapping("/sava")
     public ResultVO sava(@RequestBody VwFollowVO vwFollowVO){
-        ValidatorUtils.validateEntity(vwFollowVO);
-        ResultVO resultVO = new ResultVO();
-        QueryWrapper<VwFollow> vwFollowWrapper = new QueryWrapper<>();
-        vwFollowWrapper.eq("user_id",vwFollowVO.getUserId());
-        vwFollowWrapper.eq("concerned_id",vwFollowVO.getConcernedId());
-        try{
-        VwFollow result = vwFollowService.getOne(vwFollowWrapper);
-        if (result == null){
-        VwFollow vwFollow = new VwFollow();
-        BeanUtils.copyProperties(vwFollowVO,vwFollow);
-        Boolean flag = vwFollowService.save(vwFollow);
-        if (flag){
-            resultVO.setCode(0);
-            resultVO.setMsg("添加关注成功");
-        }else {
-            throw new CustomException("添加关注失败");
-        }
-        }else {
-            Boolean flag = vwFollowService.remove(vwFollowWrapper);
-            if (flag){
-                resultVO.setCode(0);
-                resultVO.setMsg("取消关注成功");
-            }else {
-                throw new CustomException("取消关注失败");
-            }
-        }
-        }catch (Exception e){
-            log.error("添加关注有误",e);
-            throw new CustomException("添加关注有误");
-        }
-        return resultVO;
+        return new ResultVO();
     }
 
     @ApiOperation("我的关注列表")
