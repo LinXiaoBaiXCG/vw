@@ -1,5 +1,6 @@
 package io.github.linxiaobaixcg.modules.app.controller;
 
+import io.github.linxiaobaixcg.modules.app.entity.VwUser;
 import io.github.linxiaobaixcg.modules.app.entity.vo.UserRegisterVo;
 import io.github.linxiaobaixcg.modules.app.oauth2.annotation.Login;
 import io.github.linxiaobaixcg.modules.app.service.VwUserService;
@@ -46,5 +47,13 @@ public class VwUserController {
     @ApiOperation("获取用户信息")
     public ResponseEntity getUserInfo(@RequestAttribute("userId") Long userId){
         return ResponseEntity.ok(vwUserService.findUserInfo(userId));
+    }
+
+    @Login
+    @PutMapping("/updateUserInfo")
+    @ApiOperation("修改用户信息")
+    public ResponseEntity update(@RequestBody @Validated VwUser vwUser){
+        vwUserService.updateUserInfo(vwUser);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }

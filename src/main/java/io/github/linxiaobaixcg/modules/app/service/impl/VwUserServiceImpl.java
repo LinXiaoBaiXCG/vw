@@ -106,4 +106,9 @@ public class VwUserServiceImpl implements VwUserService {
 
         return vwUserDTO;
     }
+
+    @Override
+    public void updateUserInfo(VwUser vwUser) {
+        vwUserRepository.updateById(vwUser);
+    }
 }

@@ -1,5 +1,6 @@
 package io.github.linxiaobaixcg.modules.app.service;
 
+import io.github.linxiaobaixcg.modules.app.entity.VwUser;
 import io.github.linxiaobaixcg.modules.app.entity.vo.UserRegisterVo;
 import io.github.linxiaobaixcg.modules.app.service.dto.VwUserDTO;
 
@@ -24,4 +25,10 @@ public interface VwUserService {
      * @return
      */
     VwUserDTO findUserInfo(Long id);
+
+    /**
+     * 修改用户信息
+     * @param vwUser
+     */
+    void updateUserInfo(VwUser vwUser);
 }
