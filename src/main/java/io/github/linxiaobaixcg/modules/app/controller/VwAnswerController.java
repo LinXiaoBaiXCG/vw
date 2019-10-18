@@ -64,4 +64,10 @@ public class VwAnswerController {
     public ResponseEntity getMyAnswer(Page page, @RequestAttribute("userId")Long userId) {
         return new ResponseEntity(vwAnswerService.getMyAnswer(page, userId), HttpStatus.OK);
     }
+
+    @ApiOperation("获取推荐列表")
+    @GetMapping("/getRecommendList")
+    public ResponseEntity getRecommendList(Page page) {
+        return new ResponseEntity(vwAnswerService.getRecommendList(page), HttpStatus.OK);
+    }
 }

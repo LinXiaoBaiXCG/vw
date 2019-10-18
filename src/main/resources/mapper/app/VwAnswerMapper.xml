@@ -63,5 +63,24 @@
         order by
         a.create_time desc
     </select>
+    <select id="findRecommendList" resultType="io.github.linxiaobaixcg.modules.app.service.dto.VwAnswerDTO">
+        select
+        a.id as id,
+        a.problem_id as problemId,
+        a.problem_title as problemTitle,
+        a.content as content,
+        u.username as username,
+        u.avatar as avatar,
+        p.details as problemDetails
+        from
+        vw_answer a
+        left join vw_user u on a.user_id = u.id
+        left join vw_problem p on a.problem_id = p.id
+        where
+        a.is_deleted = 0
+        and a.is_recommend = 1
+        order by
+        a.create_time desc
+    </select>
 </mapper>
 

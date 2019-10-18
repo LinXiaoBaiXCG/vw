@@ -58,4 +58,11 @@ public interface VwAnswerService {
      * @return
      */
     IPage<VwAnswerDTO> getMyAnswer(Page page, Long userId);
+
+    /**
+     * 获取推荐列表
+     * @param page
+     * @return
+     */
+    IPage<VwAnswerDTO> getRecommendList(Page page);
 }

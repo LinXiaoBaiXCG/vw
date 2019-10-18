@@ -41,4 +41,9 @@ public class VwAnswer implements Serializable {
 
     @TableField(value = "update_time",fill = FieldFill.INSERT_UPDATE)
     private Timestamp updateTime;
+
+    /**
+     * 是否推荐 0否 1是
+     */
+    private Integer isRecommend;
 }

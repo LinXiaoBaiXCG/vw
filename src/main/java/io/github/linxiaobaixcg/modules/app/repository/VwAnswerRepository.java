@@ -39,4 +39,6 @@ public interface VwAnswerRepository extends BaseMapper<VwAnswer> {
      * @return
      */
     IPage<VwAnswerDTO> findMyAnswer(Page page, @Param("userId") Long userId);
+
+    IPage<VwAnswerDTO> findRecommendList(Page page);
 }

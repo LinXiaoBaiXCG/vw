@@ -92,4 +92,9 @@ public class VwAnswerServiceImpl implements VwAnswerService {
     public IPage<VwAnswerDTO> getMyAnswer(Page page, Long userId) {
         return vwAnswerRepository.findMyAnswer(page, userId);
     }
+
+    @Override
+    public IPage<VwAnswerDTO> getRecommendList(Page page) {
+        return vwAnswerRepository.findRecommendList(page);
+    }
 }
