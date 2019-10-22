@@ -25,6 +25,7 @@
         <apache.commons.version>3.5</apache.commons.version>
         <jwt.version>0.7.0</jwt.version>
         <mapstruct.version>1.2.0.Final</mapstruct.version>
+        <qiniuyun.version>7.1.1</qiniuyun.version>
     </properties>
 
     <dependencies>
@@ -152,6 +153,13 @@
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-processor</artifactId>
             <version>${mapstruct.version}</version>
+        </dependency>
+
+        <!--七牛云-->
+        <dependency>
+            <groupId>com.qiniu</groupId>
+            <artifactId>qiniu-java-sdk</artifactId>
+            <version>${qiniuyun.version}</version>
         </dependency>
 
     </dependencies>

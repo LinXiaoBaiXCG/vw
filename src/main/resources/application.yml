@@ -52,3 +52,9 @@ app:
 #    expire: 604800
     expire: 43200
     header: Authorization
+
+#七牛云配置
+qiniuyun:
+  access-key:
+  secret-key:
+  bucket:
