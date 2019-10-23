@@ -26,6 +26,7 @@
         <jwt.version>0.7.0</jwt.version>
         <mapstruct.version>1.2.0.Final</mapstruct.version>
         <qiniuyun.version>7.1.1</qiniuyun.version>
+        <netty.socketio.version>1.7.17</netty.socketio.version>
     </properties>
 
     <dependencies>
@@ -160,6 +161,13 @@
             <groupId>com.qiniu</groupId>
             <artifactId>qiniu-java-sdk</artifactId>
             <version>${qiniuyun.version}</version>
+        </dependency>
+
+        <!--netty-socketio-->
+        <dependency>
+            <groupId>com.corundumstudio.socketio</groupId>
+            <artifactId>netty-socketio</artifactId>
+            <version>${netty.socketio.version}</version>
         </dependency>
 
     </dependencies>
