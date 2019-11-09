@@ -59,7 +59,10 @@ public class VwUserServiceImplTest {
 
     @Test
     public void userInfo(){
-        VwUserDTO vwUserDTO =  vwUserService.findUserInfo(1L);
-        log.info("{}",vwUserDTO);
+        redisUtils.set("bb","123",20L);
+       Long time = redisUtils.getExpire("bb");
+       log.info("{}",time);
     }
+
+
 }
