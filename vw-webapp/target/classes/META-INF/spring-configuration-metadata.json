@@ -1,0 +1,28 @@
+{
+  "groups": [
+    {
+      "name": "app.jwt",
+      "type": "io.github.linxiaobaixcg.oauth2.utils.JwtUtil",
+      "sourceType": "io.github.linxiaobaixcg.oauth2.utils.JwtUtil"
+    }
+  ],
+  "properties": [
+    {
+      "name": "app.jwt.expire",
+      "type": "java.lang.Long",
+      "sourceType": "io.github.linxiaobaixcg.oauth2.utils.JwtUtil",
+      "defaultValue": 0
+    },
+    {
+      "name": "app.jwt.header",
+      "type": "java.lang.String",
+      "sourceType": "io.github.linxiaobaixcg.oauth2.utils.JwtUtil"
+    },
+    {
+      "name": "app.jwt.secret",
+      "type": "java.lang.String",
+      "sourceType": "io.github.linxiaobaixcg.oauth2.utils.JwtUtil"
+    }
+  ],
+  "hints": []
+}

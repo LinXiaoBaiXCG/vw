@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.linxiaobaixcg.repository.VwFollowRepository">
+    <sql id="table">
+        vw_follow o
+    </sql>
+
+    <sql id="column">
+        o.id as id,
+        o.user_id as userId,
+        o.concerned_id as concernedId,
+        o.create_time as createTime,
+        o.update_time as updateTime
+    </sql>
+
+    <select id="getPageByUserId" resultType="io.github.linxiaobaixcg.entity.VwFollow">
+        select
+        <include refid="column"/>,
+        u.username as concernedName
+        from
+        <include refid="table"/>
+        left join vw_user u on u.id = o.concerned_id
+        where
+        o.user_id = #{userId}
+        order by
+        o.create_time desc
+    </select>
+
+    <select id="answerPage" resultType="io.github.linxiaobaixcg.entity.VwAnswer">
+        select
+        a.id as id,
+        a.problem_id as problemId,
+        a.problem_title as problemTitle,
+        a.user_id as userId,
+        a.content as content,
+        a.create_time as createTime
+        from
+        vw_follow o
+        left join vw_answer a on a.user_id =o.concerned_id
+        where
+        a.is_delete = 1
+        and o.concerned_id in
+        <foreach collection="concernedIds" item="concernedId" separator="," open="(" close=")" index="index">
+        #{concernedId}
+        </foreach>
+        order by
+        a.create_time desc
+    </select>
+</mapper>
+

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.linxiaobaixcg.repository.VwAnswerRepository">
+
+
+    <select id="getPage" resultType="io.github.linxiaobaixcg.service.dto.VwAnswerDTO">
+    select
+    a.id as id,
+    a.problem_id as problemId,
+    a.problem_title as problemTitle,
+    a.content as content,
+    u.username as username,
+    u.avatar as avatar,
+    p.details as problemDetails
+    from
+    vw_answer a
+    left join vw_user u on a.user_id = u.id
+    left join vw_problem p on a.problem_id = p.id
+    where
+    a.is_deleted = 0
+    <if test="criteria.problemId != null and criteria.problemId != ''">
+        and a.problem_id = #{criteria.problemId}
+    </if>
+    order by
+    a.create_time desc
+    </select>
+
+    <select id="findOne" resultType="io.github.linxiaobaixcg.service.dto.VwAnswerDTO">
+    select
+    a.id as id,
+    a.uuid as uuid,
+    a.problem_id as problemId,
+    a.problem_title as problemTitle,
+    a.content as content,
+    u.username as username,
+    u.avatar as avatar,
+    u.introduction as introduction,
+    a.update_time as updateTime
+    from
+    vw_answer a
+    left join vw_user u on a.user_id = u.id
+    where
+    a.id =#{id}
+    </select>
+    <select id="findMyAnswer" resultType="io.github.linxiaobaixcg.service.dto.VwAnswerDTO">
+        select
+        a.id as id,
+        a.problem_id as problemId,
+        a.problem_title as problemTitle,
+        a.content as content,
+        u.username as username,
+        u.avatar as avatar,
+        p.details as problemDetails
+        from
+        vw_answer a
+        left join vw_user u on a.user_id = u.id
+        left join vw_problem p on a.problem_id = p.id
+        where
+        a.is_deleted = 0
+        <if test="userId != null and userId != ''">
+            and a.user_id = #{userId}
+        </if>
+        order by
+        a.create_time desc
+    </select>
+    <select id="findRecommendList" resultType="io.github.linxiaobaixcg.service.dto.VwAnswerDTO">
+        select
+        a.id as id,
+        a.problem_id as problemId,
+        a.problem_title as problemTitle,
+        a.content as content,
+        u.username as username,
+        u.avatar as avatar,
+        p.details as problemDetails
+        from
+        vw_answer a
+        left join vw_user u on a.user_id = u.id
+        left join vw_problem p on a.problem_id = p.id
+        where
+        a.is_deleted = 0
+        and a.is_recommend = 1
+        order by
+        a.create_time desc
+    </select>
+</mapper>
+
