@@ -1,0 +1,13 @@
+D:\my-project\vw\vw\admin_generator\src\main\java\io\github\linxiaobaixcg\rest\GenConfigController.java
+D:\my-project\vw\vw\admin_generator\src\main\java\io\github\linxiaobaixcg\utils\GenUtil.java
+D:\my-project\vw\vw\admin_generator\src\main\java\io\github\linxiaobaixcg\domain\ColumnInfo.java
+D:\my-project\vw\vw\admin_generator\src\main\java\io\github\linxiaobaixcg\service\GeneratorService.java
+D:\my-project\vw\vw\admin_generator\src\main\java\io\github\linxiaobaixcg\rest\GeneratorController.java
+D:\my-project\vw\vw\admin_generator\src\main\java\io\github\linxiaobaixcg\domain\GenConfig.java
+D:\my-project\vw\vw\admin_generator\src\main\java\io\github\linxiaobaixcg\service\impl\GeneratorServiceImpl.java
+D:\my-project\vw\vw\admin_generator\src\main\java\io\github\linxiaobaixcg\repository\GenConfigRepository.java
+D:\my-project\vw\vw\admin_generator\src\main\java\io\github\linxiaobaixcg\domain\vo\TableInfo.java
+D:\my-project\vw\vw\admin_generator\src\main\java\io\github\linxiaobaixcg\service\GenConfigService.java
+D:\my-project\vw\vw\admin_generator\src\main\java\io\github\linxiaobaixcg\utils\ColUtil.java
+D:\my-project\vw\vw\admin_generator\src\main\java\io\github\linxiaobaixcg\repository\ColumnInfoRepository.java
+D:\my-project\vw\vw\admin_generator\src\main\java\io\github\linxiaobaixcg\service\impl\GenConfigServiceImpl.java

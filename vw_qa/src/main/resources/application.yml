@@ -1,0 +1,62 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: vw-qa
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://47.98.237.121/vw?characterEncoding=UTF8
+    username: root
+    password: LCQmysql183187!
+    hikari:
+      #最大连接数
+      maximum-pool-size: 20
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+      #最小链接池
+      minimum-idle: 10
+      #连接允许在池中闲置的最长时间
+      idle-timeout: 60000
+      #池中连接最长生命周期
+      max-lifetime: 60000
+  redis:
+    host: 192.168.138.128
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: io.github.linxiaobaixcg.entity
+  global-config:
+    #数据库相关配置
+    db-config:
+      #字段策略 IGNORED:"忽略判断",NOT_NULL:"非 NULL 判断"),NOT_EMPTY:"非空判断"
+      field-strategy: NOT_NULL
+      #驼峰下划线转换
+      column-underline: true
+      logic-delete-value: -1
+      logic-not-delete-value: 0
+      #自定义填充策略接口实现
+      global-config.meta-object-handler: MyMetaObjectHandler
+    banner: false
+  # 配置SQL打印日志
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#是否开启 swagger-ui
+swagger:
+  enabled: true
+#jwt
+jwt:
+  header: Authorization
+  # 令牌前缀
+  token-start-with: Bearer
+  # 必须使用最少88位的Base64对该令牌进行编码
+  base64-secret: ZmQ0ZGI5NjQ0MDQwY2I4MjMxY2Y3ZmI3MjdhN2ZmMjNhODViOTg1ZGE0NTBjMGM4NDA5NzYxMjdjOWMwYWRmZTBlZjlhNGY3ZTg4Y2U3YTE1ODVkZDU5Y2Y3OGYwZWE1NzUzNWQ2YjFjZDc0NGMxZWU2MmQ3MjY1NzJmNTE0MzI=
+  # 令牌过期时间 此处单位/毫秒 ，默认4小时，可在此网站生成 https://www.convertworld.com/zh-hans/time/milliseconds.html
+  token-validity-in-seconds: 14400000
+  # 在线用户key
+  online-key: online-token
+  # 验证码
+  code-key: code-key

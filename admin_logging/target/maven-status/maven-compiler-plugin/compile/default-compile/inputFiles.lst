@@ -1,0 +1,12 @@
+D:\my-project\vw\vw\admin_logging\src\main\java\io\github\linxiaobaixcg\domain\Log.java
+D:\my-project\vw\vw\admin_logging\src\main\java\io\github\linxiaobaixcg\service\dto\LogErrorDTO.java
+D:\my-project\vw\vw\admin_logging\src\main\java\io\github\linxiaobaixcg\service\dto\LogSmallDTO.java
+D:\my-project\vw\vw\admin_logging\src\main\java\io\github\linxiaobaixcg\service\mapper\LogErrorMapper.java
+D:\my-project\vw\vw\admin_logging\src\main\java\io\github\linxiaobaixcg\repository\LogRepository.java
+D:\my-project\vw\vw\admin_logging\src\main\java\io\github\linxiaobaixcg\aspect\LogAspect.java
+D:\my-project\vw\vw\admin_logging\src\main\java\io\github\linxiaobaixcg\rest\LogController.java
+D:\my-project\vw\vw\admin_logging\src\main\java\io\github\linxiaobaixcg\service\dto\LogQueryCriteria.java
+D:\my-project\vw\vw\admin_logging\src\main\java\io\github\linxiaobaixcg\service\impl\LogServiceImpl.java
+D:\my-project\vw\vw\admin_logging\src\main\java\io\github\linxiaobaixcg\service\mapper\LogSmallMapper.java
+D:\my-project\vw\vw\admin_logging\src\main\java\io\github\linxiaobaixcg\service\LogService.java
+D:\my-project\vw\vw\admin_logging\src\main\java\io\github\linxiaobaixcg\aop\log\Log.java
