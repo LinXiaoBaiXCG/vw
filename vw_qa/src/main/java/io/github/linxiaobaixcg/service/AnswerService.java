@@ -3,9 +3,12 @@ package io.github.linxiaobaixcg.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.github.linxiaobaixcg.entity.Agree;
 import io.github.linxiaobaixcg.entity.Answer;
+import io.github.linxiaobaixcg.entity.VO.AnswerVO;
 import io.github.linxiaobaixcg.mapper.AnswerMapper;
 import io.github.linxiaobaixcg.utils.IdWorker;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -28,7 +31,7 @@ public class AnswerService {
     private IdWorker idWorker;
 
     @Autowired
-    private RedisTemplate redisTemplate;
+    private RedisService redisService;
 
     /**
      * 添加回答
@@ -41,12 +44,17 @@ public class AnswerService {
 
     /**
      * 获取回答详情
-     * @param id
+     * @param answerId
+     * @param userId
      * @return
      */
-    public Answer findOne(String id){
-        //TODO 还需返回回答点赞数和用户是否点赞
-        return answerMapper.selectById(id);
+    public AnswerVO findOne(String answerId, String userId){
+        Answer answer =answerMapper.selectById(answerId);
+        AnswerVO answerVO = new AnswerVO();
+        BeanUtils.copyProperties(answer,answerVO);
+        answerVO.setAgreeCount(redisService.getAnswerAgreeCount(answerId));
+        answerVO.setIsAgree(redisService.getUserAgree(userId,answerId));
+        return answerVO;
     }
 
     /**
@@ -74,24 +82,4 @@ public class AnswerService {
         return answerMapper.selectPage(page,queryWrapper);
     }
 
-    public Boolean agreeAnswer(String id, String userId,Integer status){
-        //返回是否点赞
-        Boolean flag = true;
-       if (status!= null && status == 1){
-           //status为1时，执行点赞操作
-           //点赞数加1
-           redisTemplate.opsForValue().increment("answer_agree_count_"+id,1L);
-           //标识用户是否点赞
-           redisTemplate.opsForValue().set("user_agree_answer_"+userId+id,"1");
-           flag = true;
-       }else if (status!= null && status == 2){
-           //status为2时，执行取消点赞操作
-           //点赞数减1
-           redisTemplate.opsForValue().decrement("answer_agree_count_"+id,1L);
-           //删除用户点赞记录
-           redisTemplate.delete("user_agree_answer_"+userId+id);
-           flag = false;
-       }
-       return  flag;
-    }
 }

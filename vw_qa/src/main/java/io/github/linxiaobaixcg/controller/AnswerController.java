@@ -30,9 +30,9 @@ public class AnswerController {
         return new Result(StatusCode.OK);
     }
 
-    @GetMapping(value = "/getOne/{id}")
-    public Result getAll(@PathVariable String id){
-        return new Result(StatusCode.OK,answerService.findOne(id));
+    @GetMapping(value = "/getOne/{answerId}/{userId}")
+    public Result getAll(@PathVariable String answerId, @PathVariable String userId){
+        return new Result(StatusCode.OK,answerService.findOne(answerId,userId));
     }
 
     @GetMapping(value = "/getRecommendList")
