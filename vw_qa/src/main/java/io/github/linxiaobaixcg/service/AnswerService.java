@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.github.linxiaobaixcg.entity.Agree;
 import io.github.linxiaobaixcg.entity.Answer;
 import io.github.linxiaobaixcg.entity.VO.AnswerVO;
+import io.github.linxiaobaixcg.mapper.AgreeMapper;
 import io.github.linxiaobaixcg.mapper.AnswerMapper;
 import io.github.linxiaobaixcg.utils.IdWorker;
 import org.springframework.beans.BeanUtils;
@@ -33,6 +34,9 @@ public class AnswerService {
     @Autowired
     private RedisService redisService;
 
+    @Autowired
+    private AgreeMapper agreeMapper;
+
     /**
      * 添加回答
      * @param answer
@@ -52,8 +56,22 @@ public class AnswerService {
         Answer answer =answerMapper.selectById(answerId);
         AnswerVO answerVO = new AnswerVO();
         BeanUtils.copyProperties(answer,answerVO);
-        answerVO.setAgreeCount(redisService.getAnswerAgreeCount(answerId));
-        answerVO.setIsAgree(redisService.getUserAgree(userId,answerId));
+        Long cachingAgreeCount = redisService.getAnswerAgreeCount(answerId);
+        System.out.println(cachingAgreeCount);
+        answerVO.setAgreeCount(answer.getAgreeCount()+(cachingAgreeCount==null?0L:cachingAgreeCount));
+        Integer isAgree = redisService.getUserAgree(userId,answerId);
+        if (isAgree != null && isAgree == 1){
+            answerVO.setIsAgree(1);
+        }else{
+            QueryWrapper<Agree> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("user_id",userId);
+            Agree agree = agreeMapper.selectOne(queryWrapper);
+            if (agree != null && agree.getStatus() == 1){
+                answerVO.setIsAgree(1);
+            }else {
+                answerVO.setIsAgree(0);
+            }
+        }
         return answerVO;
     }
 

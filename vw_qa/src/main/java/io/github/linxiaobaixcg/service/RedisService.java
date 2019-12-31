@@ -22,12 +22,11 @@ public class RedisService {
      * @param status
      */
     public void saveAgree2Redis(String userId, String answerId, Integer status){
-        redisTemplate.opsForValue().get("answer_agree_count"+"::"+answerId);
         // 取消点赞，问答点赞数减1,否则加1
         if (status != null && status == 0){
-            redisTemplate.opsForValue().decrement("answer_agree_count"+"::"+answerId,1);
+            redisTemplate.opsForHash().increment("answer_agree_count",answerId,-1L);
         }else if (status != null && status == 1){
-            redisTemplate.opsForValue().increment("answer_agree_count"+"::"+answerId,1);
+            redisTemplate.opsForHash().increment("answer_agree_count",answerId,1L);
         }
         // 保存用户点赞记录
         redisTemplate.opsForHash().put("user_agree_answer",userId+"::"+answerId,status);
@@ -49,6 +48,6 @@ public class RedisService {
      * @return
      */
     public Long getAnswerAgreeCount(String answerId){
-        return (Long)redisTemplate.opsForValue().get("answer_agree_count"+"::"+answerId);
+        return Long.parseLong(redisTemplate.opsForHash().get("answer_agree_count",answerId).toString());
     }
 }
