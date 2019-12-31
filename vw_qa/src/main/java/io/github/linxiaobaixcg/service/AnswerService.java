@@ -60,17 +60,13 @@ public class AnswerService {
         System.out.println(cachingAgreeCount);
         answerVO.setAgreeCount(answer.getAgreeCount()+(cachingAgreeCount==null?0L:cachingAgreeCount));
         Integer isAgree = redisService.getUserAgree(userId,answerId);
-        if (isAgree != null && isAgree == 1){
-            answerVO.setIsAgree(1);
+        if (isAgree != null){
+            answerVO.setIsAgree(isAgree);
         }else{
             QueryWrapper<Agree> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("user_id",userId);
             Agree agree = agreeMapper.selectOne(queryWrapper);
-            if (agree != null && agree.getStatus() == 1){
-                answerVO.setIsAgree(1);
-            }else {
-                answerVO.setIsAgree(0);
-            }
+            answerVO.setIsAgree(agree.getStatus());
         }
         return answerVO;
     }
