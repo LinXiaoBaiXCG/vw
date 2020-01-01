@@ -24,8 +24,7 @@ public class AgreeService {
      * @param agree
      * @return
      */
-    public Integer agreeAnswer(Agree agree){
+    public void agreeAnswer(Agree agree){
         redisService.saveAgree2Redis(agree.getUserId(),agree.getAnswerId(),agree.getStatus());
-        return agree.getStatus();
     }
 }

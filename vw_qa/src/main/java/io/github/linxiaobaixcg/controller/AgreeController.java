@@ -26,7 +26,8 @@ public class AgreeController {
 
     @PutMapping
     private Result agreeAnswer(@RequestBody Agree agree){
-        return new Result(StatusCode.OK,agreeService.agreeAnswer(agree));
+        agreeService.agreeAnswer(agree);
+        return new Result(StatusCode.OK);
     }
 
 }

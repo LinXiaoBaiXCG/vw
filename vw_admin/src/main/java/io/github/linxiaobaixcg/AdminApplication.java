@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @SpringBootApplication
 @EnableTransactionManagement
-public class AdminRun {
+public class AdminApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AdminRun.class, args);
+        SpringApplication.run(AdminApplication.class, args);
     }
 
     @Bean
