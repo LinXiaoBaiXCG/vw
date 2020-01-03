@@ -14,6 +14,7 @@
         <module>admin_generator</module>
         <module>admin_common</module>
         <module>vw_search</module>
+        <module>vw_user</module>
     </modules>
     <name>vw</name>
     <description>微问是一个问答类项目</description>

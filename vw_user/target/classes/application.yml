@@ -1,0 +1,11 @@
+server:
+  port: 9008
+spring:
+  application:
+    name: vw-user
+jwt:
+  # 加密秘钥
+  secret: vw.linchuangqiong.io
+  # token有效时长，7天，单位秒
+  expire: 604800
+  header: token
