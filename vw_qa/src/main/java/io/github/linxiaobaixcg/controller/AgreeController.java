@@ -1,6 +1,7 @@
 package io.github.linxiaobaixcg.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.github.linxiaobaixcg.annotation.Login;
 import io.github.linxiaobaixcg.entity.Agree;
 import io.github.linxiaobaixcg.entity.Answer;
 import io.github.linxiaobaixcg.entity.Result;
@@ -24,8 +25,10 @@ public class AgreeController {
     @Autowired
     private AgreeService agreeService;
 
+    @Login
     @PutMapping
-    private Result agreeAnswer(@RequestBody Agree agree){
+    private Result agreeAnswer(@RequestAttribute("userId") String userId, @RequestBody Agree agree){
+        agree.setUserId(userId);
         agreeService.agreeAnswer(agree);
         return new Result(StatusCode.OK);
     }

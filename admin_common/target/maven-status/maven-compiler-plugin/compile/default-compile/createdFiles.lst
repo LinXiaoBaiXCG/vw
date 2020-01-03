@@ -4,6 +4,7 @@ io\github\linxiaobaixcg\utils\ElAdminConstant$Url.class
 io\github\linxiaobaixcg\config\FastJsonRedisSerializer.class
 io\github\linxiaobaixcg\config\SwaggerDataConfig$1.class
 io\github\linxiaobaixcg\utils\SecurityUtils.class
+io\github\linxiaobaixcg\utils\IdWorker.class
 io\github\linxiaobaixcg\utils\EncryptUtils.class
 io\github\linxiaobaixcg\config\RedisConfig$1.class
 io\github\linxiaobaixcg\utils\QueryHelp$1.class

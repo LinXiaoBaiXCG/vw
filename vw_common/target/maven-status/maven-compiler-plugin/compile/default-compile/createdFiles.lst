@@ -1,9 +1,13 @@
-io\github\linxiaobaixcg\exception\BadRequestException.class
 io\github\linxiaobaixcg\utils\ThrowableUtil.class
 io\github\linxiaobaixcg\exception\EntityExistException.class
 io\github\linxiaobaixcg\exception\EntityNotFoundException.class
+io\github\linxiaobaixcg\annotation\Login.class
+io\github\linxiaobaixcg\utils\IdWorker.class
+io\github\linxiaobaixcg\utils\JwtUtils.class
+io\github\linxiaobaixcg\config\WebMvcConfig.class
+io\github\linxiaobaixcg\exception\BadRequestException.class
+io\github\linxiaobaixcg\interceptor\AuthorizationInterceptor.class
 io\github\linxiaobaixcg\entity\Result.class
 io\github\linxiaobaixcg\entity\StatusCode.class
-io\github\linxiaobaixcg\utils\IdWorker.class
 io\github\linxiaobaixcg\exception\handler\ApiError.class
 io\github\linxiaobaixcg\exception\handler\GlobalExceptionHandler.class

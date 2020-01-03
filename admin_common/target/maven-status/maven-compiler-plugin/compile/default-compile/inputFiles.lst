@@ -19,6 +19,7 @@ D:\my-project\vw\vw\admin_common\src\main\java\io\github\linxiaobaixcg\base\Base
 D:\my-project\vw\vw\admin_common\src\main\java\io\github\linxiaobaixcg\exception\BadRequestException.java
 D:\my-project\vw\vw\admin_common\src\main\java\io\github\linxiaobaixcg\config\ElPermissionConfig.java
 D:\my-project\vw\vw\admin_common\src\main\java\io\github\linxiaobaixcg\annotation\AnonymousAccess.java
+D:\my-project\vw\vw\admin_common\src\main\java\io\github\linxiaobaixcg\utils\IdWorker.java
 D:\my-project\vw\vw\admin_common\src\main\java\io\github\linxiaobaixcg\aspect\LimitAspect.java
 D:\my-project\vw\vw\admin_common\src\main\java\io\github\linxiaobaixcg\aspect\LimitType.java
 D:\my-project\vw\vw\admin_common\src\main\java\io\github\linxiaobaixcg\exception\handler\ApiError.java

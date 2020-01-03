@@ -14,6 +14,7 @@ D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\mnt\r
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\security\security\TokenConfigurer.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\monitor\domain\vo\RedisVo.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\domain\vo\UserPassVo.java
+D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\service\impl\RedisServiceImpl.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\config\thread\AsyncTaskProperties.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\service\dto\RoleSmallDto.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\domain\vo\MenuMetaVo.java
@@ -31,13 +32,13 @@ D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\syste
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\quartz\domain\QuartzLog.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\service\dto\MenuDto.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\service\MenuService.java
+D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\domain\Agree.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\domain\Role.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\mnt\service\ServerDeployService.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\mnt\service\DeployService.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\monitor\service\VisitsService.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\service\impl\DeptServiceImpl.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\repository\DictDetailRepository.java
-D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\AppRun.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\security\security\vo\AuthUser.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\service\dto\DeptDto.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\config\WebSocketConfig.java
@@ -74,6 +75,7 @@ D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\syste
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\mnt\service\impl\DeployServiceImpl.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\security\security\TokenFilter.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\security\security\TokenProvider.java
+D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\AdminApplication.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\mnt\service\impl\ServerDeployServiceImpl.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\quartz\service\QuartzJobService.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\rest\RoleController.java
@@ -85,7 +87,9 @@ D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\mnt\w
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\mnt\service\dto\DatabaseQueryCriteria.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\mnt\service\dto\ServerDeployDto.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\mnt\service\dto\DeployHistoryDto.java
+D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\quartz\task\RedisTask.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\mnt\service\DeployHistoryService.java
+D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\service\RedisService.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\service\mapper\DictMapper.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\mnt\repository\ServerDeployRepository.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\security\config\SecurityProperties.java
@@ -115,6 +119,7 @@ D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\monit
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\monitor\repository\ServerRepository.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\domain\User.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\service\dto\JobQueryCriteria.java
+D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\repository\AnswerRepository.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\service\mapper\RoleMapper.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\security\service\UserDetailsServiceImpl.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\service\dto\JobSmallDto.java
@@ -122,6 +127,7 @@ D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\mnt\s
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\repository\JobRepository.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\service\dto\DictDetailDto.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\mnt\repository\DatabaseRepository.java
+D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\domain\Answer.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\monitor\service\impl\ServerServiceImpl.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\security\service\OnlineUserService.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\service\dto\DictSmallDto.java
@@ -144,6 +150,7 @@ D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\syste
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\security\security\vo\JwtUser.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\monitor\domain\Server.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\service\dto\RoleDto.java
+D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\repository\AgreeRepository.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\monitor\rest\VisitsController.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\security\config\SecurityConfig.java
 D:\my-project\vw\vw\vw_admin\src\main\java\io\github\linxiaobaixcg\modules\system\service\impl\DictServiceImpl.java

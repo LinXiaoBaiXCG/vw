@@ -41,19 +41,19 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
         }
 
         //获取用户凭证
-        String token = request.getHeader(jwtUtils.getHeader());
+        String token = request.getHeader(jwtUtils.HEADER);
         if(StringUtils.isBlank(token)){
-            token = request.getParameter(jwtUtils.getHeader());
+            token = request.getParameter(jwtUtils.HEADER);
         }
 
         //凭证为空
         if(StringUtils.isBlank(token)){
-            throw new BadRequestException(HttpStatus.UNAUTHORIZED, jwtUtils.getHeader() + "不能为空");
+            throw new BadRequestException(HttpStatus.UNAUTHORIZED, jwtUtils.HEADER + "不能为空");
         }
 
         Claims claims = jwtUtils.getClaimByToken(token);
         if(claims == null || jwtUtils.isTokenExpired(claims.getExpiration())){
-            throw new BadRequestException(HttpStatus.UNAUTHORIZED,jwtUtils.getHeader() + "失效，请重新登录");
+            throw new BadRequestException(HttpStatus.UNAUTHORIZED,jwtUtils.HEADER + "失效，请重新登录");
         }
         System.out.println(claims.getSubject());
         //设置userId到request里，后续根据userId，获取用户信息

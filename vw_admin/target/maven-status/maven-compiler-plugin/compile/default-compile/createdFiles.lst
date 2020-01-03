@@ -1,6 +1,7 @@
 io\github\linxiaobaixcg\modules\quartz\task\TestTask.class
 io\github\linxiaobaixcg\modules\security\rest\AuthController$2.class
 io\github\linxiaobaixcg\modules\monitor\service\dto\ServerDTO.class
+io\github\linxiaobaixcg\modules\system\domain\Answer.class
 io\github\linxiaobaixcg\modules\quartz\service\impl\QuartzJobServiceImpl.class
 io\github\linxiaobaixcg\modules\system\service\impl\DeptServiceImpl.class
 io\github\linxiaobaixcg\modules\monitor\repository\VisitsRepository.class
@@ -25,7 +26,6 @@ io\github\linxiaobaixcg\config\thread\AsyncTaskExecutePool.class
 io\github\linxiaobaixcg\modules\quartz\repository\QuartzJobRepository.class
 io\github\linxiaobaixcg\modules\system\domain\Dict.class
 io\github\linxiaobaixcg\modules\system\domain\DictDetail.class
-io\github\linxiaobaixcg\AppRun.class
 io\github\linxiaobaixcg\modules\system\rest\JobController.class
 io\github\linxiaobaixcg\modules\mnt\rest\ServerDeployController.class
 io\github\linxiaobaixcg\modules\system\domain\Dept.class
@@ -39,6 +39,7 @@ io\github\linxiaobaixcg\modules\monitor\rest\ServerController.class
 io\github\linxiaobaixcg\modules\system\repository\DictRepository.class
 io\github\linxiaobaixcg\modules\quartz\utils\QuartzRunnable.class
 io\github\linxiaobaixcg\modules\monitor\repository\ServerRepository.class
+io\github\linxiaobaixcg\modules\system\service\impl\RedisServiceImpl.class
 io\github\linxiaobaixcg\modules\mnt\domain\DeployHistory.class
 io\github\linxiaobaixcg\modules\system\service\dto\DeptDto.class
 io\github\linxiaobaixcg\modules\security\security\TokenFilter.class
@@ -72,6 +73,7 @@ io\github\linxiaobaixcg\modules\system\service\dto\JobQueryCriteria.class
 io\github\linxiaobaixcg\modules\mnt\repository\DatabaseRepository.class
 io\github\linxiaobaixcg\modules\security\rest\AuthController$1.class
 io\github\linxiaobaixcg\modules\quartz\config\QuartzConfig$QuartzJobFactory.class
+io\github\linxiaobaixcg\modules\system\repository\AnswerRepository.class
 io\github\linxiaobaixcg\modules\mnt\service\mapper\DeployMapperImpl.class
 io\github\linxiaobaixcg\modules\mnt\websocket\SocketMsg.class
 io\github\linxiaobaixcg\modules\system\repository\DeptRepository.class
@@ -98,6 +100,7 @@ io\github\linxiaobaixcg\modules\mnt\service\mapper\AppMapper.class
 io\github\linxiaobaixcg\modules\mnt\service\mapper\DatabaseMapper.class
 io\github\linxiaobaixcg\modules\system\service\mapper\DictSmallMapper.class
 io\github\linxiaobaixcg\modules\mnt\util\ScpClientUtil.class
+io\github\linxiaobaixcg\modules\system\service\RedisService.class
 io\github\linxiaobaixcg\modules\system\service\mapper\DeptMapperImpl.class
 io\github\linxiaobaixcg\modules\system\service\dto\RoleDto.class
 io\github\linxiaobaixcg\modules\system\service\mapper\UserMapper.class
@@ -108,11 +111,13 @@ io\github\linxiaobaixcg\modules\system\service\mapper\DictSmallMapperImpl.class
 io\github\linxiaobaixcg\modules\mnt\repository\AppRepository.class
 io\github\linxiaobaixcg\modules\security\config\SecurityProperties.class
 io\github\linxiaobaixcg\modules\system\service\mapper\MenuMapper.class
+io\github\linxiaobaixcg\modules\system\domain\Agree.class
 io\github\linxiaobaixcg\modules\mnt\domain\ServerDeploy.class
 io\github\linxiaobaixcg\modules\system\service\mapper\RoleMapper.class
 io\github\linxiaobaixcg\modules\system\repository\JobRepository.class
 io\github\linxiaobaixcg\modules\security\security\vo\JwtUser.class
 io\github\linxiaobaixcg\modules\system\service\dto\RoleSmallDto.class
+io\github\linxiaobaixcg\modules\system\repository\AgreeRepository.class
 io\github\linxiaobaixcg\config\ConfigurerAdapter.class
 io\github\linxiaobaixcg\modules\system\service\mapper\JobSmallMapper.class
 io\github\linxiaobaixcg\modules\quartz\domain\QuartzJob$Update.class
@@ -148,8 +153,10 @@ io\github\linxiaobaixcg\modules\quartz\rest\QuartzJobController.class
 io\github\linxiaobaixcg\modules\mnt\service\impl\DeployHistoryServiceImpl.class
 io\github\linxiaobaixcg\modules\monitor\service\impl\ServerServiceImpl.class
 io\github\linxiaobaixcg\modules\system\rest\UserController.class
+io\github\linxiaobaixcg\modules\quartz\task\RedisTask.class
 io\github\linxiaobaixcg\modules\system\repository\MenuRepository.class
 io\github\linxiaobaixcg\modules\quartz\task\VisitsTask.class
+io\github\linxiaobaixcg\AdminApplication.class
 io\github\linxiaobaixcg\modules\mnt\rest\DatabaseController.class
 io\github\linxiaobaixcg\modules\mnt\service\dto\AppQueryCriteria.class
 io\github\linxiaobaixcg\modules\mnt\service\DeployHistoryService.class

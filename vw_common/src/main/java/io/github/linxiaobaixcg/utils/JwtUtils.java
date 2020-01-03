@@ -12,20 +12,15 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
-/**
- * jwt工具类
- *
- * @author Mark sunlightcs@gmail.com
- */
-@ConfigurationProperties(prefix = "jwt")
 @Component
 @Slf4j
 @Data
 public class JwtUtils {
-
-    private String secret;
-    private long expire;
-    private String header;
+    //加密秘钥
+    public final String SECRET = "vw.linchuangqiong.io";
+    //token有效时长，7天，单位秒
+    public final long EXPIRE = 604800;
+    public final String HEADER = "token";
 
     /**
      * 生成jwt token
@@ -33,21 +28,21 @@ public class JwtUtils {
     public String generateToken(String userId) {
         Date nowDate = new Date();
         //过期时间
-        Date expireDate = new Date(nowDate.getTime() + expire * 1000);
+        Date expireDate = new Date(nowDate.getTime() + EXPIRE * 1000);
 
         return Jwts.builder()
                 .setHeaderParam("typ", "JWT")
                 .setSubject(userId)
                 .setIssuedAt(nowDate)
                 .setExpiration(expireDate)
-                .signWith(SignatureAlgorithm.HS512, secret)
+                .signWith(SignatureAlgorithm.HS512, SECRET)
                 .compact();
     }
 
     public Claims getClaimByToken(String token) {
         try {
             return Jwts.parser()
-                    .setSigningKey(secret)
+                    .setSigningKey(SECRET)
                     .parseClaimsJws(token)
                     .getBody();
         } catch (Exception e) {

@@ -1,0 +1,5 @@
+io\github\linxiaobaixcg\SearchApplication.class
+io\github\linxiaobaixcg\service\AnswerSearchService.class
+io\github\linxiaobaixcg\entity\Answer.class
+io\github\linxiaobaixcg\dao\AnswerSearchRepository.class
+io\github\linxiaobaixcg\controller\AnswerSearchController.class

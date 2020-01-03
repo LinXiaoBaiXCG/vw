@@ -1,6 +1,7 @@
 package io.github.linxiaobaixcg.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.github.linxiaobaixcg.annotation.Login;
 import io.github.linxiaobaixcg.entity.Answer;
 import io.github.linxiaobaixcg.entity.Problem;
 import io.github.linxiaobaixcg.entity.Result;
@@ -24,14 +25,17 @@ public class AnswerController {
     @Autowired
     private AnswerService answerService;
 
+    @Login
     @PostMapping
-    public Result add(@RequestBody @Validated Answer answer){
+    public Result add(@RequestAttribute("userId")String userId,@RequestBody @Validated Answer answer){
+        answer.setUserId(userId);
         answerService.add(answer);
         return new Result(StatusCode.OK);
     }
 
-    @GetMapping(value = "/getOne/{answerId}/{userId}")
-    public Result getAll(@PathVariable String answerId, @PathVariable String userId){
+    @Login
+    @GetMapping(value = "/getOne/{answerId}")
+    public Result getAll(@PathVariable String answerId, @RequestAttribute("userId") String userId){
         return new Result(StatusCode.OK,answerService.findOne(answerId,userId));
     }
 
@@ -40,8 +44,9 @@ public class AnswerController {
         return new Result(StatusCode.OK,answerService.findRecommendList(page));
     }
 
-    @GetMapping(value = "/getListByUserId/{userId}")
-    public Result getListByUserId(@PathVariable String userId, Page page){
+    @Login
+    @GetMapping(value = "/getListByUserId")
+    public Result getListByUserId(@RequestAttribute("userId") String userId, Page page){
         return new Result(StatusCode.OK,answerService.findListByUserId(userId,page));
     }
 }
