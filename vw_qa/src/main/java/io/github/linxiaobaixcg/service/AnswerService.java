@@ -5,13 +5,12 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.github.linxiaobaixcg.entity.Agree;
 import io.github.linxiaobaixcg.entity.Answer;
-import io.github.linxiaobaixcg.entity.VO.AnswerVO;
+import io.github.linxiaobaixcg.entity.vo.AnswerVo;
 import io.github.linxiaobaixcg.mapper.AgreeMapper;
 import io.github.linxiaobaixcg.mapper.AnswerMapper;
 import io.github.linxiaobaixcg.utils.IdWorker;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,9 +51,9 @@ public class AnswerService {
      * @param userId
      * @return
      */
-    public AnswerVO findOne(String answerId, String userId){
+    public AnswerVo findOne(String answerId, String userId){
         Answer answer =answerMapper.selectById(answerId);
-        AnswerVO answerVO = new AnswerVO();
+        AnswerVo answerVO = new AnswerVo();
         BeanUtils.copyProperties(answer,answerVO);
         Long cachingAgreeCount = redisService.getAnswerAgreeCount(answerId);
         System.out.println(cachingAgreeCount);

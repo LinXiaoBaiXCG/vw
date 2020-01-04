@@ -1,7 +1,5 @@
-package io.github.linxiaobaixcg.entity.VO;
+package io.github.linxiaobaixcg.entity.vo;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -14,7 +12,7 @@ import java.sql.Timestamp;
  * @create: 2019-12-30 23:07
  **/
 @Data
-public class AnswerVO implements Serializable {
+public class AnswerVo implements Serializable {
 
     private String id;
 
