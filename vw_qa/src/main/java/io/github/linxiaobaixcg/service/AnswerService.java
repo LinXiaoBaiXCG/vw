@@ -56,7 +56,6 @@ public class AnswerService {
         AnswerVo answerVO = new AnswerVo();
         BeanUtils.copyProperties(answer,answerVO);
         Long cachingAgreeCount = redisService.getAnswerAgreeCount(answerId);
-        System.out.println(cachingAgreeCount);
         answerVO.setAgreeCount(answer.getAgreeCount()+(cachingAgreeCount==null?0L:cachingAgreeCount));
         Integer isAgree = redisService.getUserAgree(userId,answerId);
         if (isAgree != null){
