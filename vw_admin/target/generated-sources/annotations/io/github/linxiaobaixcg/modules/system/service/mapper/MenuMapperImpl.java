@@ -9,72 +9,72 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-01-03T23:17:08+0800",
+    date = "2020-01-08T23:46:12+0800",
     comments = "version: 1.2.0.Final, compiler: javac, environment: Java 1.8.0_191 (Oracle Corporation)"
 )
 @Component
 public class MenuMapperImpl implements MenuMapper {
 
     @Override
-    public Menu toEntity(MenuDto dto) {
-        if ( dto == null ) {
+    public Menu toEntity(MenuDto arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         Menu menu = new Menu();
 
-        menu.setId( dto.getId() );
-        menu.setName( dto.getName() );
-        menu.setSort( dto.getSort() );
-        menu.setPath( dto.getPath() );
-        menu.setComponent( dto.getComponent() );
-        menu.setType( dto.getType() );
-        menu.setPermission( dto.getPermission() );
-        menu.setComponentName( dto.getComponentName() );
-        menu.setIcon( dto.getIcon() );
-        menu.setCache( dto.getCache() );
-        menu.setHidden( dto.getHidden() );
-        menu.setPid( dto.getPid() );
-        menu.setIFrame( dto.getIFrame() );
-        menu.setCreateTime( dto.getCreateTime() );
+        menu.setId( arg0.getId() );
+        menu.setName( arg0.getName() );
+        menu.setSort( arg0.getSort() );
+        menu.setPath( arg0.getPath() );
+        menu.setComponent( arg0.getComponent() );
+        menu.setType( arg0.getType() );
+        menu.setPermission( arg0.getPermission() );
+        menu.setComponentName( arg0.getComponentName() );
+        menu.setIcon( arg0.getIcon() );
+        menu.setCache( arg0.getCache() );
+        menu.setHidden( arg0.getHidden() );
+        menu.setPid( arg0.getPid() );
+        menu.setIFrame( arg0.getIFrame() );
+        menu.setCreateTime( arg0.getCreateTime() );
 
         return menu;
     }
 
     @Override
-    public MenuDto toDto(Menu entity) {
-        if ( entity == null ) {
+    public MenuDto toDto(Menu arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         MenuDto menuDto = new MenuDto();
 
-        menuDto.setId( entity.getId() );
-        menuDto.setType( entity.getType() );
-        menuDto.setPermission( entity.getPermission() );
-        menuDto.setName( entity.getName() );
-        menuDto.setSort( entity.getSort() );
-        menuDto.setPath( entity.getPath() );
-        menuDto.setComponent( entity.getComponent() );
-        menuDto.setPid( entity.getPid() );
-        menuDto.setIFrame( entity.getIFrame() );
-        menuDto.setCache( entity.getCache() );
-        menuDto.setHidden( entity.getHidden() );
-        menuDto.setComponentName( entity.getComponentName() );
-        menuDto.setIcon( entity.getIcon() );
-        menuDto.setCreateTime( entity.getCreateTime() );
+        menuDto.setId( arg0.getId() );
+        menuDto.setType( arg0.getType() );
+        menuDto.setPermission( arg0.getPermission() );
+        menuDto.setName( arg0.getName() );
+        menuDto.setSort( arg0.getSort() );
+        menuDto.setPath( arg0.getPath() );
+        menuDto.setComponent( arg0.getComponent() );
+        menuDto.setPid( arg0.getPid() );
+        menuDto.setIFrame( arg0.getIFrame() );
+        menuDto.setCache( arg0.getCache() );
+        menuDto.setHidden( arg0.getHidden() );
+        menuDto.setComponentName( arg0.getComponentName() );
+        menuDto.setIcon( arg0.getIcon() );
+        menuDto.setCreateTime( arg0.getCreateTime() );
 
         return menuDto;
     }
 
     @Override
-    public List<Menu> toEntity(List<MenuDto> dtoList) {
-        if ( dtoList == null ) {
+    public List<Menu> toEntity(List<MenuDto> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<Menu> list = new ArrayList<Menu>( dtoList.size() );
-        for ( MenuDto menuDto : dtoList ) {
+        List<Menu> list = new ArrayList<Menu>( arg0.size() );
+        for ( MenuDto menuDto : arg0 ) {
             list.add( toEntity( menuDto ) );
         }
 
@@ -82,13 +82,13 @@ public class MenuMapperImpl implements MenuMapper {
     }
 
     @Override
-    public List<MenuDto> toDto(List<Menu> entityList) {
-        if ( entityList == null ) {
+    public List<MenuDto> toDto(List<Menu> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<MenuDto> list = new ArrayList<MenuDto>( entityList.size() );
-        for ( Menu menu : entityList ) {
+        List<MenuDto> list = new ArrayList<MenuDto>( arg0.size() );
+        for ( Menu menu : arg0 ) {
             list.add( toDto( menu ) );
         }
 

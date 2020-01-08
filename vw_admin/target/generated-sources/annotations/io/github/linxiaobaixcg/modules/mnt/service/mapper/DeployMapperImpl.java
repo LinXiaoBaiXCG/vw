@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-01-03T23:17:08+0800",
+    date = "2020-01-08T23:46:11+0800",
     comments = "version: 1.2.0.Final, compiler: javac, environment: Java 1.8.0_191 (Oracle Corporation)"
 )
 @Component
@@ -26,49 +26,49 @@ public class DeployMapperImpl implements DeployMapper {
     private ServerDeployMapper serverDeployMapper;
 
     @Override
-    public Deploy toEntity(DeployDto dto) {
-        if ( dto == null ) {
+    public Deploy toEntity(DeployDto arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         Deploy deploy = new Deploy();
 
-        if ( dto.getId() != null ) {
-            deploy.setId( Long.parseLong( dto.getId() ) );
+        if ( arg0.getId() != null ) {
+            deploy.setId( Long.parseLong( arg0.getId() ) );
         }
-        deploy.setApp( appMapper.toEntity( dto.getApp() ) );
-        deploy.setDeploys( serverDeployDtoSetToServerDeploySet( dto.getDeploys() ) );
-        deploy.setCreateTime( dto.getCreateTime() );
+        deploy.setApp( appMapper.toEntity( arg0.getApp() ) );
+        deploy.setDeploys( serverDeployDtoSetToServerDeploySet( arg0.getDeploys() ) );
+        deploy.setCreateTime( arg0.getCreateTime() );
 
         return deploy;
     }
 
     @Override
-    public DeployDto toDto(Deploy entity) {
-        if ( entity == null ) {
+    public DeployDto toDto(Deploy arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         DeployDto deployDto = new DeployDto();
 
-        if ( entity.getId() != null ) {
-            deployDto.setId( String.valueOf( entity.getId() ) );
+        if ( arg0.getId() != null ) {
+            deployDto.setId( String.valueOf( arg0.getId() ) );
         }
-        deployDto.setApp( appMapper.toDto( entity.getApp() ) );
-        deployDto.setDeploys( serverDeploySetToServerDeployDtoSet( entity.getDeploys() ) );
-        deployDto.setCreateTime( entity.getCreateTime() );
+        deployDto.setApp( appMapper.toDto( arg0.getApp() ) );
+        deployDto.setDeploys( serverDeploySetToServerDeployDtoSet( arg0.getDeploys() ) );
+        deployDto.setCreateTime( arg0.getCreateTime() );
 
         return deployDto;
     }
 
     @Override
-    public List<Deploy> toEntity(List<DeployDto> dtoList) {
-        if ( dtoList == null ) {
+    public List<Deploy> toEntity(List<DeployDto> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<Deploy> list = new ArrayList<Deploy>( dtoList.size() );
-        for ( DeployDto deployDto : dtoList ) {
+        List<Deploy> list = new ArrayList<Deploy>( arg0.size() );
+        for ( DeployDto deployDto : arg0 ) {
             list.add( toEntity( deployDto ) );
         }
 
@@ -76,13 +76,13 @@ public class DeployMapperImpl implements DeployMapper {
     }
 
     @Override
-    public List<DeployDto> toDto(List<Deploy> entityList) {
-        if ( entityList == null ) {
+    public List<DeployDto> toDto(List<Deploy> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<DeployDto> list = new ArrayList<DeployDto>( entityList.size() );
-        for ( Deploy deploy : entityList ) {
+        List<DeployDto> list = new ArrayList<DeployDto>( arg0.size() );
+        for ( Deploy deploy : arg0 ) {
             list.add( toDto( deploy ) );
         }
 

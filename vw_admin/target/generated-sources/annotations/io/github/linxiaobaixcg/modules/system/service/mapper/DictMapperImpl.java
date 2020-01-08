@@ -12,54 +12,54 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-01-03T23:17:08+0800",
+    date = "2020-01-08T23:46:12+0800",
     comments = "version: 1.2.0.Final, compiler: javac, environment: Java 1.8.0_191 (Oracle Corporation)"
 )
 @Component
 public class DictMapperImpl implements DictMapper {
 
     @Override
-    public Dict toEntity(DictDto dto) {
-        if ( dto == null ) {
+    public Dict toEntity(DictDto arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         Dict dict = new Dict();
 
-        dict.setId( dto.getId() );
-        dict.setName( dto.getName() );
-        dict.setRemark( dto.getRemark() );
-        dict.setCreateTime( dto.getCreateTime() );
-        dict.setDictDetails( dictDetailDtoListToDictDetailList( dto.getDictDetails() ) );
+        dict.setId( arg0.getId() );
+        dict.setName( arg0.getName() );
+        dict.setRemark( arg0.getRemark() );
+        dict.setCreateTime( arg0.getCreateTime() );
+        dict.setDictDetails( dictDetailDtoListToDictDetailList( arg0.getDictDetails() ) );
 
         return dict;
     }
 
     @Override
-    public DictDto toDto(Dict entity) {
-        if ( entity == null ) {
+    public DictDto toDto(Dict arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         DictDto dictDto = new DictDto();
 
-        dictDto.setId( entity.getId() );
-        dictDto.setName( entity.getName() );
-        dictDto.setRemark( entity.getRemark() );
-        dictDto.setDictDetails( dictDetailListToDictDetailDtoList( entity.getDictDetails() ) );
-        dictDto.setCreateTime( entity.getCreateTime() );
+        dictDto.setId( arg0.getId() );
+        dictDto.setName( arg0.getName() );
+        dictDto.setRemark( arg0.getRemark() );
+        dictDto.setDictDetails( dictDetailListToDictDetailDtoList( arg0.getDictDetails() ) );
+        dictDto.setCreateTime( arg0.getCreateTime() );
 
         return dictDto;
     }
 
     @Override
-    public List<Dict> toEntity(List<DictDto> dtoList) {
-        if ( dtoList == null ) {
+    public List<Dict> toEntity(List<DictDto> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<Dict> list = new ArrayList<Dict>( dtoList.size() );
-        for ( DictDto dictDto : dtoList ) {
+        List<Dict> list = new ArrayList<Dict>( arg0.size() );
+        for ( DictDto dictDto : arg0 ) {
             list.add( toEntity( dictDto ) );
         }
 
@@ -67,13 +67,13 @@ public class DictMapperImpl implements DictMapper {
     }
 
     @Override
-    public List<DictDto> toDto(List<Dict> entityList) {
-        if ( entityList == null ) {
+    public List<DictDto> toDto(List<Dict> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<DictDto> list = new ArrayList<DictDto>( entityList.size() );
-        for ( Dict dict : entityList ) {
+        List<DictDto> list = new ArrayList<DictDto>( arg0.size() );
+        for ( Dict dict : arg0 ) {
             list.add( toDto( dict ) );
         }
 

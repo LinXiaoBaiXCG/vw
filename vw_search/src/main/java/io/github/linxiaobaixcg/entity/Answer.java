@@ -19,10 +19,10 @@ public class Answer implements Serializable {
     @Id
     private String id;
 
-    @Field(index= true,type = FieldType.Text,analyzer="ik_max_word",searchAnalyzer="ik_max_word")
+    @Field(index= true,type = FieldType.text,analyzer="ik_max_word",searchAnalyzer="ik_max_word")
     private String problemTitle;
 
-    @Field(index= true,type = FieldType.Text,analyzer="ik_max_word",searchAnalyzer="ik_max_word")
+    @Field(index= true,type = FieldType.text,analyzer="ik_max_word",searchAnalyzer="ik_max_word")
     private String content;
 
     /**

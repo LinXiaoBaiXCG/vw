@@ -9,56 +9,56 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-01-03T23:17:09+0800",
+    date = "2020-01-08T23:46:11+0800",
     comments = "version: 1.2.0.Final, compiler: javac, environment: Java 1.8.0_191 (Oracle Corporation)"
 )
 @Component
 public class DatabaseMapperImpl implements DatabaseMapper {
 
     @Override
-    public Database toEntity(DatabaseDto dto) {
-        if ( dto == null ) {
+    public Database toEntity(DatabaseDto arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         Database database = new Database();
 
-        database.setId( dto.getId() );
-        database.setName( dto.getName() );
-        database.setJdbcUrl( dto.getJdbcUrl() );
-        database.setPwd( dto.getPwd() );
-        database.setUserName( dto.getUserName() );
-        database.setCreateTime( dto.getCreateTime() );
+        database.setId( arg0.getId() );
+        database.setName( arg0.getName() );
+        database.setJdbcUrl( arg0.getJdbcUrl() );
+        database.setPwd( arg0.getPwd() );
+        database.setUserName( arg0.getUserName() );
+        database.setCreateTime( arg0.getCreateTime() );
 
         return database;
     }
 
     @Override
-    public DatabaseDto toDto(Database entity) {
-        if ( entity == null ) {
+    public DatabaseDto toDto(Database arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         DatabaseDto databaseDto = new DatabaseDto();
 
-        databaseDto.setId( entity.getId() );
-        databaseDto.setName( entity.getName() );
-        databaseDto.setJdbcUrl( entity.getJdbcUrl() );
-        databaseDto.setPwd( entity.getPwd() );
-        databaseDto.setUserName( entity.getUserName() );
-        databaseDto.setCreateTime( entity.getCreateTime() );
+        databaseDto.setId( arg0.getId() );
+        databaseDto.setName( arg0.getName() );
+        databaseDto.setJdbcUrl( arg0.getJdbcUrl() );
+        databaseDto.setPwd( arg0.getPwd() );
+        databaseDto.setUserName( arg0.getUserName() );
+        databaseDto.setCreateTime( arg0.getCreateTime() );
 
         return databaseDto;
     }
 
     @Override
-    public List<Database> toEntity(List<DatabaseDto> dtoList) {
-        if ( dtoList == null ) {
+    public List<Database> toEntity(List<DatabaseDto> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<Database> list = new ArrayList<Database>( dtoList.size() );
-        for ( DatabaseDto databaseDto : dtoList ) {
+        List<Database> list = new ArrayList<Database>( arg0.size() );
+        for ( DatabaseDto databaseDto : arg0 ) {
             list.add( toEntity( databaseDto ) );
         }
 
@@ -66,13 +66,13 @@ public class DatabaseMapperImpl implements DatabaseMapper {
     }
 
     @Override
-    public List<DatabaseDto> toDto(List<Database> entityList) {
-        if ( entityList == null ) {
+    public List<DatabaseDto> toDto(List<Database> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<DatabaseDto> list = new ArrayList<DatabaseDto>( entityList.size() );
-        for ( Database database : entityList ) {
+        List<DatabaseDto> list = new ArrayList<DatabaseDto>( arg0.size() );
+        for ( Database database : arg0 ) {
             list.add( toDto( database ) );
         }
 

@@ -5,4 +5,16 @@
     <update id="updateFollowCount" parameterType="io.github.linxiaobaixcg.entity.vo.UpdateCountVO">
       update vw_user set follow_count = follow_count + #{count} where id = #{userId}
     </update>
+
+    <update id="updateFansCount" parameterType="io.github.linxiaobaixcg.entity.vo.UpdateCountVO">
+        update vw_user set fans_count = fans_count + #{count} where id = #{userId}
+    </update>
+
+    <update id="updateProblemCount" parameterType="io.github.linxiaobaixcg.entity.vo.UpdateCountVO">
+        update vw_user set problem_count = problem_count + #{count} where id = #{userId}
+    </update>
+
+    <update id="updateAnswerCount" parameterType="io.github.linxiaobaixcg.entity.vo.UpdateCountVO">
+        update vw_user set answer_count = answer_count + #{count} where id = #{userId}
+    </update>
 </mapper>

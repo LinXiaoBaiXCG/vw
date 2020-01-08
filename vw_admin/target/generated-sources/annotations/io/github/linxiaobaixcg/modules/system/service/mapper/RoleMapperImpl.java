@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-01-03T23:17:08+0800",
+    date = "2020-01-08T23:46:11+0800",
     comments = "version: 1.2.0.Final, compiler: javac, environment: Java 1.8.0_191 (Oracle Corporation)"
 )
 @Component
@@ -28,55 +28,55 @@ public class RoleMapperImpl implements RoleMapper {
     private DeptMapper deptMapper;
 
     @Override
-    public Role toEntity(RoleDto dto) {
-        if ( dto == null ) {
+    public Role toEntity(RoleDto arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         Role role = new Role();
 
-        role.setId( dto.getId() );
-        role.setName( dto.getName() );
-        role.setDataScope( dto.getDataScope() );
-        role.setLevel( dto.getLevel() );
-        role.setRemark( dto.getRemark() );
-        role.setPermission( dto.getPermission() );
-        role.setMenus( menuDtoSetToMenuSet( dto.getMenus() ) );
-        role.setDepts( deptDtoSetToDeptSet( dto.getDepts() ) );
-        role.setCreateTime( dto.getCreateTime() );
+        role.setId( arg0.getId() );
+        role.setName( arg0.getName() );
+        role.setDataScope( arg0.getDataScope() );
+        role.setLevel( arg0.getLevel() );
+        role.setRemark( arg0.getRemark() );
+        role.setPermission( arg0.getPermission() );
+        role.setMenus( menuDtoSetToMenuSet( arg0.getMenus() ) );
+        role.setDepts( deptDtoSetToDeptSet( arg0.getDepts() ) );
+        role.setCreateTime( arg0.getCreateTime() );
 
         return role;
     }
 
     @Override
-    public RoleDto toDto(Role entity) {
-        if ( entity == null ) {
+    public RoleDto toDto(Role arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         RoleDto roleDto = new RoleDto();
 
-        roleDto.setId( entity.getId() );
-        roleDto.setName( entity.getName() );
-        roleDto.setDataScope( entity.getDataScope() );
-        roleDto.setLevel( entity.getLevel() );
-        roleDto.setRemark( entity.getRemark() );
-        roleDto.setPermission( entity.getPermission() );
-        roleDto.setMenus( menuSetToMenuDtoSet( entity.getMenus() ) );
-        roleDto.setDepts( deptSetToDeptDtoSet( entity.getDepts() ) );
-        roleDto.setCreateTime( entity.getCreateTime() );
+        roleDto.setId( arg0.getId() );
+        roleDto.setName( arg0.getName() );
+        roleDto.setDataScope( arg0.getDataScope() );
+        roleDto.setLevel( arg0.getLevel() );
+        roleDto.setRemark( arg0.getRemark() );
+        roleDto.setPermission( arg0.getPermission() );
+        roleDto.setMenus( menuSetToMenuDtoSet( arg0.getMenus() ) );
+        roleDto.setDepts( deptSetToDeptDtoSet( arg0.getDepts() ) );
+        roleDto.setCreateTime( arg0.getCreateTime() );
 
         return roleDto;
     }
 
     @Override
-    public List<Role> toEntity(List<RoleDto> dtoList) {
-        if ( dtoList == null ) {
+    public List<Role> toEntity(List<RoleDto> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<Role> list = new ArrayList<Role>( dtoList.size() );
-        for ( RoleDto roleDto : dtoList ) {
+        List<Role> list = new ArrayList<Role>( arg0.size() );
+        for ( RoleDto roleDto : arg0 ) {
             list.add( toEntity( roleDto ) );
         }
 
@@ -84,13 +84,13 @@ public class RoleMapperImpl implements RoleMapper {
     }
 
     @Override
-    public List<RoleDto> toDto(List<Role> entityList) {
-        if ( entityList == null ) {
+    public List<RoleDto> toDto(List<Role> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<RoleDto> list = new ArrayList<RoleDto>( entityList.size() );
-        for ( Role role : entityList ) {
+        List<RoleDto> list = new ArrayList<RoleDto>( arg0.size() );
+        for ( Role role : arg0 ) {
             list.add( toDto( role ) );
         }
 

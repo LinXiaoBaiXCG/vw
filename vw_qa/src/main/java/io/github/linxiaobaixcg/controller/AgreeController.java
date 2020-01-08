@@ -8,6 +8,7 @@ import io.github.linxiaobaixcg.entity.Result;
 import io.github.linxiaobaixcg.entity.StatusCode;
 import io.github.linxiaobaixcg.service.AgreeService;
 import io.github.linxiaobaixcg.service.AnswerService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,8 @@ import org.springframework.web.bind.annotation.*;
  **/
 @RestController
 @RequestMapping(value = "/api/agree")
+
+@Api(tags = "部门模块接口", description = "后台管理服务部门模块接口")
 public class AgreeController {
 
     @Autowired

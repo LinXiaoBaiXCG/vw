@@ -16,6 +16,7 @@
         <module>vw_search</module>
         <module>vw_user</module>
         <module>vw_eureka</module>
+        <module>vw_zuul</module>
     </modules>
     <name>vw</name>
     <description>微问是一个问答类项目</description>

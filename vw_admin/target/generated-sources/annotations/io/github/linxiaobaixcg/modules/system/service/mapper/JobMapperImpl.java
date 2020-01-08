@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-01-03T23:17:09+0800",
+    date = "2020-01-08T23:46:12+0800",
     comments = "version: 1.2.0.Final, compiler: javac, environment: Java 1.8.0_191 (Oracle Corporation)"
 )
 @Component
@@ -20,49 +20,49 @@ public class JobMapperImpl implements JobMapper {
     private DeptMapper deptMapper;
 
     @Override
-    public Job toEntity(JobDto dto) {
-        if ( dto == null ) {
+    public Job toEntity(JobDto arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         Job job = new Job();
 
-        job.setId( dto.getId() );
-        job.setName( dto.getName() );
-        job.setSort( dto.getSort() );
-        job.setEnabled( dto.getEnabled() );
-        job.setDept( deptMapper.toEntity( dto.getDept() ) );
-        job.setCreateTime( dto.getCreateTime() );
+        job.setId( arg0.getId() );
+        job.setName( arg0.getName() );
+        job.setSort( arg0.getSort() );
+        job.setEnabled( arg0.getEnabled() );
+        job.setDept( deptMapper.toEntity( arg0.getDept() ) );
+        job.setCreateTime( arg0.getCreateTime() );
 
         return job;
     }
 
     @Override
-    public JobDto toDto(Job entity) {
-        if ( entity == null ) {
+    public JobDto toDto(Job arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         JobDto jobDto = new JobDto();
 
-        jobDto.setId( entity.getId() );
-        jobDto.setSort( entity.getSort() );
-        jobDto.setName( entity.getName() );
-        jobDto.setEnabled( entity.getEnabled() );
-        jobDto.setDept( deptMapper.toDto( entity.getDept() ) );
-        jobDto.setCreateTime( entity.getCreateTime() );
+        jobDto.setId( arg0.getId() );
+        jobDto.setSort( arg0.getSort() );
+        jobDto.setName( arg0.getName() );
+        jobDto.setEnabled( arg0.getEnabled() );
+        jobDto.setDept( deptMapper.toDto( arg0.getDept() ) );
+        jobDto.setCreateTime( arg0.getCreateTime() );
 
         return jobDto;
     }
 
     @Override
-    public List<Job> toEntity(List<JobDto> dtoList) {
-        if ( dtoList == null ) {
+    public List<Job> toEntity(List<JobDto> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<Job> list = new ArrayList<Job>( dtoList.size() );
-        for ( JobDto jobDto : dtoList ) {
+        List<Job> list = new ArrayList<Job>( arg0.size() );
+        for ( JobDto jobDto : arg0 ) {
             list.add( toEntity( jobDto ) );
         }
 
@@ -70,13 +70,13 @@ public class JobMapperImpl implements JobMapper {
     }
 
     @Override
-    public List<JobDto> toDto(List<Job> entityList) {
-        if ( entityList == null ) {
+    public List<JobDto> toDto(List<Job> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<JobDto> list = new ArrayList<JobDto>( entityList.size() );
-        for ( Job job : entityList ) {
+        List<JobDto> list = new ArrayList<JobDto>( arg0.size() );
+        for ( Job job : arg0 ) {
             list.add( toDto( job ) );
         }
 

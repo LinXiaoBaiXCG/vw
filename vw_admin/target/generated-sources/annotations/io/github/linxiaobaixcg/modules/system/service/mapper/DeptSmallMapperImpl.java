@@ -9,48 +9,48 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-01-03T23:17:08+0800",
+    date = "2020-01-08T23:46:12+0800",
     comments = "version: 1.2.0.Final, compiler: javac, environment: Java 1.8.0_191 (Oracle Corporation)"
 )
 @Component
 public class DeptSmallMapperImpl implements DeptSmallMapper {
 
     @Override
-    public Dept toEntity(DeptSmallDto dto) {
-        if ( dto == null ) {
+    public Dept toEntity(DeptSmallDto arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         Dept dept = new Dept();
 
-        dept.setId( dto.getId() );
-        dept.setName( dto.getName() );
+        dept.setId( arg0.getId() );
+        dept.setName( arg0.getName() );
 
         return dept;
     }
 
     @Override
-    public DeptSmallDto toDto(Dept entity) {
-        if ( entity == null ) {
+    public DeptSmallDto toDto(Dept arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         DeptSmallDto deptSmallDto = new DeptSmallDto();
 
-        deptSmallDto.setId( entity.getId() );
-        deptSmallDto.setName( entity.getName() );
+        deptSmallDto.setId( arg0.getId() );
+        deptSmallDto.setName( arg0.getName() );
 
         return deptSmallDto;
     }
 
     @Override
-    public List<Dept> toEntity(List<DeptSmallDto> dtoList) {
-        if ( dtoList == null ) {
+    public List<Dept> toEntity(List<DeptSmallDto> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<Dept> list = new ArrayList<Dept>( dtoList.size() );
-        for ( DeptSmallDto deptSmallDto : dtoList ) {
+        List<Dept> list = new ArrayList<Dept>( arg0.size() );
+        for ( DeptSmallDto deptSmallDto : arg0 ) {
             list.add( toEntity( deptSmallDto ) );
         }
 
@@ -58,13 +58,13 @@ public class DeptSmallMapperImpl implements DeptSmallMapper {
     }
 
     @Override
-    public List<DeptSmallDto> toDto(List<Dept> entityList) {
-        if ( entityList == null ) {
+    public List<DeptSmallDto> toDto(List<Dept> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<DeptSmallDto> list = new ArrayList<DeptSmallDto>( entityList.size() );
-        for ( Dept dept : entityList ) {
+        List<DeptSmallDto> list = new ArrayList<DeptSmallDto>( arg0.size() );
+        for ( Dept dept : arg0 ) {
             list.add( toDto( dept ) );
         }
 

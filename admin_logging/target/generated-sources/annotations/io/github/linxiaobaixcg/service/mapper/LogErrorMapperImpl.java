@@ -9,62 +9,62 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-01-03T23:16:56+0800",
+    date = "2020-01-08T23:46:04+0800",
     comments = "version: 1.2.0.Final, compiler: javac, environment: Java 1.8.0_191 (Oracle Corporation)"
 )
 @Component
 public class LogErrorMapperImpl implements LogErrorMapper {
 
     @Override
-    public Log toEntity(LogErrorDTO dto) {
-        if ( dto == null ) {
+    public Log toEntity(LogErrorDTO arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         Log log = new Log();
 
-        log.setId( dto.getId() );
-        log.setUsername( dto.getUsername() );
-        log.setDescription( dto.getDescription() );
-        log.setMethod( dto.getMethod() );
-        log.setParams( dto.getParams() );
-        log.setRequestIp( dto.getRequestIp() );
-        log.setAddress( dto.getAddress() );
-        log.setBrowser( dto.getBrowser() );
-        log.setCreateTime( dto.getCreateTime() );
+        log.setId( arg0.getId() );
+        log.setUsername( arg0.getUsername() );
+        log.setDescription( arg0.getDescription() );
+        log.setMethod( arg0.getMethod() );
+        log.setParams( arg0.getParams() );
+        log.setRequestIp( arg0.getRequestIp() );
+        log.setAddress( arg0.getAddress() );
+        log.setBrowser( arg0.getBrowser() );
+        log.setCreateTime( arg0.getCreateTime() );
 
         return log;
     }
 
     @Override
-    public LogErrorDTO toDto(Log entity) {
-        if ( entity == null ) {
+    public LogErrorDTO toDto(Log arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         LogErrorDTO logErrorDTO = new LogErrorDTO();
 
-        logErrorDTO.setId( entity.getId() );
-        logErrorDTO.setUsername( entity.getUsername() );
-        logErrorDTO.setDescription( entity.getDescription() );
-        logErrorDTO.setMethod( entity.getMethod() );
-        logErrorDTO.setParams( entity.getParams() );
-        logErrorDTO.setBrowser( entity.getBrowser() );
-        logErrorDTO.setRequestIp( entity.getRequestIp() );
-        logErrorDTO.setAddress( entity.getAddress() );
-        logErrorDTO.setCreateTime( entity.getCreateTime() );
+        logErrorDTO.setId( arg0.getId() );
+        logErrorDTO.setUsername( arg0.getUsername() );
+        logErrorDTO.setDescription( arg0.getDescription() );
+        logErrorDTO.setMethod( arg0.getMethod() );
+        logErrorDTO.setParams( arg0.getParams() );
+        logErrorDTO.setBrowser( arg0.getBrowser() );
+        logErrorDTO.setRequestIp( arg0.getRequestIp() );
+        logErrorDTO.setAddress( arg0.getAddress() );
+        logErrorDTO.setCreateTime( arg0.getCreateTime() );
 
         return logErrorDTO;
     }
 
     @Override
-    public List<Log> toEntity(List<LogErrorDTO> dtoList) {
-        if ( dtoList == null ) {
+    public List<Log> toEntity(List<LogErrorDTO> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<Log> list = new ArrayList<Log>( dtoList.size() );
-        for ( LogErrorDTO logErrorDTO : dtoList ) {
+        List<Log> list = new ArrayList<Log>( arg0.size() );
+        for ( LogErrorDTO logErrorDTO : arg0 ) {
             list.add( toEntity( logErrorDTO ) );
         }
 
@@ -72,13 +72,13 @@ public class LogErrorMapperImpl implements LogErrorMapper {
     }
 
     @Override
-    public List<LogErrorDTO> toDto(List<Log> entityList) {
-        if ( entityList == null ) {
+    public List<LogErrorDTO> toDto(List<Log> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<LogErrorDTO> list = new ArrayList<LogErrorDTO>( entityList.size() );
-        for ( Log log : entityList ) {
+        List<LogErrorDTO> list = new ArrayList<LogErrorDTO>( arg0.size() );
+        for ( Log log : arg0 ) {
             list.add( toDto( log ) );
         }
 

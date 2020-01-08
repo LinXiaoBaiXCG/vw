@@ -6,7 +6,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://47.98.237.121/vw?characterEncoding=UTF8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://47.98.237.121/vw?c?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
     username: root
     password: LCQmysql183187!
     hikari:
@@ -44,9 +44,6 @@ mybatis-plus:
   # 配置SQL打印日志
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-#是否开启 swagger-ui
-swagger:
-  enabled: true
 eureka:
   client:
     service-url:

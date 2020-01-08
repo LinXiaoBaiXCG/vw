@@ -9,100 +9,100 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-01-03T23:17:09+0800",
+    date = "2020-01-08T23:46:12+0800",
     comments = "version: 1.2.0.Final, compiler: javac, environment: Java 1.8.0_191 (Oracle Corporation)"
 )
 @Component
 public class ServerMapperImpl implements ServerMapper {
 
     @Override
-    public Server toEntity(ServerDTO dto) {
-        if ( dto == null ) {
+    public Server toEntity(ServerDTO arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         Server server = new Server();
 
-        server.setId( dto.getId() );
-        server.setName( dto.getName() );
-        server.setAddress( dto.getAddress() );
-        server.setPort( dto.getPort() );
-        server.setState( dto.getState() );
-        if ( dto.getCpuRate() != null ) {
-            server.setCpuRate( dto.getCpuRate().doubleValue() );
+        server.setId( arg0.getId() );
+        server.setName( arg0.getName() );
+        server.setAddress( arg0.getAddress() );
+        server.setPort( arg0.getPort() );
+        server.setState( arg0.getState() );
+        if ( arg0.getCpuRate() != null ) {
+            server.setCpuRate( arg0.getCpuRate().doubleValue() );
         }
-        server.setCpuCore( dto.getCpuCore() );
-        if ( dto.getMemTotal() != null ) {
-            server.setMemTotal( dto.getMemTotal().doubleValue() );
+        server.setCpuCore( arg0.getCpuCore() );
+        if ( arg0.getMemTotal() != null ) {
+            server.setMemTotal( arg0.getMemTotal().doubleValue() );
         }
-        if ( dto.getMemUsed() != null ) {
-            server.setMemUsed( dto.getMemUsed().doubleValue() );
+        if ( arg0.getMemUsed() != null ) {
+            server.setMemUsed( arg0.getMemUsed().doubleValue() );
         }
-        if ( dto.getDiskTotal() != null ) {
-            server.setDiskTotal( dto.getDiskTotal().doubleValue() );
+        if ( arg0.getDiskTotal() != null ) {
+            server.setDiskTotal( arg0.getDiskTotal().doubleValue() );
         }
-        if ( dto.getDiskUsed() != null ) {
-            server.setDiskUsed( dto.getDiskUsed().doubleValue() );
+        if ( arg0.getDiskUsed() != null ) {
+            server.setDiskUsed( arg0.getDiskUsed().doubleValue() );
         }
-        if ( dto.getSwapTotal() != null ) {
-            server.setSwapTotal( dto.getSwapTotal().doubleValue() );
+        if ( arg0.getSwapTotal() != null ) {
+            server.setSwapTotal( arg0.getSwapTotal().doubleValue() );
         }
-        if ( dto.getSwapUsed() != null ) {
-            server.setSwapUsed( dto.getSwapUsed().doubleValue() );
+        if ( arg0.getSwapUsed() != null ) {
+            server.setSwapUsed( arg0.getSwapUsed().doubleValue() );
         }
-        server.setSort( dto.getSort() );
+        server.setSort( arg0.getSort() );
 
         return server;
     }
 
     @Override
-    public ServerDTO toDto(Server entity) {
-        if ( entity == null ) {
+    public ServerDTO toDto(Server arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         ServerDTO serverDTO = new ServerDTO();
 
-        serverDTO.setId( entity.getId() );
-        serverDTO.setName( entity.getName() );
-        serverDTO.setAddress( entity.getAddress() );
-        serverDTO.setPort( entity.getPort() );
-        serverDTO.setState( entity.getState() );
-        if ( entity.getCpuRate() != null ) {
-            serverDTO.setCpuRate( entity.getCpuRate().floatValue() );
+        serverDTO.setId( arg0.getId() );
+        serverDTO.setName( arg0.getName() );
+        serverDTO.setAddress( arg0.getAddress() );
+        serverDTO.setPort( arg0.getPort() );
+        serverDTO.setState( arg0.getState() );
+        if ( arg0.getCpuRate() != null ) {
+            serverDTO.setCpuRate( arg0.getCpuRate().floatValue() );
         }
-        serverDTO.setCpuCore( entity.getCpuCore() );
-        if ( entity.getMemTotal() != null ) {
-            serverDTO.setMemTotal( entity.getMemTotal().floatValue() );
+        serverDTO.setCpuCore( arg0.getCpuCore() );
+        if ( arg0.getMemTotal() != null ) {
+            serverDTO.setMemTotal( arg0.getMemTotal().floatValue() );
         }
-        if ( entity.getMemUsed() != null ) {
-            serverDTO.setMemUsed( entity.getMemUsed().floatValue() );
+        if ( arg0.getMemUsed() != null ) {
+            serverDTO.setMemUsed( arg0.getMemUsed().floatValue() );
         }
-        if ( entity.getDiskTotal() != null ) {
-            serverDTO.setDiskTotal( entity.getDiskTotal().floatValue() );
+        if ( arg0.getDiskTotal() != null ) {
+            serverDTO.setDiskTotal( arg0.getDiskTotal().floatValue() );
         }
-        if ( entity.getDiskUsed() != null ) {
-            serverDTO.setDiskUsed( entity.getDiskUsed().floatValue() );
+        if ( arg0.getDiskUsed() != null ) {
+            serverDTO.setDiskUsed( arg0.getDiskUsed().floatValue() );
         }
-        if ( entity.getSwapTotal() != null ) {
-            serverDTO.setSwapTotal( entity.getSwapTotal().floatValue() );
+        if ( arg0.getSwapTotal() != null ) {
+            serverDTO.setSwapTotal( arg0.getSwapTotal().floatValue() );
         }
-        if ( entity.getSwapUsed() != null ) {
-            serverDTO.setSwapUsed( entity.getSwapUsed().floatValue() );
+        if ( arg0.getSwapUsed() != null ) {
+            serverDTO.setSwapUsed( arg0.getSwapUsed().floatValue() );
         }
-        serverDTO.setSort( entity.getSort() );
+        serverDTO.setSort( arg0.getSort() );
 
         return serverDTO;
     }
 
     @Override
-    public List<Server> toEntity(List<ServerDTO> dtoList) {
-        if ( dtoList == null ) {
+    public List<Server> toEntity(List<ServerDTO> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<Server> list = new ArrayList<Server>( dtoList.size() );
-        for ( ServerDTO serverDTO : dtoList ) {
+        List<Server> list = new ArrayList<Server>( arg0.size() );
+        for ( ServerDTO serverDTO : arg0 ) {
             list.add( toEntity( serverDTO ) );
         }
 
@@ -110,13 +110,13 @@ public class ServerMapperImpl implements ServerMapper {
     }
 
     @Override
-    public List<ServerDTO> toDto(List<Server> entityList) {
-        if ( entityList == null ) {
+    public List<ServerDTO> toDto(List<Server> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<ServerDTO> list = new ArrayList<ServerDTO>( entityList.size() );
-        for ( Server server : entityList ) {
+        List<ServerDTO> list = new ArrayList<ServerDTO>( arg0.size() );
+        for ( Server server : arg0 ) {
             list.add( toDto( server ) );
         }
 

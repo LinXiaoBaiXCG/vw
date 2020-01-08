@@ -9,52 +9,52 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-01-03T23:17:08+0800",
+    date = "2020-01-08T23:46:12+0800",
     comments = "version: 1.2.0.Final, compiler: javac, environment: Java 1.8.0_191 (Oracle Corporation)"
 )
 @Component
 public class RoleSmallMapperImpl implements RoleSmallMapper {
 
     @Override
-    public Role toEntity(RoleSmallDto dto) {
-        if ( dto == null ) {
+    public Role toEntity(RoleSmallDto arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         Role role = new Role();
 
-        role.setId( dto.getId() );
-        role.setName( dto.getName() );
-        role.setDataScope( dto.getDataScope() );
-        role.setLevel( dto.getLevel() );
+        role.setId( arg0.getId() );
+        role.setName( arg0.getName() );
+        role.setDataScope( arg0.getDataScope() );
+        role.setLevel( arg0.getLevel() );
 
         return role;
     }
 
     @Override
-    public RoleSmallDto toDto(Role entity) {
-        if ( entity == null ) {
+    public RoleSmallDto toDto(Role arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         RoleSmallDto roleSmallDto = new RoleSmallDto();
 
-        roleSmallDto.setId( entity.getId() );
-        roleSmallDto.setName( entity.getName() );
-        roleSmallDto.setLevel( entity.getLevel() );
-        roleSmallDto.setDataScope( entity.getDataScope() );
+        roleSmallDto.setId( arg0.getId() );
+        roleSmallDto.setName( arg0.getName() );
+        roleSmallDto.setLevel( arg0.getLevel() );
+        roleSmallDto.setDataScope( arg0.getDataScope() );
 
         return roleSmallDto;
     }
 
     @Override
-    public List<Role> toEntity(List<RoleSmallDto> dtoList) {
-        if ( dtoList == null ) {
+    public List<Role> toEntity(List<RoleSmallDto> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<Role> list = new ArrayList<Role>( dtoList.size() );
-        for ( RoleSmallDto roleSmallDto : dtoList ) {
+        List<Role> list = new ArrayList<Role>( arg0.size() );
+        for ( RoleSmallDto roleSmallDto : arg0 ) {
             list.add( toEntity( roleSmallDto ) );
         }
 
@@ -62,13 +62,13 @@ public class RoleSmallMapperImpl implements RoleSmallMapper {
     }
 
     @Override
-    public List<RoleSmallDto> toDto(List<Role> entityList) {
-        if ( entityList == null ) {
+    public List<RoleSmallDto> toDto(List<Role> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<RoleSmallDto> list = new ArrayList<RoleSmallDto>( entityList.size() );
-        for ( Role role : entityList ) {
+        List<RoleSmallDto> list = new ArrayList<RoleSmallDto>( arg0.size() );
+        for ( Role role : arg0 ) {
             list.add( toDto( role ) );
         }
 

@@ -9,46 +9,46 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-01-03T23:17:09+0800",
+    date = "2020-01-08T23:46:12+0800",
     comments = "version: 1.2.0.Final, compiler: javac, environment: Java 1.8.0_191 (Oracle Corporation)"
 )
 @Component
 public class DictSmallMapperImpl implements DictSmallMapper {
 
     @Override
-    public Dict toEntity(DictSmallDto dto) {
-        if ( dto == null ) {
+    public Dict toEntity(DictSmallDto arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         Dict dict = new Dict();
 
-        dict.setId( dto.getId() );
+        dict.setId( arg0.getId() );
 
         return dict;
     }
 
     @Override
-    public DictSmallDto toDto(Dict entity) {
-        if ( entity == null ) {
+    public DictSmallDto toDto(Dict arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         DictSmallDto dictSmallDto = new DictSmallDto();
 
-        dictSmallDto.setId( entity.getId() );
+        dictSmallDto.setId( arg0.getId() );
 
         return dictSmallDto;
     }
 
     @Override
-    public List<Dict> toEntity(List<DictSmallDto> dtoList) {
-        if ( dtoList == null ) {
+    public List<Dict> toEntity(List<DictSmallDto> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<Dict> list = new ArrayList<Dict>( dtoList.size() );
-        for ( DictSmallDto dictSmallDto : dtoList ) {
+        List<Dict> list = new ArrayList<Dict>( arg0.size() );
+        for ( DictSmallDto dictSmallDto : arg0 ) {
             list.add( toEntity( dictSmallDto ) );
         }
 
@@ -56,13 +56,13 @@ public class DictSmallMapperImpl implements DictSmallMapper {
     }
 
     @Override
-    public List<DictSmallDto> toDto(List<Dict> entityList) {
-        if ( entityList == null ) {
+    public List<DictSmallDto> toDto(List<Dict> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<DictSmallDto> list = new ArrayList<DictSmallDto>( entityList.size() );
-        for ( Dict dict : entityList ) {
+        List<DictSmallDto> list = new ArrayList<DictSmallDto>( arg0.size() );
+        for ( Dict dict : arg0 ) {
             list.add( toDto( dict ) );
         }
 

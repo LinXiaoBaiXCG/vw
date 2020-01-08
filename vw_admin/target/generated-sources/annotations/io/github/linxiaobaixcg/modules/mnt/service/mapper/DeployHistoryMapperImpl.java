@@ -9,56 +9,56 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-01-03T23:17:09+0800",
+    date = "2020-01-08T23:46:12+0800",
     comments = "version: 1.2.0.Final, compiler: javac, environment: Java 1.8.0_191 (Oracle Corporation)"
 )
 @Component
 public class DeployHistoryMapperImpl implements DeployHistoryMapper {
 
     @Override
-    public DeployHistory toEntity(DeployHistoryDto dto) {
-        if ( dto == null ) {
+    public DeployHistory toEntity(DeployHistoryDto arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         DeployHistory deployHistory = new DeployHistory();
 
-        deployHistory.setId( dto.getId() );
-        deployHistory.setAppName( dto.getAppName() );
-        deployHistory.setIp( dto.getIp() );
-        deployHistory.setDeployDate( dto.getDeployDate() );
-        deployHistory.setDeployUser( dto.getDeployUser() );
-        deployHistory.setDeployId( dto.getDeployId() );
+        deployHistory.setId( arg0.getId() );
+        deployHistory.setAppName( arg0.getAppName() );
+        deployHistory.setIp( arg0.getIp() );
+        deployHistory.setDeployDate( arg0.getDeployDate() );
+        deployHistory.setDeployUser( arg0.getDeployUser() );
+        deployHistory.setDeployId( arg0.getDeployId() );
 
         return deployHistory;
     }
 
     @Override
-    public DeployHistoryDto toDto(DeployHistory entity) {
-        if ( entity == null ) {
+    public DeployHistoryDto toDto(DeployHistory arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
         DeployHistoryDto deployHistoryDto = new DeployHistoryDto();
 
-        deployHistoryDto.setId( entity.getId() );
-        deployHistoryDto.setAppName( entity.getAppName() );
-        deployHistoryDto.setIp( entity.getIp() );
-        deployHistoryDto.setDeployDate( entity.getDeployDate() );
-        deployHistoryDto.setDeployUser( entity.getDeployUser() );
-        deployHistoryDto.setDeployId( entity.getDeployId() );
+        deployHistoryDto.setId( arg0.getId() );
+        deployHistoryDto.setAppName( arg0.getAppName() );
+        deployHistoryDto.setIp( arg0.getIp() );
+        deployHistoryDto.setDeployDate( arg0.getDeployDate() );
+        deployHistoryDto.setDeployUser( arg0.getDeployUser() );
+        deployHistoryDto.setDeployId( arg0.getDeployId() );
 
         return deployHistoryDto;
     }
 
     @Override
-    public List<DeployHistory> toEntity(List<DeployHistoryDto> dtoList) {
-        if ( dtoList == null ) {
+    public List<DeployHistory> toEntity(List<DeployHistoryDto> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<DeployHistory> list = new ArrayList<DeployHistory>( dtoList.size() );
-        for ( DeployHistoryDto deployHistoryDto : dtoList ) {
+        List<DeployHistory> list = new ArrayList<DeployHistory>( arg0.size() );
+        for ( DeployHistoryDto deployHistoryDto : arg0 ) {
             list.add( toEntity( deployHistoryDto ) );
         }
 
@@ -66,13 +66,13 @@ public class DeployHistoryMapperImpl implements DeployHistoryMapper {
     }
 
     @Override
-    public List<DeployHistoryDto> toDto(List<DeployHistory> entityList) {
-        if ( entityList == null ) {
+    public List<DeployHistoryDto> toDto(List<DeployHistory> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<DeployHistoryDto> list = new ArrayList<DeployHistoryDto>( entityList.size() );
-        for ( DeployHistory deployHistory : entityList ) {
+        List<DeployHistoryDto> list = new ArrayList<DeployHistoryDto>( arg0.size() );
+        for ( DeployHistory deployHistory : arg0 ) {
             list.add( toDto( deployHistory ) );
         }
 
