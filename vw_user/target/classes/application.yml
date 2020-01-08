@@ -6,7 +6,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://47.98.237.121/vw?characterEncoding=UTF8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://47.98.237.121/vw?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
     username: root
     password: LCQmysql183187!
     hikari:
@@ -23,3 +23,22 @@ spring:
       idle-timeout: 60000
       #池中连接最长生命周期
       max-lifetime: 60000
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: io.github.linxiaobaixcg.entity
+  global-config:
+    #数据库相关配置
+    db-config:
+      #字段策略 IGNORED:"忽略判断",NOT_NULL:"非 NULL 判断"),NOT_EMPTY:"非空判断"
+      field-strategy: NOT_NULL
+      #驼峰下划线转换
+      column-underline: true
+      logic-delete-value: -1
+      logic-not-delete-value: 0
+      #自定义填充策略接口实现
+      global-config.meta-object-handler: MyMetaObjectHandler
+    banner: false
+  # 配置SQL打印日志
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

@@ -1,11 +1,14 @@
 package io.github.linxiaobaixcg.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import io.github.linxiaobaixcg.entity.User;
+import io.github.linxiaobaixcg.entity.vo.UpdateCountVO;
 import io.github.linxiaobaixcg.entity.vo.UserRegisterVO;
 import io.github.linxiaobaixcg.exception.BadRequestException;
 import io.github.linxiaobaixcg.mapper.UserMapper;
 import io.github.linxiaobaixcg.utils.IdWorker;
+import io.github.linxiaobaixcg.utils.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -31,6 +34,9 @@ public class UserService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Autowired
+    private JwtUtils jwtUtils;
+
     /**
      * 根据ID获取用户信息
      * @param id
@@ -40,6 +46,10 @@ public class UserService {
         return userMapper.selectById(id);
     }
 
+    /**
+     * 用户注册
+     * @param userRegisterVO
+     */
     @Transactional
     public void register(UserRegisterVO userRegisterVO){
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
@@ -70,5 +80,58 @@ public class UserService {
         saveUser.setFollowCount(0);
         saveUser.setProblemCount(0);
         userMapper.insert(saveUser);
+    }
+
+    /**
+     * 用户登录
+     * @param user
+     * @return
+     */
+    public String login(User user){
+        QueryWrapper<User> queryWrapper =  new QueryWrapper<>();
+        queryWrapper.eq("phone",user.getPhone());
+        User checkUser = userMapper.selectOne(queryWrapper);
+        if (checkUser == null){
+            throw new BadRequestException("该用户不存在！");
+        }
+        if (checkUser.getStatus() == 1){
+            throw new BadRequestException("该用户已被禁止使用！");
+        }
+        if (!bCryptPasswordEncoder.matches(user.getPassword(),checkUser.getPassword())){
+            throw new BadRequestException("密码错误！");
+        }
+        return jwtUtils.generateToken(checkUser.getId());
+    }
+
+    /**
+     * 修改用户关注数
+     * @param updateCountVO
+     */
+    public void updateFollowCount(UpdateCountVO updateCountVO){
+        userMapper.updateFollowCount(updateCountVO);
+    }
+
+    /**
+     * 修改用户粉丝数
+     * @param updateCountVO
+     */
+    public void updateFansCount(UpdateCountVO updateCountVO){
+        userMapper.updateFansCount(updateCountVO);
+    }
+
+    /**
+     * 修改用户提问数
+     * @param updateCountVO
+     */
+    public void updateProblemCount(UpdateCountVO updateCountVO){
+        userMapper.updateProblemCount(updateCountVO);
+    }
+
+    /**
+     * 修改用户回答数
+     * @param updateCountVO
+     */
+    public void updateAnswerCount(UpdateCountVO updateCountVO){
+        userMapper.updateAnswerCount(updateCountVO);
     }
 }

@@ -4,6 +4,7 @@ import io.github.linxiaobaixcg.utils.IdWorker;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 
 /**
@@ -14,6 +15,7 @@ import org.springframework.context.annotation.Bean;
  **/
 @SpringBootApplication
 @EnableCaching
+@EnableEurekaClient
 public class QaApplication {
     public static void main(String[] args) {
         SpringApplication.run(QaApplication.class,args);
