@@ -36,4 +36,9 @@ public class UserServiceTest {
         userRegisterVO.setCheckPassword("123456");
         userService.register(userRegisterVO);
     }
+
+    @Test
+    public void updateProblemCount() {
+        userService.updateProblemCount("1",1);
+    }
 }

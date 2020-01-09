@@ -43,27 +43,27 @@ public class UserController {
         return new ResponseEntity(userService.login(user),HttpStatus.OK);
     }
 
-    @PutMapping("/updateFollowCount")
-    public ResponseEntity updateFollowCount(@RequestBody UpdateCountVO updateCountVO){
-        userService.updateFollowCount(updateCountVO);
+    @PutMapping("/updateFollowCount/{userId}/{count}")
+    public ResponseEntity updateFollowCount(@PathVariable("userId")String userId, @PathVariable("count")Integer count){
+        userService.updateFollowCount(userId,count);
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @PutMapping("/updateFansCount")
-    public ResponseEntity updateFansCount(@RequestBody UpdateCountVO updateCountVO){
-        userService.updateFansCount(updateCountVO);
+    @PutMapping("/updateFansCount/{userId}/{count}")
+    public ResponseEntity updateFansCount(@PathVariable("userId")String userId, @PathVariable("count")Integer count){
+        userService.updateFansCount(userId,count);
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @PutMapping("/updateProblemCount")
-    public ResponseEntity updateProblemCount(@RequestBody UpdateCountVO updateCountVO){
-        userService.updateProblemCount(updateCountVO);
+    @PutMapping("/updateProblemCount/{userId}/{count}")
+    public ResponseEntity updateProblemCount(@PathVariable("userId")String userId, @PathVariable("count")Integer count){
+        userService.updateProblemCount(userId,count);
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @PutMapping("/updateAnswerCount")
-    public ResponseEntity updateAnswerCount(@RequestBody UpdateCountVO updateCountVO){
-        userService.updateAnswerCount(updateCountVO);
+    @PutMapping("/updateAnswerCount/{userId}/{count}")
+    public ResponseEntity updateAnswerCount(@PathVariable("userId")String userId, @PathVariable("count")Integer count){
+        userService.updateAnswerCount(userId,count);
         return new ResponseEntity(HttpStatus.OK);
     }
 }

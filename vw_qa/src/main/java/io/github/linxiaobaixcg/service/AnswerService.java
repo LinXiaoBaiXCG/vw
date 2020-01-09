@@ -3,6 +3,7 @@ package io.github.linxiaobaixcg.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.github.linxiaobaixcg.client.UserClient;
 import io.github.linxiaobaixcg.entity.Agree;
 import io.github.linxiaobaixcg.entity.Answer;
 import io.github.linxiaobaixcg.entity.vo.AnswerVo;
@@ -36,6 +37,9 @@ public class AnswerService {
     @Autowired
     private AgreeMapper agreeMapper;
 
+    @Autowired
+    private UserClient userClient;
+
     /**
      * 添加回答
      * @param answer
@@ -43,6 +47,7 @@ public class AnswerService {
     public void add(Answer answer){
         answer.setId(idWorker.nextId()+"");
         answerMapper.insert(answer);
+        userClient.updateAnswerCount(answer.getUserId(),1);
     }
 
     /**

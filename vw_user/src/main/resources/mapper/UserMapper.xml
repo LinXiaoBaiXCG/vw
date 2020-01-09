@@ -10,7 +10,7 @@
         update vw_user set fans_count = fans_count + #{count} where id = #{userId}
     </update>
 
-    <update id="updateProblemCount" parameterType="io.github.linxiaobaixcg.entity.vo.UpdateCountVO">
+    <update id="updateProblemCount">
         update vw_user set problem_count = problem_count + #{count} where id = #{userId}
     </update>
 

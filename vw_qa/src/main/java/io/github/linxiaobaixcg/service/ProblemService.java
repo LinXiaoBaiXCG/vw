@@ -3,9 +3,11 @@ package io.github.linxiaobaixcg.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.github.linxiaobaixcg.client.UserClient;
 import io.github.linxiaobaixcg.entity.Problem;
 import io.github.linxiaobaixcg.mapper.ProblemMapper;
 import io.github.linxiaobaixcg.utils.IdWorker;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -24,8 +26,12 @@ public class ProblemService {
 
     @Autowired
     private ProblemMapper problemMapper;
+
     @Autowired
     private IdWorker idWorker;
+
+    @Autowired
+    private UserClient userClient;
 
     /**
      * 添加问题
@@ -33,9 +39,10 @@ public class ProblemService {
      * @return
      */
     @CacheEvict(value ="problem.findByUserId",allEntries = true)
-    public int insert(Problem problem){
+    public void insert(Problem problem){
         problem.setId(idWorker.nextId()+"");
-        return problemMapper.insert(problem);
+        problemMapper.insert(problem);
+        userClient.updateProblemCount(problem.getUserId(),1);
     }
 
     /**

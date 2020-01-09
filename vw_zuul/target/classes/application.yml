@@ -14,5 +14,8 @@ zuul:
     vw-qa:
       path: /qa/**
       serviceId: vw-qa
+    vw-follow:
+      path: /follow/**
+      serviceId: vw-follow
 swagger:
-  enable: true
+  enable: false

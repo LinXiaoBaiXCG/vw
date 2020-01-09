@@ -16,11 +16,11 @@ import org.apache.ibatis.annotations.Update;
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
 
-    void updateFollowCount(UpdateCountVO updateCountVO);
+    void updateFollowCount(@Param("userId") String userId, @Param("count") Integer count);
 
-    void updateFansCount(UpdateCountVO updateCountVO);
+    void updateFansCount(@Param("userId") String userId, @Param("count") Integer count);
 
-    void updateProblemCount(UpdateCountVO updateCountVO);
+    void updateProblemCount(@Param("userId") String userId, @Param("count") Integer count);
 
-    void updateAnswerCount(UpdateCountVO updateCountVO);
+    void updateAnswerCount(@Param("userId") String userId, @Param("count") Integer count);
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.linxiaobaixcg.mapper.FollowMapper">
+
+    <select id="findFollowUserList" resultType="io.github.linxiaobaixcg.entity.vo.FollowUserVO">
+        select
+        u.id as userId,
+        u.username as username,
+        u.avatar as avatar,
+        u.introduction as introduction
+        from
+        vw_follow f
+        left join vw_user u on f.object_id = u.id
+        where
+        f.user_id = #{userId}
+        and f.type = 1
+        order by
+        f.create_time desc
+    </select>
+</mapper>

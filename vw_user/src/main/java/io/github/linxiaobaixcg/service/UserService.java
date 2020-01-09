@@ -105,33 +105,37 @@ public class UserService {
 
     /**
      * 修改用户关注数
-     * @param updateCountVO
+     * @param userId
+     * @param count
      */
-    public void updateFollowCount(UpdateCountVO updateCountVO){
-        userMapper.updateFollowCount(updateCountVO);
+    public void updateFollowCount(String userId,Integer count){
+        userMapper.updateFollowCount(userId,count);
     }
 
     /**
      * 修改用户粉丝数
-     * @param updateCountVO
+     * @param userId
+     * @param count
      */
-    public void updateFansCount(UpdateCountVO updateCountVO){
-        userMapper.updateFansCount(updateCountVO);
+    public void updateFansCount(String userId,Integer count){
+        userMapper.updateFansCount(userId,count);
     }
 
     /**
-     * 修改用户提问数
-     * @param updateCountVO
+     * 修改提问数
+     * @param userId
+     * @param count
      */
-    public void updateProblemCount(UpdateCountVO updateCountVO){
-        userMapper.updateProblemCount(updateCountVO);
+    public void updateProblemCount(String userId,Integer count){
+        userMapper.updateProblemCount(userId,count);
     }
 
     /**
      * 修改用户回答数
-     * @param updateCountVO
+     * @param userId
+     * @param count
      */
-    public void updateAnswerCount(UpdateCountVO updateCountVO){
-        userMapper.updateAnswerCount(updateCountVO);
+    public void updateAnswerCount(String userId,Integer count){
+        userMapper.updateAnswerCount(userId,count);
     }
 }

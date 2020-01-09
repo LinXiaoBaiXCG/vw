@@ -9,6 +9,7 @@ import io.github.linxiaobaixcg.entity.StatusCode;
 import io.github.linxiaobaixcg.service.AgreeService;
 import io.github.linxiaobaixcg.service.AnswerService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -22,12 +23,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "/api/agree")
 
-@Api(tags = "部门模块接口", description = "后台管理服务部门模块接口")
+@Api(tags = "赞同相关接口")
 public class AgreeController {
 
     @Autowired
     private AgreeService agreeService;
 
+    @ApiOperation(value = "赞同回答")
     @Login
     @PutMapping
     private Result agreeAnswer(@RequestAttribute("userId") String userId, @RequestBody Agree agree){

@@ -25,11 +25,11 @@ public class SwaggerConfig {
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
-                .enable(enableSwagger)
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("io.github.linxiaobaixcg"))// 需要生成文档的包的位置
-                .paths(PathSelectors.any())
-                .build();
+                .enable(enableSwagger);
+//                .select()
+//                .apis(RequestHandlerSelectors.basePackage("io.github.linxiaobaixcg.controller"))// 需要生成文档的包的位置
+//                .paths(PathSelectors.any())
+//                .build();
     }
 
     private ApiInfo apiInfo() {

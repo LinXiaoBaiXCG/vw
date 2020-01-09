@@ -20,7 +20,6 @@ import java.sql.Timestamp;
 public class Problem implements Serializable {
     @TableField(value = "id",fill = FieldFill.INSERT)
     private String id;
-    @NotBlank(message = "用户ID不能为空")
     private String userId;
     private String title;
     private String details;
