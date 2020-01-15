@@ -42,7 +42,7 @@ public class UserService {
      * @param id
      * @return
      */
-    public User findUserById(String id){
+    public User findUserById(Long id){
         return userMapper.selectById(id);
     }
 
@@ -68,7 +68,7 @@ public class UserService {
             throw new BadRequestException("密码不一致！");
         }
         User saveUser = new User();
-        saveUser.setId(idWorker.nextId()+"");
+        saveUser.setId(idWorker.nextId());
         saveUser.setUsername(userRegisterVO.getUsername());
         saveUser.setPassword(bCryptPasswordEncoder.encode(userRegisterVO.getPassword()));
         saveUser.setLastPasswordResetTime(new Timestamp(System.currentTimeMillis()));
@@ -100,7 +100,7 @@ public class UserService {
         if (!bCryptPasswordEncoder.matches(user.getPassword(),checkUser.getPassword())){
             throw new BadRequestException("密码错误！");
         }
-        return jwtUtils.generateToken(checkUser.getId());
+        return jwtUtils.generateToken(checkUser.getId()+"");
     }
 
     /**

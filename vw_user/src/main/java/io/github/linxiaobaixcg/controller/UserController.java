@@ -29,7 +29,7 @@ public class UserController {
     @Login
     @GetMapping
     public Result getUserInfo(@RequestAttribute("userId") String userId){
-        return new Result(StatusCode.OK,userService.findUserById(userId));
+        return new Result(StatusCode.OK,userService.findUserById(new Long(userId)));
     }
 
     @PostMapping("/register")

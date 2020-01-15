@@ -11,11 +11,11 @@ import java.sql.Timestamp;
 @TableName("vw_answer")
 public class Answer implements Serializable {
 
-    private String id;
+    private Long id;
 
-    private String userId;
+    private Long userId;
 
-    private String problemId;
+    private Long problemId;
 
     private String problemTitle;
 
@@ -40,5 +40,5 @@ public class Answer implements Serializable {
     /**
      * 回答点赞数
      */
-    private Long agreeCount;
+    private Integer agreeCount;
 }

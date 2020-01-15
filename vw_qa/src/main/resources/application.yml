@@ -24,7 +24,7 @@ spring:
       #池中连接最长生命周期
       max-lifetime: 60000
   redis:
-    host: 192.168.138.128
+    host: 47.98.237.121
 mybatis-plus:
   mapper-locations: classpath:/mapper/*.xml
   #实体扫描，多个package用逗号或者分号分隔

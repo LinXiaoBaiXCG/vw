@@ -19,8 +19,8 @@ import java.sql.Timestamp;
 @TableName("vw_problem")
 public class Problem implements Serializable {
     @TableField(value = "id",fill = FieldFill.INSERT)
-    private String id;
-    private String userId;
+    private Long id;
+    private Long userId;
     private String title;
     private String details;
     private String topicId;

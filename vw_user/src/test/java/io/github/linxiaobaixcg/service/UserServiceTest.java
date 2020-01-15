@@ -22,7 +22,7 @@ public class UserServiceTest {
     private UserService userService;
     @Test
     public void findUserById() {
-        User user =  userService.findUserById("1");
+        User user =  userService.findUserById(1L);
         log.info("用户信息是：{}",user);
         log.info("时间是：{}",new Timestamp(System.currentTimeMillis()));
     }

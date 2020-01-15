@@ -18,7 +18,7 @@ import java.sql.Timestamp;
 @TableName("vw_user")
 public class User implements Serializable {
 
-    private String id;
+    private Long id;
     private String username;
     private String password;
     private Timestamp lastPasswordResetTime;
