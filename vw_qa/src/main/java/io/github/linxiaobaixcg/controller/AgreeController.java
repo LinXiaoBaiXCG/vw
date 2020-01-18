@@ -11,6 +11,8 @@ import io.github.linxiaobaixcg.service.AnswerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,10 +34,10 @@ public class AgreeController {
     @ApiOperation(value = "赞同回答")
     @Login
     @PutMapping
-    private Result agreeAnswer(@RequestAttribute("userId") String userId, @RequestBody Agree agree){
+    private ResponseEntity agreeAnswer(@RequestAttribute("userId") Long userId, @RequestBody Agree agree){
         agree.setUserId(userId);
         agreeService.agreeAnswer(agree);
-        return new Result(StatusCode.OK);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
 }

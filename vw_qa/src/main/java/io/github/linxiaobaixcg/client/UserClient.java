@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface UserClient {
 
     @PutMapping("/api/user/updateProblemCount/{userId}/{count}")
-    public ResponseEntity updateProblemCount(@PathVariable("userId")String userId, @PathVariable("count")Integer count);
+    public ResponseEntity updateProblemCount(@PathVariable("userId")Long userId, @PathVariable("count")Integer count);
 
     @PutMapping("/api/user/updateAnswerCount/{userId}/{count}")
-    public ResponseEntity updateAnswerCount(@PathVariable("userId")String userId, @PathVariable("count")Integer count);
+    public ResponseEntity updateAnswerCount(@PathVariable("userId")Long userId, @PathVariable("count")Integer count);
 }

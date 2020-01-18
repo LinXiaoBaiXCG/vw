@@ -31,7 +31,7 @@ public class ProblemController {
     @ApiOperation(value = "添加提问")
     @Login
     @PostMapping
-    public Result add(@RequestAttribute("userId") String userId, @RequestBody @Validated Problem problem){
+    public Result add(@RequestAttribute("userId") Long userId, @RequestBody @Validated Problem problem){
         problem.setUserId(userId);
         problemService.insert(problem);
         return new Result(StatusCode.OK);
@@ -40,7 +40,7 @@ public class ProblemController {
     @ApiOperation(value = "获取用户全部提问")
     @Login
     @GetMapping(value = "/getAll")
-    public Result getAll(@RequestAttribute("userId") String userId, Page page){
+    public Result getAll(@RequestAttribute("userId") Long userId, Page page){
         return new Result(StatusCode.OK,problemService.findByUserId(userId,page));
     }
 }

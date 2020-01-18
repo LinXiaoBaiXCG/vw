@@ -45,7 +45,7 @@ public class AnswerService {
      * @param answer
      */
     public void add(Answer answer){
-        answer.setId(idWorker.nextId()+"");
+        answer.setId(idWorker.nextId());
         answerMapper.insert(answer);
         userClient.updateAnswerCount(answer.getUserId(),1);
     }
@@ -56,7 +56,7 @@ public class AnswerService {
      * @param userId
      * @return
      */
-    public AnswerVo findOne(String answerId, String userId){
+    public AnswerVo findOne(Long answerId, Long userId){
         Answer answer =answerMapper.selectById(answerId);
         AnswerVo answerVO = new AnswerVo();
         BeanUtils.copyProperties(answer,answerVO);
@@ -92,7 +92,7 @@ public class AnswerService {
      * @param page
      * @return
      */
-    public IPage<Answer> findListByUserId(String userId,Page page){
+    public IPage<Answer> findListByUserId(Long userId,Page page){
         QueryWrapper<Answer> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_id",userId);
         queryWrapper.eq("is_deleted",0);

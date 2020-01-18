@@ -40,7 +40,7 @@ public class ProblemService {
      */
     @CacheEvict(value ="problem.findByUserId",allEntries = true)
     public void insert(Problem problem){
-        problem.setId(idWorker.nextId()+"");
+        problem.setId(idWorker.nextId());
         problemMapper.insert(problem);
         userClient.updateProblemCount(problem.getUserId(),1);
     }
@@ -52,7 +52,7 @@ public class ProblemService {
      * @return
      */
     @Cacheable(value = "problem.findByUserId",key = "#userId")
-    public IPage<Problem> findByUserId(String userId, Page page){
+    public IPage<Problem> findByUserId(Long userId, Page page){
         QueryWrapper<Problem> queryWrapper = new QueryWrapper();
         queryWrapper.eq("user_id",userId);
         return problemMapper.selectPage(page,queryWrapper);

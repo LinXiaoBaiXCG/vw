@@ -24,7 +24,7 @@ public class RedisService {
      * @param answerId
      * @param status
      */
-    public void saveAgree2Redis(String userId, String answerId, Integer status){
+    public void saveAgree2Redis(Long userId, Long answerId, Integer status){
         // 取消点赞，问答点赞数减1,否则加1
         if (status != null && status == 0){
             redisTemplate.opsForHash().increment(ANSWER_AGREE_COUNT,answerId,-1L);
@@ -41,7 +41,7 @@ public class RedisService {
      * @param answerId
      * @return
      */
-    public Integer getUserAgree(String userId,String answerId){
+    public Integer getUserAgree(Long userId,Long answerId){
         return  (Integer)redisTemplate.opsForHash().get(USER_AGREE_ANSWER,userId+"::"+answerId);
     }
 
@@ -50,7 +50,7 @@ public class RedisService {
      * @param answerId
      * @return
      */
-    public Long getAnswerAgreeCount(String answerId){
+    public Long getAnswerAgreeCount(Long answerId){
         return Long.parseLong(redisTemplate.opsForHash().get(ANSWER_AGREE_COUNT,answerId).toString());
     }
 }

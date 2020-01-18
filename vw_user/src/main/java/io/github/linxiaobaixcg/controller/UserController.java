@@ -28,8 +28,8 @@ public class UserController {
 
     @Login
     @GetMapping
-    public Result getUserInfo(@RequestAttribute("userId") String userId){
-        return new Result(StatusCode.OK,userService.findUserById(new Long(userId)));
+    public ResponseEntity getUserInfo(@RequestAttribute("userId") Long userId){
+        return new ResponseEntity(userService.findUserById(userId),HttpStatus.OK);
     }
 
     @PostMapping("/register")

@@ -18,11 +18,11 @@ import java.sql.Timestamp;
 @TableName("vw_agree")
 public class Agree implements Serializable {
 
-    private String id;
+    private Long id;
 
-    private String userId;
+    private Long userId;
 
-    private String answerId;
+    private Long answerId;
 
     /**
      * 是否删除 0取消点赞1是点赞

@@ -31,7 +31,7 @@ public class AnswerController {
     @ApiOperation(value = "添加回答")
     @Login
     @PostMapping
-    public Result add(@RequestAttribute("userId")String userId,@RequestBody @Validated Answer answer){
+    public Result add(@RequestAttribute("userId")Long userId,@RequestBody @Validated Answer answer){
         answer.setUserId(userId);
         answerService.add(answer);
         return new Result(StatusCode.OK);
@@ -40,7 +40,7 @@ public class AnswerController {
     @ApiOperation(value = "获取回答详情")
     @Login
     @GetMapping(value = "/getOne/{answerId}")
-    public Result getAll(@PathVariable String answerId, @RequestAttribute("userId") String userId){
+    public Result getAll(@PathVariable Long answerId, @RequestAttribute("userId") Long userId){
         return new Result(StatusCode.OK,answerService.findOne(answerId,userId));
     }
 
@@ -53,7 +53,7 @@ public class AnswerController {
     @ApiOperation(value = "获取用户回答列表")
     @Login
     @GetMapping(value = "/getListByUserId")
-    public Result getListByUserId(@RequestAttribute("userId") String userId, Page page){
+    public Result getListByUserId(@RequestAttribute("userId") Long userId, Page page){
         return new Result(StatusCode.OK,answerService.findListByUserId(userId,page));
     }
 }

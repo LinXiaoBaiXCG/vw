@@ -18,16 +18,24 @@ import java.sql.Timestamp;
 @Data
 @TableName("vw_problem")
 public class Problem implements Serializable {
-    @TableField(value = "id",fill = FieldFill.INSERT)
+
     private Long id;
+
     private Long userId;
+
     private String title;
+
     private String details;
+
     private String topicId;
+
     private String topicName;
+
     private Integer isDeleted;
+
     @TableField(value = "create_time",fill = FieldFill.INSERT)
     private Timestamp createTime;
+
     @TableField(value = "update_time",fill = FieldFill.INSERT_UPDATE)
     private Timestamp updateTime;
 }
