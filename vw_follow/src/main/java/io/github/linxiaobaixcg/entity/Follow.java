@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
@@ -18,11 +20,12 @@ import java.sql.Timestamp;
 @TableName(value = "vw_follow")
 public class Follow implements Serializable {
 
-    private String id;
+    private Long id;
 
-    private String userId;
+    private Long userId;
 
-    private String objectId;
+    @NotNull(message = "关注对象ID不能为空")
+    private Long objectId;
 
     private Integer type;
 

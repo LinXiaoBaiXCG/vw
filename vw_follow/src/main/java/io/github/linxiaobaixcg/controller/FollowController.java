@@ -25,7 +25,7 @@ public class FollowController {
 
     @Login
     @PostMapping("/followUser")
-    public ResponseEntity followUser(@RequestAttribute("userId") String userId, @RequestBody Follow follow){
+    public ResponseEntity followUser(@RequestAttribute("userId") Long userId, @RequestBody Follow follow){
         follow.setUserId(userId);
         followService.followUser(follow);
         return new ResponseEntity(HttpStatus.OK);

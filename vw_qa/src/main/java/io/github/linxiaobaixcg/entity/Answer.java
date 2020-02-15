@@ -26,10 +26,10 @@ public class Answer implements Serializable {
      */
     private Integer isDeleted;
 
-    @TableField(value = "create_time",fill = FieldFill.INSERT)
+    @TableField(value = "create_time", fill = FieldFill.INSERT)
     private Timestamp createTime;
 
-    @TableField(value = "update_time",fill = FieldFill.INSERT_UPDATE)
+    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
     private Timestamp updateTime;
 
     /**

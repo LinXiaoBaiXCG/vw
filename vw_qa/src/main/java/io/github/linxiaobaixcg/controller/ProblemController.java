@@ -9,6 +9,8 @@ import io.github.linxiaobaixcg.service.ProblemService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,16 +33,16 @@ public class ProblemController {
     @ApiOperation(value = "添加提问")
     @Login
     @PostMapping
-    public Result add(@RequestAttribute("userId") Long userId, @RequestBody @Validated Problem problem){
+    public ResponseEntity add(@RequestAttribute("userId") Long userId, @RequestBody @Validated Problem problem) {
         problem.setUserId(userId);
         problemService.insert(problem);
-        return new Result(StatusCode.OK);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @ApiOperation(value = "获取用户全部提问")
     @Login
     @GetMapping(value = "/getAll")
-    public Result getAll(@RequestAttribute("userId") Long userId, Page page){
-        return new Result(StatusCode.OK,problemService.findByUserId(userId,page));
+    public ResponseEntity getAll(@RequestAttribute("userId") Long userId, Page page) {
+        return new ResponseEntity(problemService.findByUserId(userId, page), HttpStatus.OK);
     }
 }

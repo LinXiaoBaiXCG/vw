@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 public interface UserClient {
 
     @PutMapping("/api/user/updateFollowCount/{userId}/{count}")
-    public ResponseEntity updateFollowCount(@PathVariable("userId") String userId, @PathVariable("count") Integer count);
+    public ResponseEntity updateFollowCount(@PathVariable("userId") Long userId, @PathVariable("count") Integer count);
 
     @PutMapping("/api/user/updateFansCount/{userId}/{count}")
-    public ResponseEntity updateFansCount(@PathVariable("userId") String userId, @PathVariable("count") Integer count);
+    public ResponseEntity updateFansCount(@PathVariable("userId") Long userId, @PathVariable("count") Integer count);
 
     @PutMapping("/api/user/updateProblemCount/{userId}/{count}")
     public ResponseEntity updateProblemCount(@PathVariable("userId") String userId, @PathVariable("count") Integer count);

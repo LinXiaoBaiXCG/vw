@@ -28,42 +28,42 @@ public class UserController {
 
     @Login
     @GetMapping
-    public ResponseEntity getUserInfo(@RequestAttribute("userId") Long userId){
-        return new ResponseEntity(userService.findUserById(userId),HttpStatus.OK);
+    public ResponseEntity getUserInfo(@RequestAttribute("userId") Long userId) {
+        return new ResponseEntity(userService.findUserById(userId), HttpStatus.OK);
     }
 
     @PostMapping("/register")
-    public ResponseEntity register(@RequestBody UserRegisterVO userRegisterVO){
+    public ResponseEntity register(@RequestBody UserRegisterVO userRegisterVO) {
         userService.register(userRegisterVO);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody User user){
-        return new ResponseEntity(userService.login(user),HttpStatus.OK);
+    public ResponseEntity login(@RequestBody User user) {
+        return new ResponseEntity(userService.login(user), HttpStatus.OK);
     }
 
     @PutMapping("/updateFollowCount/{userId}/{count}")
-    public ResponseEntity updateFollowCount(@PathVariable("userId")String userId, @PathVariable("count")Integer count){
-        userService.updateFollowCount(userId,count);
+    public ResponseEntity updateFollowCount(@PathVariable("userId") String userId, @PathVariable("count") Integer count) {
+        userService.updateFollowCount(userId, count);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @PutMapping("/updateFansCount/{userId}/{count}")
-    public ResponseEntity updateFansCount(@PathVariable("userId")String userId, @PathVariable("count")Integer count){
-        userService.updateFansCount(userId,count);
+    public ResponseEntity updateFansCount(@PathVariable("userId") String userId, @PathVariable("count") Integer count) {
+        userService.updateFansCount(userId, count);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @PutMapping("/updateProblemCount/{userId}/{count}")
-    public ResponseEntity updateProblemCount(@PathVariable("userId")String userId, @PathVariable("count")Integer count){
-        userService.updateProblemCount(userId,count);
+    public ResponseEntity updateProblemCount(@PathVariable("userId") String userId, @PathVariable("count") Integer count) {
+        userService.updateProblemCount(userId, count);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @PutMapping("/updateAnswerCount/{userId}/{count}")
-    public ResponseEntity updateAnswerCount(@PathVariable("userId")String userId, @PathVariable("count")Integer count){
-        userService.updateAnswerCount(userId,count);
+    public ResponseEntity updateAnswerCount(@PathVariable("userId") String userId, @PathVariable("count") Integer count) {
+        userService.updateAnswerCount(userId, count);
         return new ResponseEntity(HttpStatus.OK);
     }
 }

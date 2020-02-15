@@ -39,7 +39,7 @@ public class FollowService {
     @Transactional
     public void followUser(Follow follow){
         //添加关注用户记录
-        follow.setId(idWorker.nextId()+"");
+        follow.setId(idWorker.nextId());
         follow.setType(1);
         followMapper.insert(follow);
         //更新用户关注数
@@ -55,10 +55,11 @@ public class FollowService {
     @Transactional
     public void followProblem(Follow follow){
         //添加关注问题记录
-        follow.setId(idWorker.nextId()+"");
+        follow.setId(idWorker.nextId());
         follow.setType(2);
         followMapper.insert(follow);
         //TODO 更新用户关注问题数
+        userClient.updateFollowCount(follow.getUserId(),1);
         //TODO 更新问题关注数
     }
 
