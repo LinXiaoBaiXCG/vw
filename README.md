@@ -1,7 +1,7 @@
 <h1 style="text-align: center">微问</h1>
 <div style="text-align: center">
 
-[![AUR](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)](https://github.com/LinXiaoBaiXCG/vw)
+![AUR](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)
 
 </div>
 
